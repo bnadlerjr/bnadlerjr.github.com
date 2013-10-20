@@ -1,8 +1,10 @@
 Time.zone = "US/Eastern"
 
 activate :blog do |blog|
-  blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
+  blog.layout = "blog_layout"
+  blog.prefix = "blog"
+  blog.tag_template = "tag.html"
 end
 
 page "/feed.xml", :layout => false
