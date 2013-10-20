@@ -1,0 +1,29 @@
+---
+layout: post
+title: "sed in-place editing gotcha in OS X"
+date: 2013-02-17 16:06
+comments: true
+categories:
+---
+I just started learning about [sed](http://en.wikipedia.org/wiki/Sed) and came
+across one "gotcha" when using the **-i** option in OS X. The **-i** option
+allows you to edit a file in-place. It takes an optional parameter - a string
+to use as the extension for the backup file. If this parameter is not provided,
+then a backup file is not created.
+
+I was using sed to remove some tag references from a
+[ctags](http://ctags.sourceforge.net/) file. Since the file could easily be
+re-generated I didn't feel the need to provide a backup extension. I tried to
+execute the command below, but received an error:
+
+```
+→ sed -i "/lib\/timekeeper\/employee.rb/d" tags
+sed: 1: "tags": undefined label 'ags'
+```
+
+After some head scratching and Googling I figured out that in OS X the
+parameter is not optional, so the correct command is this:
+
+```
+→ sed -i "" "/lib\/timekeeper\/employee.rb/d" tags
+```

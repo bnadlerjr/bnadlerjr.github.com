@@ -1,0 +1,59 @@
+---
+layout: post
+title: "How to Conduct a Release Planning Meeting"
+date: 2013-04-08 16:17
+comments: true
+published: false
+categories:
+---
+<table>
+    <caption>Release Planning Meeting Agenda</caption>
+    <tbody>
+        <tr>
+            <th>Opening</th>
+            <td>TODO</td>
+        </tr>
+        <tr>
+            <th>What is the theme for this Release?</th>
+            <td>TODO</td>
+        </tr>
+        <tr>
+            <th>What is the timebox for this Release?</th>
+            <td>
+                <p>The Customer should present a view of the Release timebox based on the theme and any other driving factors. The customer and the team then determine the number and length of the iterations.</p>
+                <p>Using a calendar, post the table of dates on the wall.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Who are the team members for this Release?</th>
+            <td>
+                <p>Create a list of team members and their roles. Include any other team member information as well (location, part-time, etc.). All of the team members listed must be able to personally commit to the Release Plan.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What is the expected team velocity?</th>
+            <td>
+                <p>For new teams, list estimated availability for each each team member in ideal days. Do not let the team go into detailed hours. Combine all inidividual estimates. This number defines the total velocity of the team.  Post it on the wall.</p>
+                <p>For established teams calculate the average velocity for the team from the last Release.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What are the prioritized stories?</th>
+            <td>
+                <p>Keep the group focused on the current stories by gathering discussion topics on the wall; other stories, issues and concerns will be handled later in the meeting</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Are there any additional stories that can contribute to the Release theme?</th>
+            <td>
+                <p>Timebox new story brainstorming with a timer. Have the customer prioritize the new stories in the context of the existing ones.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What are the technical concerns around these stories?</th>
+            <td>
+                <p>Brainstorm and display concerns on the wall.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

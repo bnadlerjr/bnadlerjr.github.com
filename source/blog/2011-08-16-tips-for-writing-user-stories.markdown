@@ -1,0 +1,19 @@
+---
+layout: post
+title: "7 Tips for Writing User Stories"
+date: 2011-08-17 15:34
+comments: true
+categories:
+---
+<div><ol>
+<li>Pick a format and stick to it. I prefer "As a &lt;role&gt; I want to
+&lt;goal&gt; so that &lt;benefit&gt;."</li>
+<li>Be sure to include acceptance tests with the story.</li>
+<li>Keep technology terms / phrases out; a story should define user interaction
+absent of technology.</li>
+<li>Have your customers write the stories; stories must be understandable to
+the customer.</li>
+<li>Don't be afraid to <a href="blog/2010/11/28/ideas-for-splitting-large-user-stories/">split large stories</a>.</li>
+<li>Make sure each story provides something of value to the customer.</li>
+<li>Stories should be independent of each other.</li>
+</ol></div>

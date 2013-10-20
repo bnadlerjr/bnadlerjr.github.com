@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Heroku Slug Compiler Optimizations"
+date: 2013-06-02 20:50
+comments: true
+categories: 
+---
+## Using <code>.slugignore</code> to reduce your slug size
+This may be old news to some, but I recently learned about a cool Heroku feature: the <code>.slugignore</code> file.
+
+**What is it?**
+A <code>.slugignore</code> is like a <code>.gitignore</code> file for your app. It is used to reduce the size of your slug file on Heroku by ignoring files that are not essential for your app to operate.
+
+**Why is it cool?**
+The smaller the slug file for your app, the faster Heroku can transfer it across dynos, making scaling much easier. Heroku suggests keeping your slug file size under 50MB, files smaller than 15MB are preferred.
+
+**How do I use it?**
+Place it in your project's root folder. It works the same way as a <code>.gitignore</code> file does. The only difference is that it doesn't support the negation operator (!). Here are some suggestions of things that you may want to put in your <code>.slugignore</code> file:
+
+- Mockups and old versions of image assets
+- Any project documents, PDF's, etc.
+- Test files
+
+**Example <code>.slugignore</code>**
+<pre>
+test
+docs
+*.pdf
+</pre>

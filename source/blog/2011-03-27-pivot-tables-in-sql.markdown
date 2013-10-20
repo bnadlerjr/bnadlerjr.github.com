@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Pivot Tables in SQL"
+date: 2011-03-27 15:21
+comments: true
+categories:
+---
+<p>Sometimes when trying to pivot a large dataset it makes more sense to
+perform the pivot in SQL rather than using something like <a
+href="https://github.com/ruport/ruport">Ruport</a>. I always forget how to do this
+so here's a reminder.</p>
+{% gist 889194 %}

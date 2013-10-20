@@ -1,0 +1,127 @@
+---
+layout: post
+title: "Driving Technical Change"
+date: 2013-07-11 17:39
+comments: true
+published: false
+categories: books
+---
+I purchased [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) by Terrence Ryan as part of a Pragmatic
+Bookshelf sale a few months ago. Overall I thought it was a good book, though
+a bit basic. One handy tool I got out of it was the "Skeptic / Technique Matrix".
+In the book, Ryan categorizes different type of skeptics that may oppose some
+sort of change. He then introduces various techniques for dealing with their
+objections. The matrix summarizes which techniques work well for each type of
+skeptic.
+<table id="skeptic-technique">
+    <caption>The Skeptic / Technique Matrix</caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Uninformed</th>
+            <th>Herd</th>
+            <th>Cynic</th>
+            <th>Burned</th>
+            <th>Time Crunched</th>
+            <th>Boss</th>
+            <th>Irrational</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Gain Expertise</th>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Demonstrate Your Technique</th>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Deliver Your Message</th>
+            <td class="odd">&#x25cf;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+        </tr>
+        <tr>
+            <th>Create Trust</th>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&#x25cf;</td>
+        </tr>
+        <tr>
+            <th>Propose Compromise</th>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Get Publicity</th>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Focus on Synergy</th>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Build a Bridge</th>
+            <td class="odd">&nbsp;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>Create Something Compelling</th>
+            <td class="odd">&nbsp;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&#x25cf;</td>
+            <td class="odd">&#x25cf;</td>
+            <td>&nbsp;</td>
+            <td class="odd">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+The techniques and the descriptions of the skeptics are a bit basic, but the
+book offers solid advice. If you're a technical person trying to introduce a
+new tool or process in your organization [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) is a quick read
+that may help you out.
