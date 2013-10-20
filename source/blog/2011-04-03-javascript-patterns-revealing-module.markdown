@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "JavaScript Patterns: Revealing Module"
 date: 2011-04-03 15:28
-comments: true
-categories:
 ---
 <p>Awhile ago I wrote about the <a href="blog/2010/12/12/javascript-patterns-module/">Module Pattern</a> in JavaScript.
 There is an alternative that is quite popular called the Revealing Module

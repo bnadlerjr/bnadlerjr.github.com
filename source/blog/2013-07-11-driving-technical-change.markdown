@@ -1,10 +1,7 @@
 ---
-layout: post
 title: "Driving Technical Change"
 date: 2013-07-11 17:39
-comments: true
 published: false
-categories: books
 ---
 I purchased [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) by Terrence Ryan as part of a Pragmatic
 Bookshelf sale a few months ago. Overall I thought it was a good book, though

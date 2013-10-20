@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Rails Domain Generation with SQL Editor"
 date: 2010-07-26 14:17
-comments: true
-categories:
 ---
 <h2>Update</h2>
 <p>I have a new Rails 3 compatible version called model_maker available on <a href="https://github.com/bnadlerjr/third_switch_generators">GitHub</a>.</p>

@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Rails 3 Generators: Lookup Paths"
 date: 2010-12-30 15:11
-comments: true
-categories:
 ---
 <p>Apparently the new Rails 3 generators do not support looking up custom
 generators in <code>~/.rails/generators</code> anymore. Here is a bash function

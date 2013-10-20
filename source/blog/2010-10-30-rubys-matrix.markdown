@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Ruby's Matrix"
 date: 2010-10-30 14:45
-comments: true
-categories:
 ---
 <h3>The Game of Life</h3>
 <p>I attended a <a href="http://coderetreat.org/">Code Retreat</a> a few weeks ago where the exercise was to implement <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a>. The Code Retreat was awesome and I definately recommend you check one

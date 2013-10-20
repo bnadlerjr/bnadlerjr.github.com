@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Summarizing Data with Pivot Tables in Ruport"
 date: 2010-07-21 13:45
-comments: true
-categories:
 ---
 <p>Pivot tables are a useful data tool. They allow you to transform large amounts of tabular data into an easier to read format. They can be difficult to create, however, and some people have a hard time understanding how to create them. It took me awhile to fully grasp how they worked.</p>
 <p>Pivot tables are mostly found in spreadsheet software, but there are other tools, too. One such tool is Ruport, a Ruby based reporting tool.</p>

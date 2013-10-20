@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "JavaScript Patterns: Callback"
 date: 2010-11-22 14:53
-comments: true
-categories:
 ---
 <p>In JavaScript, functions are objects that can be passed as arguments to
 other functions. A useful pattern that lets you take advantage of this is the

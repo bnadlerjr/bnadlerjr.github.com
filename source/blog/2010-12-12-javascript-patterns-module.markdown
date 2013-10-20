@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "JavaScript Patterns: Module"
 date: 2010-12-12 15:08
-comments: true
-categories:
 ---
 <p>When I started getting more into JavaScript I was looking for the best ways
 to organize my code. One of the most popular is to use the <em>Module

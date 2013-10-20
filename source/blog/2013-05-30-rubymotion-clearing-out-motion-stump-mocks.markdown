@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "RubyMotion: Clearing Out motion-stump Mocks"
 date: 2013-05-30 17:07
-comments: true
-categories: rubymotion
 ---
 This one had me "stumped" for awhile. When using
 [motion-stump](https://github.com/siuying/motion-stump) mocks, you need to clear

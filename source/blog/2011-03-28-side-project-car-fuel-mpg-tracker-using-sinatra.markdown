@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Side Project: Car Fuel MPG Tracker Using Sinatra"
 date: 2011-03-28 15:25
-comments: true
-categories:
 ---
 <p>I was playing around with <a href="http://www.sinatrarb.com/">Sinatra</a> a
 few months ago and decided to create a small app with it. It's a very basic

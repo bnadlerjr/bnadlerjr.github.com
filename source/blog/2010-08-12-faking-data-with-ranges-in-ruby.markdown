@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Faking Data with Ranges in Ruby"
 date: 2010-08-12 14:38
-comments: true
-categories:
 ---
 <p>On a recent project I needed to create some fake data for some reporting
 screens. I was using <a href="http://staticmatic.rubyforge.org/">StaticMatic</a> to generate a mockup

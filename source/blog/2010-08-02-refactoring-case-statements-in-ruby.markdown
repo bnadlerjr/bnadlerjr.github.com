@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Refactoring Case Statements in Ruby"
 date: 2010-08-02 14:25
-comments: true
-categories:
 ---
 <p><tt>Case</tt> (or <tt>switch</tt>) statements in your code have a tendency
 to grow over time. After awhile they can become unmanagable and hard to read.

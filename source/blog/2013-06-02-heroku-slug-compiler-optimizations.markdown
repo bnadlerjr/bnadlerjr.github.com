@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Heroku Slug Compiler Optimizations"
 date: 2013-06-02 20:50
-comments: true
-categories: 
 ---
 ## Using <code>.slugignore</code> to reduce your slug size
 This may be old news to some, but I recently learned about a cool Heroku feature: the <code>.slugignore</code> file.

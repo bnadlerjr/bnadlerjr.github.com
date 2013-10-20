@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "Ideas for Splitting Large User Stories"
 date: 2010-11-28 15:03
-comments: true
-categories:
 ---
 <p>During iteration planning, sometimes <a href="http://en.wikipedia.org/wiki/User_story">user stories</a> need to be split so that they can be better handled. Here are a few ideas for doing just
 that.</p>

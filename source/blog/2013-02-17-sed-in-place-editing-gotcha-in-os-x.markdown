@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "sed in-place editing gotcha in OS X"
 date: 2013-02-17 16:06
-comments: true
-categories:
 ---
 I just started learning about [sed](http://en.wikipedia.org/wiki/Sed) and came
 across one "gotcha" when using the **-i** option in OS X. The **-i** option

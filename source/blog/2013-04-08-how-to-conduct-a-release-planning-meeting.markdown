@@ -1,10 +1,7 @@
 ---
-layout: post
 title: "How to Conduct a Release Planning Meeting"
 date: 2013-04-08 16:17
-comments: true
 published: false
-categories:
 ---
 <table>
     <caption>Release Planning Meeting Agenda</caption>

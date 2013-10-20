@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "LinkedIn API and Sinatra"
 date: 2012-02-26 15:50
-comments: true
-categories:
 ---
 <p>I've been playing around with the LinkedIn API and Sinatra for about a week
 and wrote a tiny app. After you authenticate using your LinkedIn credentials,

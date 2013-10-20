@@ -1,9 +1,6 @@
 ---
-layout: post
 title: "7 Tips for Writing User Stories"
 date: 2011-08-16 15:34
-comments: true
-categories:
 ---
 <div><ol>
 <li>Pick a format and stick to it. I prefer "As a &lt;role&gt; I want to
