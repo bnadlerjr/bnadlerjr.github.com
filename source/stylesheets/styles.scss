@@ -1,0 +1,43 @@
+@import "_normalize";
+
+$body-margin: 20px;
+$header-width: 175px;
+$page-width: 960px;
+
+h1 {
+    margin-top: 0;
+}
+
+header {
+    position: absolute;
+    top: $body-margin;
+    bottom: $body-margin;
+    left: $body-margin;
+    width: $header-width;
+    img {
+        display: block;
+        padding-bottom: 1em;
+    }
+
+    ul.social li {
+        display: inline-block;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding-left: 1em;
+        li {
+            padding: .25em;
+        }
+    }
+}
+
+main {
+    position: fixed;
+    top: $body-margin;
+    left: $header-width + $body-margin;
+    right: $body-margin;
+    bottom: $body-margin;
+    overflow: auto;
+    width: $page-width - $header-width - ($body-margin * 2);
+}

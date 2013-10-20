@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <%= stylesheet_link_tag 'styles' %>
   </head>
   <body>
 
     <header>
       <%= image_tag 'me.png' %>
       <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
-      <ul>
+      <ul class="social">
         <li><%= image_tag 'github.png' %></li>
         <li><%= image_tag 'twitter.png' %></li>
         <li><%= image_tag 'linkedin.png' %></li>
