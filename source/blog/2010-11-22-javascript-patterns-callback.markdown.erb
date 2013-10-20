@@ -8,7 +8,7 @@ the <em>Callback Pattern</em>.</p>
 <p>For example, let's say you were implementing a graphing library that would
 allow you to draw column and line charts. One way of writing it might be
 something like this:</p>
-{% gist 708799 %}
+<%= gist 708799 %>
 <p>The problem with this code is that the logic for calculating the x and y
 positions is duplicated in each function. Extracting this to another function
 is problematic because it may need all of the values that you are trying to
@@ -18,7 +18,7 @@ those. However, this requires looping twice, once over the values themselves,
 and again over all the calculated coordinates.</p>
 <p>This problem can be solved more efficiently by using a callback like
 this:</p>
-{% gist 708800 %}
+<%= gist 708800 %>
 <p>Here we've extracted the positioning calculations into a separate
 <code>plot</code> function. This function takes an array of values to plot as
 well as a function. When the <code>plot</code> function is called, we iterate

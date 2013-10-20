@@ -8,20 +8,20 @@ As a general rule of thumb I try to refactor <tt>case</tt> statements if they
 are more than one screen long. But how can they be refactored? Well, there are
 several ways, but let's take a look at one in particular using Ruby.</p>
 <p>Let's say you have a method that looks like this:</p>
-{% gist 493107 %}
+<%= gist 493107 %>
 <p>Admittedly, this is a short case statement, but it will do for illustrative
 purposes. Also, let's assume that the formatters are more complicated
 (obviously the PDF formatter will <em>not</em> work as is).</p>
 <p>So the first step to refactoring this method is to move the formatters out
 of the output method. They can be actual classes, but for simplicity we'll
 convert them to lambdas.</p>
-{% gist 493108 %}
+<%= gist 493108 %>
 <p>OK, so we've moved the formatters out onto their own. Now for the case
 statement. First, we create a Hash using the format types as the keys and their
 lambdas as values. Second, we get rid of the case statement and instead look up
 the format type in the Hash and call it. Add in a line to check that the key
 exists, and we're done.</p>
-{% gist 493111 %}
+<%= gist 493111 %>
 <p>The same effect can be achieved by using classes instead of lambdas, just
 use the actual class instances as the values. Either way, the actual formatting
 is moved out of the output method into separate areas for each format type.</p>
