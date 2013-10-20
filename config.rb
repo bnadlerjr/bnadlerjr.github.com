@@ -1,5 +1,11 @@
 Time.zone = "US/Eastern"
 
+helpers do
+  def gist(id)
+    tag(:script, src: "https://gist.github.com/bnadlerjr/#{id}.js")
+  end
+end
+
 activate :blog do |blog|
   blog.layout = "blog_layout"
   blog.prefix = "blog"
