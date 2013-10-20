@@ -4,6 +4,12 @@ helpers do
   def gist(id)
     tag(:script, src: "https://gist.github.com/bnadlerjr/#{id}.js")
   end
+
+  def icon(name, url)
+    link_to(url, class: "icon-#{name}") do
+      tag :img, src: ""
+    end
+  end
 end
 
 activate :blog do |blog|

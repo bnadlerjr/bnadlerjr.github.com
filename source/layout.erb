@@ -11,14 +11,10 @@
       <%= image_tag 'me.png' %>
       <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
       <ul class="social">
-        <li><%= image_tag 'github.png' %></li>
-        <li><%= image_tag 'twitter.png' %></li>
-        <li><%= image_tag 'linkedin.png' %></li>
-        <li>
-          <% link_to '/feed.xml' do %>
-            <%= image_tag 'rss.png' %>
-          <% end %>
-        </li>
+        <li><%= icon "github", 'https://github.com/bnadlerjr' %></li>
+        <li><%= icon "twitter", 'https://twitter.com/bnadlerjr' %></li>
+        <li><%= icon "linkedin", 'https://www.linkedin.com/in/bobnadlerjr' %></li>
+        <li><%= icon "rss", '/feed.xml' %></li>
       </ul>
       <nav>
         <ul>

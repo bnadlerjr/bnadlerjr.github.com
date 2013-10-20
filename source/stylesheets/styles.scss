@@ -4,6 +4,48 @@ $body-margin: 20px;
 $header-width: 175px;
 $page-width: 960px;
 
+@mixin icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.icon-rss {
+    background: url('../images/rss.png') center top no-repeat;
+    @include icon;
+}
+
+.icon-rss:hover {
+    background: url('../images/rss-hover.png') center top no-repeat;
+}
+
+.icon-linkedin {
+    background: url('../images/linkedin.png') center top no-repeat;
+    @include icon;
+}
+
+.icon-linkedin:hover {
+    background: url('../images/linkedin-hover.png') center top no-repeat;
+}
+
+.icon-twitter {
+    background: url('../images/twitter.png') center top no-repeat;
+    @include icon;
+}
+
+.icon-twitter:hover {
+    background: url('../images/twitter-hover.png') center top no-repeat;
+}
+
+.icon-github {
+    background: url('../images/github.png') center top no-repeat;
+    @include icon;
+}
+
+.icon-github:hover {
+    background: url('../images/github-hover.png') center top no-repeat;
+}
+
 h1 {
     margin-top: 0;
 }
@@ -19,8 +61,17 @@ header {
         padding-bottom: 1em;
     }
 
-    ul.social li {
-        display: inline-block;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        &.social li {
+            display: inline-block;
+            padding-right: 3px;
+            width: 32px;
+            height: 32px;
+
+        }
     }
 
     nav ul {
