@@ -13,6 +13,11 @@
         <li><%= image_tag 'github.png' %></li>
         <li><%= image_tag 'twitter.png' %></li>
         <li><%= image_tag 'linkedin.png' %></li>
+        <li>
+          <% link_to '/feed.xml' do %>
+            <%= image_tag 'rss.png' %>
+          <% end %>
+        </li>
       </ul>
       <nav>
         <ul>
