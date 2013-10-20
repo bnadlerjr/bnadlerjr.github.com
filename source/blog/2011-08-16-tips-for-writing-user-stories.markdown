@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "7 Tips for Writing User Stories"
-date: 2011-08-17 15:34
+date: 2011-08-16 15:34
 comments: true
 categories:
 ---
