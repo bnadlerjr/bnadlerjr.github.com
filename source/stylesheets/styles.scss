@@ -4,6 +4,25 @@ $body-margin: 20px;
 $header-width: 175px;
 $page-width: 960px;
 
+a, a:link, a:visited, a:active {
+    color: #000;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #cc0000;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Serif', serif;
+}
+
 @mixin icon {
     width: 32px;
     height: 32px;
@@ -75,10 +94,13 @@ header {
     }
 
     nav ul {
+        font-family: 'PT Serif', serif;
         list-style-type: none;
-        padding-left: 1em;
+        padding-top: 1em;
         li {
-            padding: .25em;
+            a {
+                text-decoration: none;
+            }
         }
     }
 }
@@ -90,5 +112,4 @@ main {
     right: $body-margin;
     bottom: $body-margin;
     overflow: auto;
-    width: $page-width - $header-width - ($body-margin * 2);
 }
