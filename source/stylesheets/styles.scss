@@ -113,3 +113,24 @@ main {
     bottom: $body-margin;
     overflow: auto;
 }
+
+.article-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        padding: .5em 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    li span {
+        float: right;
+        color: #666;
+        font-size: .8em;
+    }
+}
