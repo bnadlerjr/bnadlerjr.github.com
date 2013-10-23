@@ -24,48 +24,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'PT Serif', serif;
 }
 
-@mixin icon {
-    width: 32px;
-    height: 32px;
-    display: block;
-}
-
-.icon-rss {
-    background: url('../images/rss.png') center top no-repeat;
-    @include icon;
-}
-
-.icon-rss:hover {
-    background: url('../images/rss-hover.png') center top no-repeat;
-}
-
-.icon-linkedin {
-    background: url('../images/linkedin.png') center top no-repeat;
-    @include icon;
-}
-
-.icon-linkedin:hover {
-    background: url('../images/linkedin-hover.png') center top no-repeat;
-}
-
-.icon-twitter {
-    background: url('../images/twitter.png') center top no-repeat;
-    @include icon;
-}
-
-.icon-twitter:hover {
-    background: url('../images/twitter-hover.png') center top no-repeat;
-}
-
-.icon-github {
-    background: url('../images/github.png') center top no-repeat;
-    @include icon;
-}
-
-.icon-github:hover {
-    background: url('../images/github-hover.png') center top no-repeat;
-}
-
 h1 {
     margin-top: 0;
 }
@@ -127,5 +85,18 @@ main {
         float: right;
         color: #666;
         font-size: .8em;
+    }
+}
+
+@each $item in rss, linkedin, twitter, github {
+    .icon-#{$item} {
+        background: url("../images/#{$item}.png") center top no-repeat;
+        width: 32px;
+        height: 32px;
+        display: block;
+    }
+
+    .icon-#{$item}:hover {
+        background: url("../images/#{$item}-hover.png") center top no-repeat;
     }
 }
