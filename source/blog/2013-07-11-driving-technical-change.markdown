@@ -3,13 +3,8 @@ title: "Driving Technical Change"
 date: 2013-07-11 17:39
 published: false
 ---
-I purchased [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) by Terrence Ryan as part of a Pragmatic
-Bookshelf sale a few months ago. Overall I thought it was a good book, though
-a bit basic. One handy tool I got out of it was the "Skeptic / Technique Matrix".
-In the book, Ryan categorizes different type of skeptics that may oppose some
-sort of change. He then introduces various techniques for dealing with their
-objections. The matrix summarizes which techniques work well for each type of
-skeptic.
+I purchased [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) by Terrence Ryan as part of a Pragmatic Bookshelf sale a few months ago. Overall I thought it was a good book, though a bit basic. One handy tool I got out of it was the "Skeptic / Technique Matrix".  In the book, Ryan categorizes different type of skeptics that may oppose some sort of change. He then introduces various techniques for dealing with their objections. The matrix summarizes which techniques work well for each type of skeptic.
+
 <table id="skeptic-technique">
     <caption>The Skeptic / Technique Matrix</caption>
     <thead>
@@ -118,7 +113,4 @@ skeptic.
     </tbody>
 </table>
 
-The techniques and the descriptions of the skeptics are a bit basic, but the
-book offers solid advice. If you're a technical person trying to introduce a
-new tool or process in your organization [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) is a quick read
-that may help you out.
+The techniques and the descriptions of the skeptics are a bit basic, but the book offers solid advice. If you're a technical person trying to introduce a new tool or process in your organization [Driving Technical Change](http://pragprog.com/book/trevan/driving-technical-change) is a quick read that may help you out.
