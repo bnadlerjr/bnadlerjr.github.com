@@ -7,26 +7,27 @@
     <%= stylesheet_link_tag 'styles' %>
   </head>
   <body>
-
-    <header>
-      <%= image_tag 'me.png' %>
-      <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
-      <ul class="social">
-        <li><%= icon "github", 'https://github.com/bnadlerjr' %></li>
-        <li><%= icon "twitter", 'https://twitter.com/bnadlerjr' %></li>
-        <li><%= icon "linkedin", 'https://www.linkedin.com/in/bobnadlerjr' %></li>
-        <li><%= icon "rss", '/feed.xml' %></li>
-      </ul>
-      <nav>
-        <ul>
-          <li><%= link_to 'about', '/about.html' %></li>
-          <li><%= link_to 'posts', '/index.html' %></li>
+    <div id="wrapper">
+      <header>
+        <%= image_tag 'me.png' %>
+        <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
+        <ul class="social">
+          <li><%= icon "github", 'https://github.com/bnadlerjr' %></li>
+          <li><%= icon "twitter", 'https://twitter.com/bnadlerjr' %></li>
+          <li><%= icon "linkedin", 'https://www.linkedin.com/in/bobnadlerjr' %></li>
+          <li><%= icon "rss", '/feed.xml' %></li>
         </ul>
-      </nav>
-    </header>
+        <nav>
+          <ul>
+            <li><%= link_to 'about', '/about.html' %></li>
+            <li><%= link_to 'posts', '/index.html' %></li>
+          </ul>
+        </nav>
+      </header>
 
-    <main>
-      <%= yield %>
-    </main>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

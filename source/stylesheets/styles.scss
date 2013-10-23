@@ -1,8 +1,9 @@
 @import "_normalize";
 
 $body-margin: 20px;
-$header-width: 175px;
 $page-width: 960px;
+$header-width: 175px;
+$main-width: $page-width - $header-width;
 
 a, a:link, a:visited, a:active {
     color: #000;
@@ -69,11 +70,13 @@ h1 {
     margin-top: 0;
 }
 
+#wrapper {
+    width: 960px;
+    margin: 20px auto;
+}
+
 header {
-    position: absolute;
-    top: $body-margin;
-    bottom: $body-margin;
-    left: $body-margin;
+    float: left;
     width: $header-width;
     img {
         display: block;
@@ -87,9 +90,6 @@ header {
         &.social li {
             display: inline-block;
             padding-right: 3px;
-            width: 32px;
-            height: 32px;
-
         }
     }
 
@@ -97,21 +97,15 @@ header {
         font-family: 'PT Serif', serif;
         list-style-type: none;
         padding-top: 1em;
-        li {
-            a {
-                text-decoration: none;
-            }
+        li a {
+            text-decoration: none;
         }
     }
 }
 
 main {
-    position: fixed;
-    top: $body-margin;
-    left: $header-width + $body-margin;
-    right: $body-margin;
-    bottom: $body-margin;
-    overflow: auto;
+    margin-left: $header-width + $body-margin;
+    width: $main-width;
 }
 
 .article-list {
