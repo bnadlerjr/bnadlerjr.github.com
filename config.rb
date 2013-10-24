@@ -2,7 +2,7 @@ Time.zone = "US/Eastern"
 
 helpers do
   def gist(id)
-    tag(:script, src: "https://gist.github.com/bnadlerjr/#{id}.js")
+    "<script src='https://gist.github.com/bnadlerjr/#{id}.js'></script>"
   end
 
   def icon(name, url)
