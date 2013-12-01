@@ -17,6 +17,12 @@ activate :blog do |blog|
   blog.prefix = "blog"
 end
 
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.build_before = true
+  deploy.branch = "master"
+end
+
 page "/feed.xml", :layout => false
 
 set :css_dir, 'stylesheets'
