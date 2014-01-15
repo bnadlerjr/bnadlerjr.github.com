@@ -1,6 +1,11 @@
 Time.zone = "US/Eastern"
 
 helpers do
+  def title
+    name = "Bob Nadler, Jr"
+    current_article ? "#{name} | #{current_article.title}" : name
+  end
+
   def gist(id)
     "<script src='https://gist.github.com/bnadlerjr/#{id}.js'></script>"
   end
