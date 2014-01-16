@@ -2,6 +2,11 @@
 title: "sed in-place editing gotcha in OS X"
 date: 2013-02-17 16:06
 ---
+<%= article_image filename: "danger-carnivorous-pigeons.jpg",
+                  alt: "Danger: Carnivorous Pigeons",
+                  source: "Andrew Magill",
+                  url: "http://www.flickr.com/photos/amagill/106049506/" %>
+
 I just started learning about [sed](http://en.wikipedia.org/wiki/Sed) and came
 across one "gotcha" when using the **-i** option in OS X. The **-i** option
 allows you to edit a file in-place. It takes an optional parameter - a string
@@ -15,6 +20,7 @@ execute the command below, but received an error:
 
 ```
 → sed -i "/lib\/timekeeper\/employee.rb/d" tags
+
 sed: 1: "tags": undefined label 'ags'
 ```
 
