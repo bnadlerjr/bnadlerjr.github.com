@@ -23,16 +23,15 @@ helpers do
 SNIPPET
   end
 
-  def article_image(image_name, url, image_credit)
-    filename = url.split("/").last + ".jpg"
-    image = image_tag("articles/#{filename}", alt: image_credit, width: "256px")
+  def article_image(options)
+    image = image_tag("articles/#{options[:filename]}", alt: options[:alt], width: "256px")
 
 <<SNIPPET
 <figure class="article-image">
-    <a href="#{url}">
+    <a href="#{options[:url]}">
         #{image}
     </a>
-    <figcaption>Image by <span>#{image_credit}</span></figcaption>
+    <figcaption>Image by <span>#{options[:source]}</span></figcaption>
 </figure>
 SNIPPET
   end
