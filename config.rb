@@ -26,7 +26,7 @@ SNIPPET
   end
 
   def article_image(options)
-    image = image_tag("articles/#{options[:filename]}", alt: options[:alt], width: "256px")
+    image = image_tag("articles/#{options[:filename]}", alt: options[:alt], width: "256")
 
 <<SNIPPET
 <figure class="article-image">
