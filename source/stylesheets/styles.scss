@@ -93,6 +93,12 @@ main {
     float: right;
     padding-left: $padding;
 
+    img {
+        box-shadow: 1px 1px 8px #999;
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
     figcaption {
         font-size: 0.5em;
         font-weight: lighter;
