@@ -13,8 +13,10 @@
   <body>
     <div id="wrapper">
       <header>
-        <%= image_tag 'me.png' %>
-        <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
+        <% link_to "/index.html" do %>
+          <%= image_tag 'me.png' %>
+          <%= image_tag 'logo.png', alt: 'Bob Nadler, Jr.' %>
+        <% end %>
         <ul class="social">
           <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
           <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
