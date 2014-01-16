@@ -11,9 +11,7 @@ helpers do
   end
 
   def icon(name, url)
-    link_to(url, class: "icon-#{name}") do
-      tag :img, src: ""
-    end
+    link_to("", url, class: "icon-#{name}")
   end
 
   def twitter_share_button
