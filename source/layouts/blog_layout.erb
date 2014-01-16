@@ -1,7 +1,8 @@
 <% wrap_layout :layout do %>
   <article>
     <h1><%= current_article.title %></h1>
-    <%= twitter_share_button %>
     <%= yield %>
   </article>
+  <hr />
+  <%= twitter_share_button %>
 <% end %>
