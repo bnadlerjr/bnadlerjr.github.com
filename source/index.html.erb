@@ -1,3 +1,8 @@
+---
+title: "Bob Nadler, Jr."
+description: "Bob Nadler, Jr's website."
+type: "website"
+---
 <ol class="article-list">
 <% blog.articles.each do |article| %>
   <li><%= link_to article.title, article %> <span><%= article.date.strftime('%B %e, %Y') %></span></li>

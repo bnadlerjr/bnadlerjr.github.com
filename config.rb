@@ -1,6 +1,10 @@
 Time.zone = "US/Eastern"
 
 helpers do
+  def full_url(url)
+    "http://bobnadler.com/#{url}"
+  end
+
   def title
     name = "Bob Nadler, Jr"
     current_article ? "#{name} | #{current_article.title}" : name
