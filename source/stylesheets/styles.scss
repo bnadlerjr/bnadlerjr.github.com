@@ -1,9 +1,13 @@
 @import "_normalize";
 
-$body-margin: 20px;
-$page-width: 960px;
-$header-width: 175px;
-$main-width: $page-width - $header-width;
+/*$body-margin: 20px;*/
+$body-margin: 16px;
+/*$page-width: 960px;*/
+$page-width: 768px;
+/*$header-width: 175px;*/
+/*$main-width: $page-width - $header-width;*/
+$main-width: 560px;
+$header-width: $page-width - $main-width;
 $headline-fonts: 'Istok Web', sans-serif;
 $body-fonts: 'Lora', serif;
 
