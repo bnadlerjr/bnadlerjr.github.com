@@ -22,6 +22,20 @@ helpers do
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 SNIPPET
   end
+
+  def article_image(image_name, url, image_credit)
+    filename = url.split("/").last + ".jpg"
+    image = image_tag("articles/#{filename}", alt: image_credit, width: "256px")
+
+<<SNIPPET
+<figure class="article-image">
+    <a href="#{url}">
+        #{image}
+    </a>
+    <figcaption>Image by <span>#{image_credit}</span></figcaption>
+</figure>
+SNIPPET
+  end
 end
 
 activate :blog do |blog|
