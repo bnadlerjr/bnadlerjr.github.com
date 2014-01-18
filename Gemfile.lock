@@ -100,7 +100,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  builder (~> 3.0)
+  builder (~> 3.2.2)
   middleman (~> 3.2.1)
   middleman-blog (~> 3.3.0)
   middleman-deploy (~> 0.1.4)
