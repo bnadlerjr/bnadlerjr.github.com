@@ -136,3 +136,22 @@ main {
         background: url("../images/#{$item}-hover.png") center top no-repeat;
     }
 }
+
+.not-found {
+    box-shadow: 1px 1px 8px #999;
+    border: 1px solid #ccc;
+    width: 560px;
+    height: 372px;
+    background-image: url("/images/storm-loss.jpg");
+
+    div {
+        float: right;
+        width: 320px;
+    }
+}
+
+.image-credit {
+    font-size: 0.5em;
+    font-weight: lighter;
+    text-align: right;
+}
