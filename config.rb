@@ -65,7 +65,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 configure :build do
-  activate :asset_hash
+  activate :asset_hash, ignore: "favicon.png"
   activate :minify_css
   activate :minify_javascript
 end
