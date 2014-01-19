@@ -10,7 +10,7 @@ date: 2011-08-16 15:34
 absent of technology.</li>
 <li>Have your customers write the stories; stories must be understandable to
 the customer.</li>
-<li>Don't be afraid to <a href="blog/2010/11/28/ideas-for-splitting-large-user-stories/">split large stories</a>.</li>
+<li>Don't be afraid to <a href="articles/2010/11/28/ideas-for-splitting-large-user-stories/">split large stories</a>.</li>
 <li>Make sure each story provides something of value to the customer.</li>
 <li>Stories should be independent of each other.</li>
 </ol></div>

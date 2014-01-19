@@ -44,7 +44,7 @@ end
 
 activate :blog do |blog|
   blog.layout = "blog_layout"
-  blog.prefix = "blog"
+  blog.prefix = "articles"
 end
 
 activate :deploy do |deploy|
