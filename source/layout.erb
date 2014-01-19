@@ -50,21 +50,15 @@
       <main>
         <%= yield %>
         <footer>
-          <p>
-            <%= link_to "about", "/about.html" %>
-            |
-            <%= link_to "articles", "/index.html" %>
-            |
-            <%= link_to "rss", "/feed.xml" %>
-            |
-            <%= link_to "github", "https://github.com/bnadlerjr" %>
-            |
-            <%= link_to "twitter", "https://twitter.com/bnadlerjr" %>
-            |
-            <%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %>
-            <br />
-            Copyright &copy; 2010-2014 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
-          </p>
+          <ul>
+            <li><%= link_to "about", "/about.html" %></li>
+            <li><%= link_to "articles", "/index.html" %></li>
+            <li><%= link_to "rss", "/feed.xml" %></li>
+            <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
+            <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
+            <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+          </ul>
+          Copyright &copy; 2010-2014 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
         </footer>
       </main>
     </div>

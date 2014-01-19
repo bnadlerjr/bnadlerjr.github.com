@@ -76,6 +76,15 @@ main {
 footer {
     font-size: 0.7em;
     text-align: center;
+    ul {
+        list-style-type: none;
+        li {
+            display: inline;
+        }
+        li + li:before {
+            content: " | ";
+        }
+    }
 }
 
 .article-list {
