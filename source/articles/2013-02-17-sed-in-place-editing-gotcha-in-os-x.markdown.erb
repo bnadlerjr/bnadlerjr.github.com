@@ -2,10 +2,12 @@
 title: "sed in-place editing gotcha in OS X"
 date: 2013-02-17 16:06
 ---
-<%= article_image filename: "danger-carnivorous-pigeons.jpg",
-                  alt: "Danger: Carnivorous Pigeons",
-                  source: "Andrew Magill",
-                  url: "http://www.flickr.com/photos/amagill/106049506/" %>
+<%= partial "article_image", locals: {
+  filename: "danger-carnivorous-pigeons.jpg",
+  alt: "Danger: Carnivorous Pigeons",
+  source: "Andrew Magill",
+  url: "http://www.flickr.com/photos/amagill/106049506/"
+} %>
 
 I just started learning about [sed](http://en.wikipedia.org/wiki/Sed) and came
 across one "gotcha" when using the **-i** option in OS X. The **-i** option

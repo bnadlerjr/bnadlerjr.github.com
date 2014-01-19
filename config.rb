@@ -17,19 +17,6 @@ helpers do
   def icon(name, url)
     link_to("", url, class: "icon-#{name}")
   end
-
-  def article_image(options)
-    image = image_tag("articles/#{options[:filename]}", alt: options[:alt], width: "256")
-
-<<SNIPPET
-<figure class="article-image">
-    <a href="#{options[:url]}">
-        #{image}
-    </a>
-    <figcaption>Image by <span>#{options[:source]}</span></figcaption>
-</figure>
-SNIPPET
-  end
 end
 
 activate :blog do |blog|
