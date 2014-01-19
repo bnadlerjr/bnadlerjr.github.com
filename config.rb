@@ -18,16 +18,6 @@ helpers do
     link_to("", url, class: "icon-#{name}")
   end
 
-  def social_buttons
-<<-SNIPPET
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
-<div style="width: 117px; display: inline-block">
-<div class="g-plus" data-action="share" data-annotation="bubble"></div>
-</div>
-<script type="IN/Share" data-counter="right"></script>
-SNIPPET
-  end
-
   def article_image(options)
     image = image_tag("articles/#{options[:filename]}", alt: options[:alt], width: "256")
 

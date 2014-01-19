@@ -3,10 +3,10 @@
     <h1><%= current_article.title %></h1>
     <div class="article-header">
       <p class="article-date"><%= current_article.date.strftime("%B %e, %Y") %></p>
-      <%= social_buttons %>
+      <%= partial "social_buttons" %>
     </div>
     <%= yield %>
   </article>
   <hr />
-  <%= social_buttons %>
+  <%= partial "social_buttons" %>
 <% end %>
