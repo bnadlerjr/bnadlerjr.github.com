@@ -8,6 +8,16 @@ $header-width: $page-width - $main-width;
 $headline-fonts: 'Istok Web', sans-serif;
 $body-fonts: 'Lora', serif;
 
+@mixin image-credit {
+    font-size: 0.5em;
+    font-weight: lighter;
+    text-align: right;
+
+    span {
+        text-transform: uppercase;
+    }
+}
+
 a, a:link, a:visited, a:active {
     color: #000;
     font-weight: bold;
@@ -23,7 +33,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $headline-fonts;
-    line-height: 1.5em;
+    line-height: 1.2em;
 }
 
 pre.highlight {
@@ -71,7 +81,6 @@ main {
     color: rgb(60, 60, 60);
     line-height: 1.5em;
     margin-left: $header-width;
-    width: $main-width;
 }
 
 footer {
@@ -88,10 +97,15 @@ footer {
     }
 }
 
+article {
+    p:first-of-type {
+        margin-top: 0;
+    }
+}
+
 .article-list {
     list-style-type: none;
     padding: 0;
-    margin: 0;
 
     li {
         padding: .5em 0;
@@ -130,13 +144,7 @@ footer {
     }
 
     figcaption {
-        font-size: 0.5em;
-        font-weight: lighter;
-        text-align: right;
-
-        span {
-            text-transform: uppercase;
-        }
+        @include image-credit;
     }
 }
 
@@ -167,7 +175,5 @@ footer {
 }
 
 .image-credit {
-    font-size: 0.5em;
-    font-weight: lighter;
-    text-align: right;
+    @include image-credit;
 }
