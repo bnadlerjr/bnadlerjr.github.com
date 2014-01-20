@@ -141,14 +141,14 @@ footer {
 
 @each $item in rss, linkedin, twitter, github {
     .icon-#{$item} {
-        background: url("../images/#{$item}.png") center top no-repeat;
+        background: url("../images/#{$item}-black.png") center top no-repeat;
         width: 32px;
         height: 32px;
         display: block;
     }
 
     .icon-#{$item}:hover {
-        background: url("../images/#{$item}-hover.png") center top no-repeat;
+        background: url("../images/#{$item}-red.png") center top no-repeat;
     }
 }
 
