@@ -27,18 +27,18 @@
           <%= image_tag 'me.png', alt: 'Bob Nadler, Jr.' %>
           <%= image_tag 'logo.png', alt: 'Logo' %>
         <% end %>
-        <ul class="social">
-          <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
-          <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
-          <li><%= icon "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-          <li><%= icon "rss", "/feed.xml" %></li>
-        </ul>
         <nav>
           <ul>
             <li><%= link_to "about", "/about.html" %></li>
             <li><%= link_to "articles", "/index.html" %></li>
           </ul>
         </nav>
+        <ul class="social">
+          <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
+          <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
+          <li><%= icon "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+          <li><%= icon "rss", "/feed.xml" %></li>
+        </ul>
       </header>
       <main>
         <%= yield %>
@@ -46,10 +46,10 @@
           <ul>
             <li><%= link_to "about", "/about.html" %></li>
             <li><%= link_to "articles", "/index.html" %></li>
-            <li><%= link_to "rss", "/feed.xml" %></li>
             <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
             <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
             <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+            <li><%= link_to "rss", "/feed.xml" %></li>
           </ul>
           Copyright &copy; 2010-2014 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
         </footer>

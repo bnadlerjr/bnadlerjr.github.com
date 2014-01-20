@@ -19,7 +19,6 @@ a:hover {
 
 body {
     font-family: $body-fonts;
-    line-height: 1.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,7 +40,6 @@ pre.highlight {
 
 header {
     float: left;
-    width: $header-width;
     img {
         display: block;
         padding-bottom: 1em;
@@ -49,18 +47,20 @@ header {
 
     ul {
         list-style-type: none;
-        margin: 0;
+        margin-top: 0;
         padding: 0;
         &.social li {
             display: inline-block;
-            padding-right: 3px;
         }
     }
 
     nav ul {
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
         font-family: $headline-fonts;
+        font-size: 2em;
         list-style-type: none;
-        padding-top: 1em;
+        margin-bottom: 0.5em;
         li a {
             text-decoration: none;
         }
@@ -69,6 +69,7 @@ header {
 
 main {
     color: rgb(60, 60, 60);
+    line-height: 1.5em;
     margin-left: $header-width;
     width: $main-width;
 }
