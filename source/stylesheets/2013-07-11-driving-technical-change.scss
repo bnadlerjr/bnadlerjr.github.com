@@ -1,0 +1,32 @@
+table {
+    caption {
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+
+    thead {
+        th {
+            padding-top: 2.5em;
+            padding-bottom: 1em;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678,sizingMethod='auto expand')";
+            filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678,sizingMethod='auto expand');
+            -moz-transform:  matrix(0.70710678, -0.70710678, 0.70710678, 0.70710678, 0, 0);
+            -webkit-transform:  matrix(0.70710678, -0.70710678, 0.70710678, 0.70710678, 0, 0);
+            -o-transform:  matrix(0.70710678, -0.70710678, 0.70710678, 0.70710678, 0, 0);
+        }
+    }
+
+    tbody {
+        th {
+            padding-right: 1em;
+            text-align: right;
+        }
+    }
+
+    td {
+        border: 1px solid #000;
+        font-size: 3em;
+        padding: 0.5em 0;
+        text-align: center;
+    }
+}

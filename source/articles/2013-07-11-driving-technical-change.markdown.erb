@@ -5,6 +5,10 @@ published: false
 description: "Book review of Driving Technical Change from the Pragmatic Bookshelf."
 image: "driving-technical-change.jpg"
 ---
+<% content_for :article_styles do %>
+  <%= stylesheet_link_tag "2013-07-11-driving-technical-change" %>
+<% end %>
+
 <%= partial "article_image", locals: {
   filename: "driving-technical-change.jpg",
   alt: "Driving Technical Change",
