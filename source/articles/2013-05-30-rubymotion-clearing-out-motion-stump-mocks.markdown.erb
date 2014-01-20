@@ -1,6 +1,7 @@
 ---
 title: "RubyMotion: Clearing Out motion-stump Mocks"
-date: 2013-05-30 17:07
+date: 2013-05-30
+description: "motion-stump gem does not clear mocks properly"
 ---
 <%= partial "article_image", locals: {
 filename: "newly-cut.jpg",
@@ -9,9 +10,9 @@ filename: "newly-cut.jpg",
  source: "Kathleen Tyler Conklin"
 } %>
 
-This one had me "stumped" for awhile. When using
-[motion-stump](https://github.com/siuying/motion-stump) mocks, you need to clear
-them in an after block like this:
+*Update: The pull request mentioned below has been merged and <code>motion-stump</code> clears mocks automatically now, so this <code>after</code> block is no longer necessary.*
+
+This one had me "stumped" for awhile. When using [motion-stump](https://github.com/siuying/motion-stump) mocks, you need to clear them in an after block like this:
 
 ```ruby
 after do
@@ -19,6 +20,4 @@ after do
 end
 ```
 
-Someone has submitted a
-[pull request](https://github.com/siuying/motion-stump/pull/5) to motion-stump
-for this to happen automatically but it hasn't been merged yet.
+Someone has submitted a [pull request](https://github.com/siuying/motion-stump/pull/5) to motion-stump for this to happen automatically but it hasn't been merged yet.
