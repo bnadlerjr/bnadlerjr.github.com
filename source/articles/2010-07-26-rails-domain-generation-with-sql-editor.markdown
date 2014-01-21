@@ -1,9 +1,9 @@
 ---
 title: "Rails Domain Generation with SQL Editor"
-date: 2010-07-26 14:17
+date: 2010-07-26
+description: "Generating Rails models with SQL Editor"
 ---
-##Update
-I have a new Rails 3 compatible version called [model_maker](https://github.com/bnadlerjr/third_switch_generators) available on GitHub.
+*Update: I have a new Rails 3 compatible version called [model_maker](https://github.com/bnadlerjr/third_switch_generators) available on GitHub.*
 
 ##A Problem
 I'm a visual person by nature, so when I start a new project I like to spend some time drawing out screens and domain models. From these I then write features and scenarios. Today I want to talk specifically about domain models.
@@ -16,11 +16,11 @@ SQL Editor has an export function that will create a migration file for you, but
 Let's take a look at how this works.
 
 1. First, create your domain model in SQL Editor. Define relationships, default values, required fields, etc.
-2. Download the generator to a path where Rails can find it (e.g. <tt>lib/generators</tt>)
+2. Download the generator to a path where Rails can find it (e.g. <code>lib/generators</code>)
 3. Run the generator on the SQL Editor file in your Rails project directory.
 4. After the files are generated you can edit them as needed.
 
 ##Some Caveats
 As I mentioned earlier, I use this generator at the beginning of a project, to flesh out a basic domain quickly. Once this is done I then add to it and refactor it using BDD or TDD. I do not recommend trying to generate your entire model up front (unless it's a very small project).
 
-Also, the generator is very basic at this point and makes the assumption that you're using the [Shoulda framework](http://github.com/thoughtbot/shoulda) for testing. The generator will pick up <tt>has_many</tt> and <tt>belongs_to</tt> relationships, but as yet I have not added <tt>has_and_belongs_to_many</tt> or <tt>has_many_through</tt>. I do plan on adding this, however. I'd appreciate any feedback anyone might have, you can find the project on my [GitHub page](http://github.com/bnadlerjr/domain).
+Also, the generator is very basic at this point and makes the assumption that you're using the [Shoulda framework](http://github.com/thoughtbot/shoulda) for testing. The generator will pick up <code>has\_many</code> and <code>belongs\_to</code> relationships, but as yet I have not added <code>has\_and\_belongs\_to\_many</code> or <code>has\_many\_through</code>. I do plan on adding this, however. I'd appreciate any feedback anyone might have, you can find the project on my [GitHub page](http://github.com/bnadlerjr/domain).
