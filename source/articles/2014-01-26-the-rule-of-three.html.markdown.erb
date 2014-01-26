@@ -1,0 +1,158 @@
+---
+title: The Rule of Three
+date: 2014-01-26
+description: "A technique to help you follow the Rule of Three when refactoring code."
+---
+<%= partial "article_image", locals: {
+  filename: "three-wise-monkeys.jpg",
+  alt: "Three wise monkeys",
+  url: "http://www.flickr.com/photos/aigle_dore/5238575636/",
+  source: "Moyan Brenn"
+} %>
+If you're not familiar with it, the "Rule of Three" (aka "Three strikes and you refactor") is a guideline attributed to Don Roberts. I first ran across it a few years ago while reading Martin Fowler's [Refactoring](http://martinfowler.com/books/refactoring.html). Here's the full quote from the book:
+
+> Here's a guideline Don Roberts gave me: The first time you do something, you just do it. The second time you do something similar, you wince at the duplication, but you do the duplicate thing anyway. The third time you do something similar, you refactor.
+
+Why would you want to do this? Two reasons:
+
+1. In the book, Fowler suggests that it is best to refactor in small bursts instead of setting time aside to do a large refactoring (p.58).
+
+2. You probably don't know as much as you *think* you know about the problem you're trying to solve. Prematurely refactoring a piece of code when you don't fully understand the problem can cause a tremendous amount of re-work.
+
+A few weeks ago a colleague of mine and I had the following exchange on Twitter:
+
+<blockquote class="twitter-tweet" lang="en"><p>Nothing like good night sleep to remind you you&#39;re being an idiot making something &quot;re-usable&quot; when only 1 use so far <a href="https://twitter.com/search?q=%23dontknowenoughyet&amp;src=hash">#dontknowenoughyet</a></p>&mdash; Michael Denomy (@mdenomy) <a href="https://twitter.com/mdenomy/statuses/421269403892989952">January 9, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/mdenomy">@mdenomy</a> follow the Rule of 3!</p>&mdash; Bob Nadler Jr. (@bnadlerjr) <a href="https://twitter.com/bnadlerjr/statuses/421298708601651200">January 9, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/bnadlerjr">@bnadlerjr</a> Just had 2nd usage, but I am staying strong. How come it is so easy to see it when others do it, but I am blind to when I do it</p>&mdash; Michael Denomy (@mdenomy) <a href="https://twitter.com/mdenomy/statuses/421318981010866176">January 9, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Mike's reply to me on Twitter got me thinking about how I also struggle to resist the urge to eliminate duplication as soon as I see it, and like in his case, even before I "see" it in code. I thought I'd share a technique that I use to try to overcome this urge to refactor right away.
+
+In a word, it comes down to "practice". I practice leaving in small bits of duplication even in cases where I *know* how to trivially eliminate them. By doing this, I get used to the idea of having some duplication in my code so that I can "wince" at it when I introduce it, and then refactor it when I see it the third time.
+
+This is probably best illustrated using an example. Let's say we're TDD'ing a <code>ProductGateway</code> class. The job of this class is to handle creating, updating and finding products in a database. We're going to TDD the "create" part of this class. The first test we write is to ensure that a product is added to the database.
+
+```ruby
+require "test_helper"
+require "models/product"
+
+class ProductGatewayTest < Test::Database::TestCase
+  # Test::Database::TestCase is defined in the
+  # test_helper file and provides a method named
+  # #database that returns a Sequel::Database
+  
+  # This example uses the contest gem
+  test "add product" do
+    database.create_table! :products do
+      primary_key :id
+    end
+    
+    gateway = ProductGateway.new(database[:products])
+    product = Product.new
+    gateway.add(product)
+    assert_equal(1, database[:products].count)
+  end
+end
+```
+
+This test requires us to set up the database table and initialize a new <code>ProductGateway</code>. We then add the product and assert that it has been added to the database. Let's assume we implement the code to get this test to pass. I'm not going to show it here since it's not really part of the point that I'm trying to illustrate. The next test we'd like to write is to make sure that the product's name and price have been saved.
+
+```ruby
+require "test_helper"
+require "models/product"
+
+class ProductGatewayTest < Test::Database::TestCase
+
+  # ...
+
+  test "extracts product attributes" do
+    database.create_table! :products do
+      primary_key :id
+      String :name
+      Integer :price
+    end
+    
+    gateway = ProductGateway.new(database[:products])
+    product = Product.new(name: "Mr. Potato Head", price: 10)
+    gateway.add(product)
+    
+    assert_equal("Mr. Potato Head", database[:products].first[:name])
+    assert_equal(10, database[:products].first[:price])
+  end
+end
+```
+
+While writing this test we notice that the setup is very similar to the first test we wrote. In the past, I would not have even written the second test in this manner. I would have moved the table creation, gateway and product pieces into a setup method before I even wrote the second test. The duplication is plainly obvious. This is the hardest part, but if you can allow yourself to write this test, it will make other (and more important) decisions about when to refactor easier.
+
+After implementing the code to get this test to pass (not shown), we're ready to write the next test.
+
+```ruby
+require "test_helper"
+require "models/product"
+
+class ProductGatewayTest < Test::Database::TestCase
+
+  # ...
+
+  test "assigns a product SKU" do
+    database.create_table! :products do
+      primary_key :id
+      String :sku
+    end
+    
+    gateway = ProductGateway.new(database[:products])
+    product = Product.new
+    gateway.add(product)
+
+    # This is a bad assertion; if this were real code I would
+    # have created some type of test double that I could use to
+    # make an assertion that the correct SKU was generated.
+    assert_is_not_nil(database[:products].first[:sku])
+  end
+end
+```
+
+Writing this test introduces more duplication, but now this time we're able to refactor. I think that it is important though, again, to write this test (and get it to pass) *before* refactoring. At this point, if you're anything like me, this duplication is starting to make you twitch. Let's fix it.
+
+```ruby
+require "test_helper"
+require "models/product"
+
+class ProductGatewayTest < Test::Database::TestCase
+  let(:gateway) { ProductGateway.new(database[:products]) }
+  let(:product) { Product.new(name: "Mr. Potato Head", price: 10) }
+  
+  setup do
+    database.create_table! :products do
+      primary_key :id
+      String :name
+      Integer :price
+      String :sku
+    end
+    
+    gateway.add(product)
+    @db_product = database[:products].first
+  end
+  
+  test "adds product to database" do
+    assert_equal(1, database[:products].count)
+  end
+
+  test "extracts product attributes" do    
+    assert_equal("Mr. Potato Head", @db_product[:name])
+    assert_equal(10, @db_product[:price])
+  end
+
+  test "assigns a product SKU" do
+    assert_is_not_nil(@db_product[:sku])
+  end
+end
+```
+
+(Note: The code above uses a <code>let</code> helper method that is not part of standard <code>Test::Unit</code>. I wrote a [blog post](../../../2013/01/10/syntax-sugar-for-defining-test-helper-methods.html) about it awhile back.)
+
+So that's the "trick" I use to help me follow the "Rule of Three": try to follow it in small, obvious cases and it makes following it in larger, more important cases easier later on. Hopefully you'll find the technique helpful as well.
