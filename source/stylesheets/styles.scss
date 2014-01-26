@@ -3,8 +3,8 @@
 
 $padding: 16px;
 $page-width: 768px;
-$main-width: 560px;
-$header-width: $page-width - $main-width;
+$header-width: 150px;
+$main-width: $page-width - $header-width;
 $headline-fonts: 'Istok Web', sans-serif;
 $body-fonts: 'Lora', serif;
 
@@ -41,7 +41,16 @@ pre.highlight {
     background-color: #f8f8f8;
     border-top: 1px solid rgb(210, 210, 210);
     border-bottom: 1px solid rgb(210, 210, 210);
+    font-size: 0.8em;
+    line-height: 1.5em;
     padding: 1em;
+}
+
+blockquote {
+    p {
+        border-left: 5px solid #ccc;
+        padding-left: 1em;
+    }
 }
 
 #wrapper {
@@ -81,7 +90,7 @@ header {
 main {
     color: rgb(60, 60, 60);
     line-height: 1.5em;
-    margin-left: $header-width;
+    margin-left: $header-width + $padding;
 }
 
 footer {
