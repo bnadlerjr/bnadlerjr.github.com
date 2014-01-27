@@ -6,6 +6,14 @@ $content-width: 900px;
 $header-width: 150px;
 $main-width: 717px;
 
+$primary-color: #354b5e;
+$secondary-color: #475f77;
+$tertiary-color: #dcddd8;
+$accent-color: #d74b4b;
+
+$base-color: #475f77;
+$complimentary-color: #d74b4b;
+
 $headline-fonts: 'Istok Web', sans-serif;
 $body-fonts: 'Lora', serif;
 
@@ -20,15 +28,16 @@ $body-fonts: 'Lora', serif;
 }
 
 a, a:link, a:visited, a:active {
-    color: #000;
+    color: $secondary-color;
     font-weight: bold;
 }
 
 a:hover {
-    color: #cc0000;
+    color: $accent-color;
 }
 
 body {
+    color: $primary-color;
     font-family: $body-fonts;
 }
 
@@ -45,9 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 pre.highlight {
-    background-color: #f8f8f8;
-    border-top: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(210, 210, 210);
+    background-color: $tertiary-color;
+    border-top: 1px solid $secondary-color;
+    border-bottom: 1px solid $secondary-color;
     font-size: 0.9em;
     line-height: 1.5em;
     padding: 1em;
@@ -55,7 +64,7 @@ pre.highlight {
 
 blockquote {
     p {
-        border-left: 5px solid #ccc;
+        border-left: 5px solid $secondary-color;
         padding-left: 1em;
     }
 }
@@ -82,8 +91,8 @@ header {
     }
 
     nav ul {
-        border-top: 1px solid #000;
-        border-bottom: 1px solid #000;
+        border-top: 1px solid $primary-color;
+        border-bottom: 1px solid $primary-color;
         font-family: $headline-fonts;
         font-size: 2em;
         list-style-type: none;
@@ -95,7 +104,6 @@ header {
 }
 
 main {
-    color: rgb(60, 60, 60);
     line-height: 1.5em;
     width: percentage($main-width / $content-width);
     float: right;
@@ -127,7 +135,7 @@ article {
 
     li {
         padding: .5em 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid $tertiary-color;
     }
 
     a {
@@ -137,13 +145,13 @@ article {
 
     li span {
         float: right;
-        color: #666;
+        color: $tertiary-color;
         font-size: .8em;
     }
 }
 
 .article-date {
-    color: #666;
+    color: $tertiary-color;
     font-size: 0.8em;
 }
 
@@ -156,8 +164,8 @@ article {
     padding-left: 1em;
 
     img {
-        box-shadow: 1px 1px 8px #999;
-        border: 1px solid #ccc;
+        box-shadow: 1px 1px 8px $primary-color;
+        border: 1px solid $tertiary-color;
         padding: 8px;
     }
 
@@ -180,8 +188,8 @@ article {
 }
 
 .not-found {
-    box-shadow: 1px 1px 8px #999;
-    border: 1px solid #ccc;
+    box-shadow: 1px 1px 8px $primary-color;
+    border: 1px solid $tertiary-color;
     width: 560px;
     height: 372px;
     background-image: url("/images/storm-loss.jpg");
