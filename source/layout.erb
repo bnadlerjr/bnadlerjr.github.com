@@ -24,39 +24,41 @@
     <%= partial "google_analytics" %>
   </head>
   <body>
-    <div id="wrapper">
-      <header>
-        <% link_to "/index.html" do %>
-          <%= image_tag 'me.png', alt: 'Bob Nadler, Jr.' %>
-          <%= image_tag 'logo.png', alt: 'Logo' %>
-        <% end %>
-        <nav>
-          <ul>
-            <li><%= link_to "about", "/about.html" %></li>
-            <li><%= link_to "articles", "/index.html" %></li>
+    <div class="wrapper">
+      <div class="content">
+        <header>
+          <% link_to "/index.html" do %>
+            <%= image_tag 'me.png', alt: 'Bob Nadler, Jr.' %>
+            <%= image_tag 'logo.png', alt: 'Logo' %>
+          <% end %>
+          <nav>
+            <ul>
+              <li><%= link_to "about", "/about.html" %></li>
+              <li><%= link_to "articles", "/index.html" %></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
+            <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
+            <li><%= icon "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+            <li><%= icon "rss", "/feed.xml" %></li>
           </ul>
-        </nav>
-        <ul class="social">
-          <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
-          <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
-          <li><%= icon "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-          <li><%= icon "rss", "/feed.xml" %></li>
-        </ul>
-      </header>
-      <main>
-        <%= yield %>
-        <footer>
-          <ul>
-            <li><%= link_to "about", "/about.html" %></li>
-            <li><%= link_to "articles", "/index.html" %></li>
-            <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
-            <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
-            <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-            <li><%= link_to "rss", "/feed.xml" %></li>
-          </ul>
-          Copyright &copy; 2010-2014 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
-        </footer>
-      </main>
+        </header>
+        <main>
+          <%= yield %>
+          <footer>
+            <ul>
+              <li><%= link_to "about", "/about.html" %></li>
+              <li><%= link_to "articles", "/index.html" %></li>
+              <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
+              <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
+              <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+              <li><%= link_to "rss", "/feed.xml" %></li>
+            </ul>
+            Copyright &copy; 2010-2014 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
+          </footer>
+        </main>
+      </div>
     </div>
     <%= partial "social_setup" %>
   </body>

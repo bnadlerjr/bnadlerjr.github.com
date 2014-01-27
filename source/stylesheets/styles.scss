@@ -1,10 +1,11 @@
 @import "_normalize";
 @import "_github";
 
-$padding: 16px;
-$page-width: 768px;
+$wrapper-width: 960px;
+$content-width: 900px;
 $header-width: 150px;
-$main-width: $page-width - $header-width;
+$main-width: 717px;
+
 $headline-fonts: 'Istok Web', sans-serif;
 $body-fonts: 'Lora', serif;
 
@@ -31,6 +32,12 @@ body {
     font-family: $body-fonts;
 }
 
+.wrapper {
+    margin: 36px auto;
+    max-width: $wrapper-width;
+    width: 90%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $headline-fonts;
     line-height: 1.2em;
@@ -41,7 +48,7 @@ pre.highlight {
     background-color: #f8f8f8;
     border-top: 1px solid rgb(210, 210, 210);
     border-bottom: 1px solid rgb(210, 210, 210);
-    font-size: 0.8em;
+    font-size: 0.9em;
     line-height: 1.5em;
     padding: 1em;
 }
@@ -53,13 +60,13 @@ blockquote {
     }
 }
 
-#wrapper {
-    width: $page-width;
-    margin: 40px auto;
+.content {
+    width: percentage($content-width / $wrapper-width);
 }
 
 header {
     float: left;
+    width: percentage($header-width / $content-width);
     img {
         display: block;
         padding-bottom: 1em;
@@ -90,7 +97,8 @@ header {
 main {
     color: rgb(60, 60, 60);
     line-height: 1.5em;
-    margin-left: $header-width + $padding;
+    width: percentage($main-width / $content-width);
+    float: right;
 }
 
 footer {
@@ -145,7 +153,7 @@ article {
 
 .article-image {
     float: right;
-    padding-left: $padding;
+    padding-left: 1em;
 
     img {
         box-shadow: 1px 1px 8px #999;
