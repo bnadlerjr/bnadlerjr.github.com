@@ -27,6 +27,19 @@
   <body>
     <div class="wrapper">
       <div class="content">
+        <div class="mobile-header">
+            <% link_to "/index.html" do %>
+              <%= image_tag 'logo.png', alt: 'Logo' %>
+            <% end %>
+            <ul>
+              <li><%= link_to "about", "/about.html" %></li>
+              <li><%= link_to "articles", "/index.html" %></li>
+              <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
+              <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
+              <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
+              <li><%= link_to "rss", "/feed.xml" %></li>
+            </ul>
+        </div>
         <header>
           <% link_to "/index.html" do %>
             <%= image_tag 'me.png', alt: 'Bob Nadler, Jr.' %>

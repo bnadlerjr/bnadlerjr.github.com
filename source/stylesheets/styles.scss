@@ -22,6 +22,10 @@ $body-fonts: 'Lora', serif;
     }
 }
 
+img, embed, object, video {
+    max-width: 100%;
+}
+
 a, a:link, a:visited, a:active {
     color: $base-color;
     font-weight: bold;
@@ -54,6 +58,7 @@ pre.highlight {
     border-bottom: 1px solid $base-color;
     font-size: 0.9em;
     line-height: 1.5em;
+    overflow: scroll;
     padding: 1em;
 }
 
@@ -98,6 +103,21 @@ header {
     }
 }
 
+.mobile-header {
+    ul {
+        list-style-type: none;
+        li {
+            padding: 0.25em 0;
+            text-align: right;
+        }
+    }
+    display: none;
+    img {
+        float: left;
+        padding-right: 1em;
+    }
+}
+
 main {
     line-height: 1.5em;
     width: percentage($main-width / $content-width);
@@ -139,6 +159,7 @@ article {
     }
 
     li span {
+        display: inline;
         float: right;
         color: lighten($base-color, 20%);
         font-size: .8em;
@@ -160,7 +181,6 @@ article {
 
     img {
         box-shadow: 1px 1px 8px darken($base-color, 20%);
-        border: 1px solid lighten($base-color, 20%);
         padding: 8px;
     }
 
@@ -184,12 +204,12 @@ article {
 
 .not-found {
     box-shadow: 1px 1px 8px darken($base-color, 20%);
-    border: 1px solid lighten($base-color, 20%);
-    width: 560px;
-    height: 372px;
+    width: 700px;
+    height: 465px;
     background-image: url("/images/storm-loss.jpg");
 
     div {
+        padding-top: 1em;
         float: right;
         width: 320px;
     }
@@ -197,4 +217,32 @@ article {
 
 .image-credit {
     @include image-credit;
+    text-align: left;
+}
+
+@media screen and (max-width: $wrapper-width) {
+    header {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+        float: none;
+    }
+
+    pre {
+        word-wrap: normal;
+        white-space: pre;
+    }
+
+    .mobile-header {
+        display: block;
+    }
+
+    .article-list {
+        li span {
+            display: block;
+            float: none;
+        }
+    }
 }
