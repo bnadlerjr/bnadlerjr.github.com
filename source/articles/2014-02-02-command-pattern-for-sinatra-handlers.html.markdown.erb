@@ -1,0 +1,187 @@
+---
+title: Command Pattern for Sinatra Handlers
+date: 2014-02-02
+description: "How the Command Pattern can help DRY up Sinatra request handlers."
+---
+<%= partial "article_image", locals: {
+  filename: "sex-pistols-something-else.jpg",
+  alt: "sex pistols:something else",
+  url: "http://www.flickr.com/photos/visualpanic/2942689610/",
+  source: "Lali Masriera"
+} %>
+One useful pattern I've found when writing Sinatra applications is the command pattern. For those that are not familiar with it, here is a simple example to start with:
+
+```ruby
+class MyCommand
+  def initialize
+    # initialize some stuff
+  end
+
+  def call
+    # do some stuff
+  end
+end
+```
+
+The class is pretty straightforward, just an `#initialize` and a `#call` method, that's all you need. Now, why is this useful? Let's take a look at an example request handler in Sinatra for a photo uploading API:
+
+```ruby
+post "/photos" do
+  if params[:image] and param[:title]
+    # store the photo
+    uploader = CarrierWave::Uploader::Base.new
+    uploader.store!(params[:image])
+
+    # store photo metadata
+    DB[:photos].insert({
+      title: params[:title],
+      content_type: params[:image][:type],
+      file_size: File.size(params[:image][:tempfile]),
+      url: uploader.url
+    })
+
+    201
+  else
+    400, JSON.generate({
+      status: 401,
+      message: "Photos require a title and an image"
+    })
+  end
+end
+```
+
+While it's not too bad, there are a few code smells in this request handler. The most obvious smell is the comments. In order to upload a photo, our handler needs to do two things: send the photo somewhere (in this case an S3 bucket using the CarrierWave gem), and store some meta-data about the photo to our database. Another smell is the conditional that checks to make sure there is an image and a title sent with the request. One way we could clean that up is to use a guard clause that immediately halts the request like this:
+
+```ruby
+post "/photos" do
+  unless params[:image] and params[:title]
+    halt 400, JSON.generate({
+      status: 401,
+      message: "Photos require a title and an image"
+    })
+  end
+
+  # store the photo
+  # ...
+
+  # store photo metadata
+  # ...
+end
+```
+
+I think this makes things better, but we could do more. Imagine that we need to store more information about the photo, like longitude and latitude, or maybe the validation logic needs to handle more scenarios. Our request handler has the potential to get quite messy. Let's see how we can clean it up using the command pattern.
+
+```ruby
+class UploadPhoto
+  attr_reader :album, :title, :photo
+
+  def self.call(album, title, photo)
+    new(album, title, photo).call
+  end
+
+  def initialize(album, title, photo)
+    @album = album
+    @title = title
+    @photo = photo
+  end
+
+  def call
+    uploader.store!(params[:image])
+    album.insert({
+      title: title,
+      content_type: photo[:type],
+      file_size: File.size(photo[:tempfile]),
+      url: uploader.url
+    })
+  end
+
+  private
+
+  def uploader
+    @uploader ||= CarrierWave::Uploader::Base.new
+  end
+end
+
+
+post "/photos" do
+  unless params[:image] and params[:title]
+    halt 400, JSON.generate({
+      status: 401,
+      message: "Photos require a title and an image"
+    })
+  end
+
+  UploadPhoto.call(DB[:photos], params[:title], params[:photo])
+  201
+end
+```
+
+Creating the `UploadPhoto` command class buys us a few things. For one, it encapsulates our entire use case for uploading a photo. Our handler becomes very simple. It also allows us to create a private helper method. We could do this where our Sinatra handlers are located as well, but that would quickly get out of hand if each request handler defined several private methods. Finally, it also makes testing easier. We could easily create a fake `album` pass it in to this class. Notice that I created a convenience class method for `call` that I think makes the request handler code read a bit nicer.
+
+There's one more refactoring I'd like to mention. In this particular example, I'm on the fence as to whether what I'm about to show you makes sense. I think the idiom is helpful, however, so I'll show it to you and then write about my reservations below.
+
+```ruby
+class UploadPhoto
+  # ...
+
+  def call
+    unless params[:image] and params[:title]
+      # THIS IS A BAD IDEA!!!
+      halt 400, JSON.generate({
+        status: 401,
+        message: "Photos require a title and an image"
+      })
+    end
+
+    # upload photo and store meta-data...
+  end
+
+  # ...
+end
+
+
+post "/photos" do
+  UploadPhoto.call(DB[:photos], params[:title], params[:photo])
+  201
+end
+```
+
+What I've done here is to move the data validation into the command class. However, this poses a problem. the `halt` method is a part of Sinatra, our *web* library. `UploadPhoto` is a part of our *domain*. Mixing the two together is a bad idea. To solve this problem we can use a technique I first read about in Avdi Grimm's [Exceptional Ruby](http://exceptionalruby.com/) (he's also done a [Ruby Tapas](http://www.rubytapas.com/) episode on it). He refers to the technique as the "Caller-supplied fallback strategy". It uses the power of Ruby's blocks to allow us to keep the web specific call to `halt` in our web module, yet still allow us to perform the validation inside the command class. It looks like this:
+
+```ruby
+class UploadPhoto
+  attr_reader :album, :title, :photo, :error_block
+
+  def self.call(album, title, photo, &block)
+    new(album, title, photo, &block).call
+  end
+
+  def initialize(album, title, photo, &block)
+    # ...
+    @error_block = block
+  end
+
+  def call
+    error_block.call unless params[:image] and params[:title]
+
+    # upload photo and store meta-data...
+  end
+
+  # ...
+end
+
+
+post "/photos" do
+  UploadPhoto.call(DB[:photos], params[:title], params[:photo]) do
+    halt 400, JSON.generate({ status: 401, message: "Photos require a title and an image" })
+  end
+
+  201
+end
+```
+
+By passing a block to our command, we can have it handle the validation and then call the block if it fails. If for some reason we needed to have the request handler redirect instead of halt, for example, the `UploadPhoto` class doesn't care. We only need to make the change in our request handler.
+
+I mentioned earlier that I had reservations about using this technique in this specific example. I'm still mulling it over, but I've been doing some reading about various web architectures and design patterns recently. One of the concepts that has come up a few times is that validations should happen at the boundary of the system, *not* inside the domain. In other words, we should validate the photo image and title in the request handler *before* we hand it off to `UploadPhoto` for processing. I'll try to follow up with another post about this after I do some more research and experimenting.
+
+The last thing I'd like to mention is that there is nothing about using the command pattern that is specific to Sinatra handlers. I've used this same technique to clean up bloated Rails controllers.
