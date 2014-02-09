@@ -1,6 +1,6 @@
 ---
 title: "How to Conduct a Release Planning Meeting"
-date: 2013-04-08 16:17
+date: 2013-04-08
 published: false
 ---
 <%= partial "article_image", locals: {
@@ -10,21 +10,22 @@ published: false
   url: "http://www.flickr.com/photos/katielips/3628988825/"
 } %>
 
+The purpose of a [Release Planning meeting](http://www.extremeprogramming.org/rules/planninggame.html) is to have a team commit to a release goal in a set of iterations. The output of the meeting will be a tentative release date, a roadmap of time-boxed iterations with [User Stories](http://www.extremeprogramming.org/rules/userstories.html), and a rough estimate for each story. Participants include the customer, development team, testers, and any other key people that can provide information around how stories can be prioritized and estimated. Here is a sample agenda that I like to use for conducting one. It is based on the one found in the book [Collaboration Explained](http://www.amazon.com/Collaboration-Explained-Facilitation-Software-Project/dp/0321268776) by Jean Tabaka.
 <table>
     <caption>Release Planning Meeting Agenda</caption>
     <tbody>
         <tr>
             <th>Opening</th>
-            <td>TODO</td>
+            <td>Give the team a brief overview of the planned agenda and what to expect. Review the goals of the meeting.</td>
         </tr>
         <tr>
             <th>What is the theme for this Release?</th>
-            <td>TODO</td>
+            <td>Decide on an over-arching theme for the release. The theme acts as a guide around User Story discussion and is used to measure its success.</td>
         </tr>
         <tr>
             <th>What is the timebox for this Release?</th>
             <td>
-                <p>The Customer should present a view of the Release timebox based on the theme and any other driving factors. The customer and the team then determine the number and length of the iterations.</p>
+                <p>The Customer should present a view of the Release timebox based on the theme and any other driving factors (customer requests, trade shows, vacations, etc.). The customer and the team then determine the number and length of the iterations.</p>
                 <p>Using a calendar, post the table of dates on the wall.</p>
             </td>
         </tr>
@@ -37,7 +38,7 @@ published: false
         <tr>
             <th>What is the expected team velocity?</th>
             <td>
-                <p>For new teams, list estimated availability for each each team member in ideal days. Do not let the team go into detailed hours. Combine all inidividual estimates. This number defines the total velocity of the team.  Post it on the wall.</p>
+                <p>For new teams, list estimated availability for each each team member in points, ideal days, or ideal weeks. Do not let the team go into detailed hours. Combine all individual estimates. This number defines the total velocity of the team.  Post it on the wall.</p>
                 <p>For established teams calculate the average velocity for the team from the last Release.</p>
             </td>
         </tr>
@@ -58,6 +59,48 @@ published: false
             <td>
                 <p>Brainstorm and display concerns on the wall.</p>
             </td>
+        </tr>
+        <tr>
+          <th>What are the other concerns or risks associated with this Release?</th>
+          <td>
+            <p>Brainstorm and display concerns on the wall.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Given all of this information, what are the estimates for the stories?</th>
+          <td>
+            <p>Estimate stories using [Planning Poker](http://www.planningpoker.com/detail.html) or [some other method](http://www.mountaingoatsoftware.com/books/agile-estimating-and-planning). It may be useful to break up and have smaller groups estimate a subset of the stories. If you choose this method, have each group present their estimates to the entire group when done.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Given these estimates, does the prioritization of the stories change?</th>
+          <td>
+            <p>Give the Customer an opportunity to revise priorities based on the high-level estimates.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>What is the mapping of stories for each planned iteration?</th>
+          <td>
+          <p>Given the prioritized list of stories, their estimates, the estimated velocity of the team, and the number of planned iterations, assign stories to each of the iterations. The output of this exercise is the initial roadmap of the Release.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>What is the final set of stories for this Release?</th>
+          <td>
+            <p>Check for concensus of the Release roadmap. Revise it as necessary. The entire team should be onboard and commit to the stories for the Release.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Based on the Release commitment, what are the next actions?</th>
+          <td>
+            <p>Decide on the next steps needed to put the Release Plan into action.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Close the meeting.</th>
+          <td>
+            <p>Review the purpose of the meeting and ensure that the team agrees that it has been met. Discuss the meeting process (What did or did not go well? What would you change for the next meeting?).</p>
+          </td>
         </tr>
     </tbody>
 </table>
