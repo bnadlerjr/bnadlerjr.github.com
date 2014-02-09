@@ -144,6 +144,31 @@ article {
     }
 }
 
+table {
+    width: 100%;
+    caption {
+        font-size: 1.25em;
+        font-weight: bold;
+        padding-bottom: 1em;
+    }
+
+    tbody {
+        th {
+            font-weight: bold;
+            padding: 0.5em;
+            text-align: left;
+            vertical-align: top;
+            width: 30%;
+        }
+
+        td {
+            padding: 0.5em;
+            width: 70%;
+            vertical-align: top;
+        }
+    }
+}
+
 .article-list {
     list-style-type: none;
     padding: 0;
