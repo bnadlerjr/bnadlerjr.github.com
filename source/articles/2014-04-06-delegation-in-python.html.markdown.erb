@@ -1,0 +1,38 @@
+---
+title: Delegation in Python
+date: 2014-04-06
+description: "Simple delegation in Python."
+---
+<%= partial "article_image", locals: {
+  filename: "stormtrooper-stormshadow.jpg",
+  alt: "Shadow Stormtrooper vs. Storm Shadow",
+  source: "JD Hancock",
+  url: "https://www.flickr.com/photos/jdhancock/5310647747"
+} %>
+At my current client, we use Python. The other day I needed to wrap a class from the [requests library](http://docs.python-requests.org/en/latest/), specifically a [response](https://github.com/kennethreitz/requests/blob/master/requests/models.py#L501) object. I wanted to add a couple of custom methods to the class and have the other methods delegate to the original object in a clean way. Here's a simplified version of what I came up with:
+
+```
+class JSONResponse(object):
+    """Wraps a requests.models.Response."""
+    def __init__(self, response):
+        self._response = response
+
+    @property
+    def content(self):
+        """Assumes content is JSON and attempts to
+        parse it. Raises an exception if it
+        cannot be parsed.
+
+        """
+        # ... parse JSON in self._response.content
+
+    def __getattr__(self, name):
+        """Delegate any methods not defined in
+        JSONResponse to underlying
+        requests.models.Response.
+
+        """
+        return getattr(self._response, name)
+```
+
+The purpose of the wrapper class shown above is to cleanly handle HTTP responses that are encoded as JSON. The class defines a `content` property that attempts to parse the response content. Finally, the key to the pattern is the `__getattr__` method. Whenever a `JSONResponse` object is sent a message, it first checks to see if it can respond. In the case of the `content`, it will respond with the result of our custom property. If we send it any other message, it will attempt to send it to the wrapped response object. If the wrapped response cannot respond to the message, then it will fail as normal.
