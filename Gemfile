@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 gem "builder",          "~> 3.2.2"
-gem "middleman",        "~> 3.2.1"
-gem "middleman-blog",   "~> 3.3.0"
-gem "middleman-deploy", "~> 0.1.4"
+gem "middleman",        "~> 3.3.2"
+gem "middleman-blog",   "~> 3.5.2"
+gem "middleman-deploy", "~> 0.2.3"
 gem "middleman-syntax", "~> 2.0.0"
-gem "redcarpet",        "~> 3.0.0"
+gem "redcarpet",        "~> 3.1.2"
