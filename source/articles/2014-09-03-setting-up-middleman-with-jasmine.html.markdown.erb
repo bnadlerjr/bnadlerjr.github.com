@@ -1,0 +1,96 @@
+---
+title: Setting Up Middleman with Jasmine
+date: 2014-09-03
+description: "How to setup the Jasmine test framework in Middleman."
+---
+<%= partial "article_image", locals: {
+  filename: "spiderweb.jpg",
+  alt: "Setting up home",
+  source: "Joe",
+  url: "https://flic.kr/p/2p8hbg"
+} %>
+Currently, my favorite tool for generating static websites is [Middleman](http://middlemanapp.com/). I recently wrote [my version](https://github.com/bnadlerjr/todomvc) of the [TodoMVC](http://todomvc.com/) app using Middleman and [KnockoutJS](http://knockoutjs.com/). I wanted to use [Jasmine](http://jasmine.github.io/) for my unit tests and had a little trouble setting it up. Here are the steps I took to get it up and running.
+
+First, create a Middleman project:
+
+```
+middleman init example
+```
+
+Next, we need to add the Jasmine to the Gemfile, install it via bundler, then initialize it:
+
+```ruby
+# In your Gemfile add:
+gem "jasmine", "~> 2.0.2"
+```
+
+```
+bundle install && bundle exec jasmine init
+```
+
+Now we need to create a `spec/javascripts/spec.js` file. This file will need to require all of your individual spec files. The easiest way is to use the `require_tree` command:
+
+```javascript
+//= require_tree .
+```
+
+Next in `spec/javascripts/support/jasmine_helper.rb` we need to add Rack endpoints that Sprockets will use to serve our source and spec files:
+
+```ruby
+require "sprockets"
+
+Jasmine.configure do |config|
+  %w(source spec).each do |f|
+    config.add_rack_path("/#{f}/", lambda {
+      Sprockets::Environment.new do |env|
+        env.append_path("#{f}/javascripts")
+      end
+    })
+  end
+end
+```
+
+Finally, we need to tell Jasmine about the endpoints we created in `spec/support/jasmine.yml`:
+
+```yaml
+src_files:
+  - source/all.js
+
+spec_files:
+  - ../spec/spec.js
+```
+
+Now assuming we have a spec file in `spec/javascripts` that looks like this:
+
+```javascript
+describe("hello world", function() {
+    it("says hello with name", function() {
+        expect(Hello.say("Bob")).toEqual("Hello, Bob");
+    });
+});
+```
+
+... and we add the implementation to make that spec pass in `source/javascripts/all.js`:
+
+```javascript
+Hello = (function() {
+    return {
+        say: function(name) {
+            return "Hello, " + name;
+        }
+    }
+})();
+```
+
+... when we run the jasmine rake tasks we should see our passing spec.
+
+```
+# run the specs with output to the command line
+bundle exec rake jasmine:ci
+
+# or start a Jasmine server; navigate to the
+# indicated URL to see the results page
+bundle exec rake jasmine
+```
+
+Hopefully this will save someone else the headaches I had trying to set this up.
