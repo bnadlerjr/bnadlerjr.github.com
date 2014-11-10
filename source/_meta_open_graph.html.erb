@@ -1,0 +1,5 @@
+<meta property="og:title" content="<%= current_page.data.title %>" />
+<meta property="og:type" content="<%= current_page.data.type || 'article' %>" />
+<meta property="og:url" content="<%= full_url(current_page.destination_path) %>">
+<meta property="og:image" content="<%= full_url("images/articles/#{current_page.data.image}") %>" />
+<meta property="og:description" content="<%= current_page.data.description %>" />
