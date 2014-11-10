@@ -2,9 +2,10 @@
 title: GitScore Part 1
 date: 2014-04-01
 description: "Screencast showing an example workflow for creating a Sinatra web application."
+image: "scoreboard.jpg"
 ---
 <%= partial "article_image", locals: {
-  filename: "scoreboard.jpg",
+  filename: current_page.data.image,
   alt: "Scoreboard",
   source: "tyosshiman",
   url: "https://flic.kr/p/gphHjQ"

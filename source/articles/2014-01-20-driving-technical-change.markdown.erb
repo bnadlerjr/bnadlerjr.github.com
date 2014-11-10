@@ -3,13 +3,14 @@ title: "Driving Technical Change"
 date: 2014-01-20
 published: true
 description: "Book review of Driving Technical Change from the Pragmatic Bookshelf."
+image: "driving-technical-change.jpg"
 ---
 <% content_for :article_styles do %>
   <%= stylesheet_link_tag "2014-01-20-driving-technical-change" %>
 <% end %>
 
 <%= partial "article_image", locals: {
-  filename: "driving-technical-change.jpg",
+  filename: current_page.data.image,
   alt: "Driving Technical Change",
   url: "http://pragprog.com/book/trevan/driving-technical-change",
   source: "The Pragmatic Bookshelf"

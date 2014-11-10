@@ -2,9 +2,10 @@
 title: "Hoboken: A Sinatra Project Generator"
 date: 2014-09-09
 description: "Generating Sinatra projects using Hoboken."
+image: "hoboken.jpg"
 ---
 <%= partial "article_image", locals: {
-  filename: "hoboken.jpg",
+  filename: current_page.data.image,
   alt: "Welcome to Hoboken",
   source: "Wally Gobetz",
   url: "https://flic.kr/p/gekC8"

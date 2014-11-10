@@ -2,9 +2,10 @@
 title: "Heroku Slug Compiler Optimizations"
 date: 2013-06-02
 description: "Use a .slugignore file to minimize your Heroku slug size and increase performance."
+image: "night-train.jpg"
 ---
 <%= partial "article_image", locals: {
-  filename: "night-train.jpg",
+  filename: current_page.data.image,
   alt: "Night Train",
   source: "Kevin Dooley",
   url: "http://www.flickr.com/photos/pagedooley/2394279602/"

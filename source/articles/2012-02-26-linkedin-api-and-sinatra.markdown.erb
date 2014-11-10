@@ -2,9 +2,10 @@
 title: "LinkedIn API and Sinatra"
 date: 2012-02-26
 description: "Skillmatch, a Ruby Sinatra web app that allows you to search your connections for those that have a skill you specify."
+image: "linkedin-chocolates.jpg"
 ---
 <%= partial "article_image", locals: {
-  filename: "linkedin-chocolates.jpg",
+  filename: current_page.data.image,
   alt: "LinkedIn Chocolates",
   url: "http://www.flickr.com/photos/nanpalmero/4278432941/",
   source: "Nan Palmero"
