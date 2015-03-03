@@ -35,11 +35,13 @@ set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true
 
 page "/feed.xml", layout: false
-page "/sitemap.xml", layout: false
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
+
+set :url_root, "http://bobnadler.com"
+activate :search_engine_sitemap
 
 configure :build do
   activate :asset_hash, ignore: "favicon.png"
