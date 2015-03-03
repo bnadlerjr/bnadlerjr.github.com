@@ -35,6 +35,7 @@ set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true
 
 page "/feed.xml", layout: false
+page "/sitemap.xml", layout: false
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
