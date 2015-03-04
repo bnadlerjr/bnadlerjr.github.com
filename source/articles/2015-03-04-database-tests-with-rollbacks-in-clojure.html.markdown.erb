@@ -1,0 +1,58 @@
+---
+id: dc2939e0-deaa-46d6-ac23-c46e7da46334
+title: Database Tests with Rollbacks in Clojure
+date: 2015-03-04
+description: "How to rollback database changes in Clojure tests."
+image: "rollback.jpg"
+---
+<%= partial "article_image", locals: {
+  filename: current_page.data.image,
+  alt: "Rollback",
+  source: "vassl",
+  url: "https://flic.kr/p/L1bic"
+} %>
+I recently purchased a beta version of Eric Normand’s [Intro to clojure.test](http://www.lispcast.com/announcing-lispcast-intro-to-clojure-test) screencast. In it, he demonstrates how to use the [`use-fixtures`](https://clojuredocs.org/clojure.test/use-fixtures) function to set up and tear down state for tests. The function can be used for `:each` test run, or `:once`. For example:
+
+```clojure
+(ns myapp.db-test
+  (:require [clojure.test :refer :all]
+            [myapp.db :as db]
+            [myapp.migrations :as migrate))
+
+(def database-url "jdbc:postgresql://localhost/myapp_test")
+
+(use-fixtures
+  :once
+  (fn [f]
+    (migrate/-main database-url) (f)))
+```
+
+The above code sets up a fixture that will be run once for the namespace. In this case, it will run our database migrations.
+
+While working on a Clojure side project recently, I needed a way to reset a database to a known state after each test was run. Since I was using Clojure’s JDBC library, I knew that I could use transactions, and have each test roll back their changes. This is where `use-fixtures` and its `:each` option comes in handy.
+
+```clojure
+(ns myapp.db-test
+  (:require [clojure.test :refer :all]
+            [clojure.java.jdbc :as jdbc]
+            [myapp.db :as db]
+            [myapp.migrations :as migrate))
+
+(declare ^:dynamic *txn*)
+
+(def database-url "jdbc:postgresql://localhost/myapp_test")
+
+(use-fixtures
+  :once
+  ;; same as above)
+
+(use-fixtures
+  :each
+  (fn [f]
+    (jdbc/with-db-transaction
+      [transaction database-url]
+      (jdbc/db-set-rollback-only! transaction)
+      (binding [*txn* transaction] (f)))))
+```
+
+Using the above setup, any tests in the `myapp.db-test` namespace will be executed in the context of a transaction. Regardless of whether the test passes or fails, changes to the database will be rolled back. For a more complete example, [check out](https://github.com/bnadlerjr/lunchlotto/blob/master/test/lunchlotto/settings/models_test.clj) a web app I’ve been building to learn more about Clojure.
