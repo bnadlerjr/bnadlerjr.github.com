@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.1.6'
 
 gem "builder",                         "~> 3.2.2"
 gem "middleman",                       "~> 3.3.2"
