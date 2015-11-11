@@ -1,0 +1,47 @@
+---
+id: 8e2afc2a-30d2-4290-9678-431a34d5a604
+title: OS X pbcopy
+date: 2015-11-18
+description: "Tips for using the pbcopy command in OS X."
+image: "copy-paste.jpg"
+published: false
+---
+<%= partial "article_image", locals: {
+  filename: current_page.data.image,
+  alt: "Copy-Paste",
+  source: "Tim Bartel",
+  url: "https://flic.kr/p/9nX1ZD"
+} %>
+OS X has a nifty utility program named `pbcopy` that I just learned about which can be used to copy things to the system clipboard. 
+
+For example:
+`cat foo.txt | pbcopy` _or_ `pbcopy < foo.txt` will copy the contents of `foo.txt` onto the system clipboard.
+
+## Bonus Vim Tip #1
+This can be used in vim as well.
+
+For example, to copy the current buffer’s filename onto the system clipboard:
+
+```
+:Dispatch! echo -n “%” | pbcopy
+
+  ^             ^          ^
+  |             |          |— copy it to the clipboard
+  |             |
+  |             |— echo the current buffer’s filename
+  |
+  |— Run command in the background
+
+```
+
+## Bonus Vim Tip #2
+This _also_ works with ranges. Need to copy something from a vim buffer without those annoying line numbers or tmux dots? You can do something like this:
+
+```
+:9,24w !pbcopy
+
+  ^      ^
+  |      |— put them on the system clipboard
+  |
+  |— copy lines 9-24 of the current buffer
+```
