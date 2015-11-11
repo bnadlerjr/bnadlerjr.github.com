@@ -1,0 +1,14 @@
+---
+id: <%= SecureRandom.uuid %>
+title: <%= @title %>
+date: <%= @date %>
+description: "TODO: Write description."
+image: "TODO: Image filename"
+published: false
+---
+<%%= partial "article_image", locals: {
+  filename: current_page.data.image,
+  alt: "TODO: Image alt text",
+  source: "TODO: Image credit",
+  url: "TODO: Image credit URL"
+} %>

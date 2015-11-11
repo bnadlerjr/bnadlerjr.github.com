@@ -22,6 +22,7 @@ end
 activate :blog do |blog|
   blog.layout = "blog_layout"
   blog.prefix = "articles"
+  blog.new_article_template = "templates/new_article_template.markdown.erb"
 end
 
 activate :deploy do |deploy|
