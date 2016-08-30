@@ -1,0 +1,48 @@
+---
+id: 85f4321c-9388-413e-8121-6c5ed1e103c9
+title: Rails Data Migration Results
+date: 2016-08-30
+description: "Print Rails migration results in console."
+image: "crane-migration.jpg"
+published: true
+---
+<%= partial "article_image", locals: {
+  filename: current_page.data.image,
+  alt: "Whooping Crane migration",
+  source: "USFWS",
+  url: "https://flic.kr/p/bjUwGd"
+} %>
+When writing data migrations, it can be useful to know the number of records that were updated / created. If you run your migration in a Rails console, ActiveRecord will print out the database response object like this for PostgreSQL:
+
+```bash
+2.1.5 :008 > DataMigrations::SomeMigration.call
+
+=> #<PG::Result:0x0000000dc4edb8 @connection=#<PG::Connection:0x00000010e50348 @socket_io=nil, @notice_receiver=nil, @notice_processor=nil>>
+```
+
+You can get the number of rows affected by sending the `#cmd_tuples` message to the result object like this:
+
+```bash
+query = <<-SQL
+  UPDATE some_table
+  SET some_field = TRUE
+  WHERE some_other_field > 1;
+SQL
+
+::ActiveRecord::Base.connection.execute(query).tap do |result|
+  puts "No. of records updated: #{result.cmd_tuples}"
+  end
+```
+
+Now you will get output that looks something like this:
+
+```bash
+2.1.5 :008 > DataMigrations::SomeMigration.call
+
+No. of records updated: 3629
+=> #<PG::Result:0x0000000dc4edb8 @connection=#<PG::Connection:0x00000010e50348 @socket_io=nil, @notice_receiver=nil, @notice_processor=nil>>
+```
+
+Also, I’ve found it helpful to run the migration in a staging environment using the `Benchmark` module to get a feel for how long the migration will take in production like this:
+
+`Benchmark.realtime { DataMigrations::SomeMigration.call }`
