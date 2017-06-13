@@ -40,6 +40,8 @@ GEM
     i18n (0.6.11)
     json (1.8.1)
     kramdown (1.5.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (2.7.11)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -134,6 +136,7 @@ PLATFORMS
 
 DEPENDENCIES
   builder (~> 3.2.2)
+  launchy (~> 2.4.3)
   middleman (~> 3.3.2)
   middleman-blog (~> 3.5.2)
   middleman-deploy (~> 1.0.0)

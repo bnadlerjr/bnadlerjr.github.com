@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require "launchy"
+require "uri"
+
+BASE_URL = "https://www.flickr.com/search/?"
+params = {
+  license: "2,3,4,5,6,9",
+  sort: "interestingness-desc",
+  advanced: 1,
+  media: "photos",
+  dimension_search_mode: "min",
+  height: 1024,
+  width: 1024,
+  text: ARGV.join(" ")
+}
+
+Launchy.open(BASE_URL + URI.encode_www_form(params))

@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 ruby '2.1.6'
 
 gem "builder",                         "~> 3.2.2"
+gem "launchy",                         "~> 2.4.3"
 gem "middleman",                       "~> 3.3.2"
 gem "middleman-blog",                  "~> 3.5.2"
 gem "middleman-deploy",                "~> 1.0.0"
