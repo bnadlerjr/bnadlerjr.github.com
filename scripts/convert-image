@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+base, ext = ARGV[0].split(".")
+`convert #{ARGV[0]} -resize 256 ./source/images/articles/#{base}.jpg`
