@@ -1,0 +1,144 @@
+---
+id: a1f14c8b-6c71-432c-aa5b-e3e2784d6977
+title: boot-selmer
+date: 2017-07-12
+description: "Clojure boot task for compiling Selmer templates."
+image: "boots.jpg"
+published: false
+---
+<%= partial "article_image", locals: {
+  filename: current_page.data.image,
+  alt: "Pair of boots",
+  source: "Mark Bonica",
+  url: "https://flic.kr/p/q74dAB"
+} %>
+## Introduction
+I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used [Leiningen](https://leiningen.org/) for managing dependencies and build tasks. I recently decided to give [Boot](http://boot-clj.com/) a try. I needed to create a Boot task for compiling [Selmer](https://github.com/yogthos/Selmer) templates. This blog post will walk through the steps I took to setup the task and deploy it to Clojars to be used in other projects.
+
+## Why use Selmer w/ Boot on the client side?
+The main use case I have for using Selmer on the client side is for generating static web pages. Using Selmer, I can break up common content such as navigation, footers, etc. into separate files and include them as needed. I’ll be publishing a blog post or two in the future about this topic.
+
+## Project Layout
+The project layout is fairly straightforward.
+
+```
+├── README.md
+├── build.boot
+└── src
+    └── bnadlerjr
+        └── boot_selmer.clj
+```
+
+<dl>
+    <dt>README.md</dt>
+  <dd>Basic info about the project, how to use it, build it, etc.</dd>
+  <dt>build.boot</dt>
+  <dd>The project’s boot file.</dd>
+    <dt>src/bnadlerjr/boot_selmer.clj<dt>
+    <dd>The boot task itself.</dd>
+</dl>
+
+Let’s take a look at the build.boot in detail.
+
+```
+  1 (set-env!
+  2  :src-paths    #{“src”}
+  3  :dependencies ‘[[adzerk/bootlaces “0.1.11” :scope “test”]
+  4                  [selmer “1.10.7”]])
+  5
+  6 (require ‘[adzerk.bootlaces :refer :all])
+  7
+  8 (def +version+ “0.0.1-SNAPSHOT”)
+  9 (bootlaces! +version+)
+ 10
+ 11 (task-options!
+ 12  pom {:project     ‘bnadlerjr/boot-selmer
+ 13       :version     +version+
+ 14       :description “Selmer Boot task”
+ 15       :url         “https://github.com/bnadlerjr/boot-selmer”
+ 16       :scm         {:url “https://github.com/bnadlerjr/boot-selmer”}
+ 17       :license     {“Eclipse Public License”
+ 18                     “http://www.eclipse.org/legal/epl-v10.html”}})
+```
+
+We start off by telling boot where our source code is and specifying the project’s dependencies (lines 1-6). We’re using the [bootlaces](https://github.com/adzerk-oss/bootlaces) library to provide tasks for building a jar of our project and deploying it to Clojars. Notice that the bootlaces dependency is specified as `:scope “test”`. This tells boot to not include bootlaces as part of our JAR file since it is only used when developing our project.
+
+Next up is some configuration info for bootlaces (lines 8-9).
+
+Finally, we have our project information for Clojars (lines 11-18).
+
+## The Selmer Task
+The basic steps for our task are as follows:
+
+1. Find all the files that have a `.selmer` extension
+2. Load an [EDN](https://github.com/edn-format/edn) formatted context file
+3. Loop through all the `.selmer` files (skipping ones that begin with an underscore, see below) and render each one as an `.html` file with any data from the context information
+
+I’m not going to go into too much detail on how a task is structured since the [boot wiki](https://github.com/boot-clj/boot/wiki/Tasks#task-anatomy) already has a great explanation. Let’s take a look at our selmer task. The code below uses some utility functions that I’ll explain a little later.
+
+```
+1  (core/deftask selmer
+2    [_ config VAL str "Filename of .edn file that contains a context map that will be injected into templates"]
+3    (let [tmp (core/tmp-dir!)]
+4      (fn middleware [next-handler]
+5        (fn handler [fileset]
+6          (core/empty-dir! tmp)
+7          (let [in-files (core/input-files fileset)
+8                selmer-files (core/by-ext [".selmer"] in-files)
+9                context (load-context-file config)]
+10           (util/info "Compiling Selmer templates...\n")
+11           (doseq [in selmer-files]
+12             (let [in-file (core/tmp-file in)
+13                   out-file (io/file tmp (selmer->html (core/tmp-path in)))]
+14               (when (not (s/starts-with? (.getName in-file) "_"))
+15                 (compile-selmer! in-file out-file context)
+16                 (util/info "• %s\n" (.getName out-file))))))
+17           (-> fileset
+18               (core/add-resource tmp)
+19               core/commit!
+20               next-handler)))))
+```
+
+Looking at the core handler function, first, we grab a list of input files from the boot fileset and filter in all the files that end in `.selmer`. We also load a context file (lines 7-9).
+We begin looping through the `.selmer` files on line 11. Lines 12-13 determine the input and output paths for the file.
+
+Since Selmer supports [template inheritance](https://github.com/yogthos/Selmer#template-inheritance), we’re going to use the convention that any `.selmer` file that starts with an underscore is meant to be “included” or “extended”. Therefore, those files do not need to be parsed by Selmer directly, but are instead parsed by the files that include or extend them. The check for this is performed on line 14.
+
+Line 15 is the meat of the task, it calls a function (shown below) that will parse the file using Selmer and any context information that was given.
+
+Lines 17-20 commit the changes to the fileset and calls the next handler function.
+
+As I mentioned, the task uses a couple of utility functions. Let’s take a look at the `load-context-file` function.
+
+```
+(defn- load-context-file
+  [path]
+  (when (and path
+             (.exists (io/as-file path)))
+    (edn/read-string (slurp path))))
+```
+
+This is a fairly straightforward function that reads the file at the given path and parses it using EDN. The resulting map will be passed the the Selmer parser, which will replace any keys found in the template with the value given in the map.
+
+The `selmer->html` function is also simple. Its purpose is to change a Selmer file’s extension from `.selmer` to `.html`.
+
+```
+(defn- selmer->html
+  [path]
+  (.replaceAll path “\\.selmer$” “.html”))
+```
+
+Finally, we have the `compile-selmer!` function, which uses Selmer’s [`render-file`](https://github.com/yogthos/Selmer#templates) function to parse the given Selmer template and create the HTML file.
+
+```
+(defn- compile-selmer!
+  [in-file out-file context]
+  (doto out-file
+    io/make-parents
+    (spit (render-file (.getName in-file)
+                       context
+                       :custom-resource-path (.getParent in-file)))))
+```
+
+## Deploying to Clojars
+Assuming you have a Clojars account set up, publishing is as simple as `CLOJARS_USER=<your-username> CLOJARS_PASS=<your-password> boot build-jar push-release`. I’ve already [published](https://clojars.org/bnadlerjr/boot-selmer) my own version, which can be used by any project.
