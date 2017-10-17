@@ -40,28 +40,28 @@ The project layout is fairly straightforward.
 
 Let’s take a look at the build.boot in detail.
 
-```
+```clojure
   1 (set-env!
-  2  :src-paths    #{“src”}
-  3  :dependencies ‘[[adzerk/bootlaces “0.1.11” :scope “test”]
-  4                  [selmer “1.10.7”]])
+  2  :src-paths    #{"src"}
+  3  :dependencies '[[adzerk/bootlaces "0.1.11" :scope "test"]
+  4                  [selmer "1.10.7"]])
   5
-  6 (require ‘[adzerk.bootlaces :refer :all])
+  6 (require '[adzerk.bootlaces :refer :all])
   7
-  8 (def +version+ “0.0.1-SNAPSHOT”)
+  8 (def +version+ "0.0.1-SNAPSHOT")
   9 (bootlaces! +version+)
  10
  11 (task-options!
- 12  pom {:project     ‘bnadlerjr/boot-selmer
+ 12  pom {:project     'bnadlerjr/boot-selmer
  13       :version     +version+
- 14       :description “Selmer Boot task”
- 15       :url         “https://github.com/bnadlerjr/boot-selmer”
- 16       :scm         {:url “https://github.com/bnadlerjr/boot-selmer”}
- 17       :license     {“Eclipse Public License”
- 18                     “http://www.eclipse.org/legal/epl-v10.html”}})
+ 14       :description "Selmer Boot task"
+ 15       :url         "https://github.com/bnadlerjr/boot-selmer"
+ 16       :scm         {:url "https://github.com/bnadlerjr/boot-selmer"}
+ 17       :license     {"Eclipse Public License"
+ 18                     "http://www.eclipse.org/legal/epl-v10.html"}})
 ```
 
-We start off by telling boot where our source code is and specifying the project’s dependencies (lines 1-6). We’re using the [bootlaces](https://github.com/adzerk-oss/bootlaces) library to provide tasks for building a jar of our project and deploying it to Clojars. Notice that the bootlaces dependency is specified as `:scope “test”`. This tells boot to not include bootlaces as part of our JAR file since it is only used when developing our project.
+We start off by telling boot where our source code is and specifying the project’s dependencies (lines 1-6). We’re using the [bootlaces](https://github.com/adzerk-oss/bootlaces) library to provide tasks for building a jar of our project and deploying it to Clojars. Notice that the bootlaces dependency is specified as `:scope "test"`. This tells boot to not include bootlaces as part of our JAR file since it is only used when developing our project.
 
 Next up is some configuration info for bootlaces (lines 8-9).
 
@@ -76,7 +76,7 @@ The basic steps for our task are as follows:
 
 I’m not going to go into too much detail on how a task is structured since the [boot wiki](https://github.com/boot-clj/boot/wiki/Tasks#task-anatomy) already has a great explanation. Let’s take a look at our selmer task. The code below uses some utility functions that I’ll explain a little later.
 
-```
+```clojure
 1  (core/deftask selmer
 2    [_ config VAL str "Filename of .edn file that contains a context map that will be injected into templates"]
 3    (let [tmp (core/tmp-dir!)]
@@ -110,7 +110,7 @@ Lines 17-20 commit the changes to the fileset and calls the next handler functio
 
 As I mentioned, the task uses a couple of utility functions. Let’s take a look at the `load-context-file` function.
 
-```
+```clojure
 (defn- load-context-file
   [path]
   (when (and path
@@ -122,15 +122,15 @@ This is a fairly straightforward function that reads the file at the given path 
 
 The `selmer->html` function is also simple. Its purpose is to change a Selmer file’s extension from `.selmer` to `.html`.
 
-```
+```clojure
 (defn- selmer->html
   [path]
-  (.replaceAll path “\\.selmer$” “.html”))
+  (.replaceAll path "\\.selmer$" ".html"))
 ```
 
 Finally, we have the `compile-selmer!` function, which uses Selmer’s [`render-file`](https://github.com/yogthos/Selmer#templates) function to parse the given Selmer template and create the HTML file.
 
-```
+```clojure
 (defn- compile-selmer!
   [in-file out-file context]
   (doto out-file
