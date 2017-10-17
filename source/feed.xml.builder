@@ -1,8 +1,7 @@
 xml.instruct!
-xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom", "xmlns:media" => "http://search.yahoo.com/mrss/" do
   site_url = "http://bobnadler.com/"
   xml.title "Bob Nadler, Jr."
-  #xml.subtitle ""
   xml.id site_url
   xml.link "href" => site_url
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
@@ -19,7 +18,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
       xml.author { xml.name "Bob Nadler, Jr." }
       xml.description article.summary, "type" => "html"
       xml.content article.body, "type" => "html"
-      xml.media url: full_url("images/articles/#{article.data.image}"), "medium" => "image"
+      xml.media :content, :url => full_url("images/articles/#{article.data.image}"), "medium" => "image"
     end
   end
 end
