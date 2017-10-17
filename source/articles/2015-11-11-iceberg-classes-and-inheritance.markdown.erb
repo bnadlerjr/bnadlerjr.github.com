@@ -4,13 +4,10 @@ title: Iceberg Classes and Inheritance
 date: 2015-11-11
 description: "Are Iceberg classes that rely on inheritance a code smell?"
 image: "iceberg.jpg"
+alt: "Iceberg"
+source: "Drew Avery"
+url: "https://flic.kr/p/9dT8mB"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Iceberg",
-  source: "Drew Avery",
-  url: "https://flic.kr/p/9dT8mB"
-} %>
 [Better](http://www.artima.com/weblogs/viewpost.jsp?thread=125574) [developers](https://blog.pivotal.io/labs/labs/write-private-functions-not-private-methods) than I have written about iceberg classes and why they are a code smell. I’d like to talk about a specific kind of iceberg class I’ve recently come across. This type involves inheritance. Here’s an example of what I mean.
 
 ```ruby

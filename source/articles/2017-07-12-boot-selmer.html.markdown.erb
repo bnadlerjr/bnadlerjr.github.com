@@ -4,14 +4,11 @@ title: boot-selmer
 date: 2017-07-12
 description: "Clojure boot task for compiling Selmer templates."
 image: "boots.jpg"
+alt: "Pair of boots"
+source: "Mark Bonica"
+url: "https://flic.kr/p/q74dAB"
 published: false
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Pair of boots",
-  source: "Mark Bonica",
-  url: "https://flic.kr/p/q74dAB"
-} %>
 ## Introduction
 I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used [Leiningen](https://leiningen.org/) for managing dependencies and build tasks. I recently decided to give [Boot](http://boot-clj.com/) a try. I needed to create a Boot task for compiling [Selmer](https://github.com/yogthos/Selmer) templates. This blog post will walk through the steps I took to setup the task and deploy it to Clojars to be used in other projects.
 

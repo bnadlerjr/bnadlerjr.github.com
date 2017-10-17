@@ -4,13 +4,10 @@ title: Delegation in Python
 date: 2014-04-06
 description: "Simple delegation in Python."
 image: "stormtrooper-stormshadow.jpg"
+alt: "Shadow Stormtrooper vs. Storm Shadow"
+source: "JD Hancock"
+url: "https://www.flickr.com/photos/jdhancock/5310647747"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Shadow Stormtrooper vs. Storm Shadow",
-  source: "JD Hancock",
-  url: "https://www.flickr.com/photos/jdhancock/5310647747"
-} %>
 At my current client, we use Python. The other day I needed to wrap a class from the [requests library](http://docs.python-requests.org/en/latest/), specifically a [response](https://github.com/kennethreitz/requests/blob/master/requests/models.py#L501) object. I wanted to add a couple of custom methods to the class and have the other methods delegate to the original object in a clean way. Here's a simplified version of what I came up with:
 
 ```

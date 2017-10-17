@@ -4,14 +4,10 @@ title: "Syntax Sugar for Defining Test Helper Methods"
 date: 2013-01-10
 description: "How to define a Ruby Test::Unit helper method that acts similar to RSpec#let."
 image: "sugar-loops.jpg"
+alt: "Sugar Loops"
+source: "Vox Efx"
+url: "http://www.flickr.com/photos/vox_efx/2912195591/"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Sugar Loops",
-  source: "Vox Efx",
-  url: "http://www.flickr.com/photos/vox_efx/2912195591/"
-} %>
-
 I prefer Ruby's <code>Test::Unit</code> over RSpec, but one of the things I like about RSpec is the [let method](https://www.relishapp.com/rspec/rspec-core/v/2-6/docs/helper-methods/let-and-let).  It allows you to create memoized helper methods in your tests. When I use Test::Unit, I usually mimic this behavior using a private helper method. Today I decided to see if I could write my own <code>let</code> method that could be used with <code>Test::Unit</code>. 
 
 Here's what I came up with:

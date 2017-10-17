@@ -5,13 +5,10 @@ date: 2016-08-30
 description: "Print Rails migration results in console."
 image: "crane-migration.jpg"
 published: true
+alt: "Whooping Crane migration"
+source: "USFWS"
+url: "https://flic.kr/p/bjUwGd"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Whooping Crane migration",
-  source: "USFWS",
-  url: "https://flic.kr/p/bjUwGd"
-} %>
 When writing data migrations, it can be useful to know the number of records that were updated / created. If you run your migration in a Rails console, ActiveRecord will print out the database response object like this for PostgreSQL:
 
 ```bash

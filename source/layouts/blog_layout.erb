@@ -5,6 +5,12 @@
       <p class="article-date"><%= current_article.date.strftime("%B %e, %Y") %></p>
       <%= partial "social_buttons" %>
     </div>
+    <%= partial "article_image", locals: {
+      filename: current_article.data.image,
+      alt: current_article.data.alt,
+      source: current_article.data.source,
+      url: current_article.data.url
+    } %>
     <%= yield %>
   </article>
   <hr />

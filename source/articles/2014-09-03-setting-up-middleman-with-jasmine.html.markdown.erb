@@ -4,13 +4,10 @@ title: Setting Up Middleman with Jasmine
 date: 2014-09-03
 description: "How to setup the Jasmine test framework in Middleman."
 image: "spiderweb.jpg"
+alt: "Setting up home"
+source: "Joe"
+url: "https://flic.kr/p/2p8hbg"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Setting up home",
-  source: "Joe",
-  url: "https://flic.kr/p/2p8hbg"
-} %>
 Currently, my favorite tool for generating static websites is [Middleman](http://middlemanapp.com/). I recently wrote [my version](https://github.com/bnadlerjr/todomvc) of the [TodoMVC](http://todomvc.com/) app using Middleman and [KnockoutJS](http://knockoutjs.com/). I wanted to use [Jasmine](http://jasmine.github.io/) for my unit tests and had a little trouble setting it up. Here are the steps I took to get it up and running.
 
 First, create a Middleman project:

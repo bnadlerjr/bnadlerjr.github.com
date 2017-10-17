@@ -4,14 +4,10 @@ title: "RubyMotion: Clearing Out motion-stump Mocks"
 date: 2013-05-30
 description: "motion-stump gem does not clear mocks properly"
 image: "newly-cut.jpg"
+alt: "Newly cut"
+url: "http://www.flickr.com/photos/ktylerconk/2472669830/"
+source: "Kathleen Tyler Conklin"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Newly cut",
-  url: "http://www.flickr.com/photos/ktylerconk/2472669830/",
-  source: "Kathleen Tyler Conklin"
-} %>
-
 *Update: The pull request mentioned below has been merged and <code>motion-stump</code> clears mocks automatically now, so this <code>after</code> block is no longer necessary.*
 
 This one had me "stumped" for awhile. When using [motion-stump](https://github.com/siuying/motion-stump) mocks, you need to clear them in an after block like this:

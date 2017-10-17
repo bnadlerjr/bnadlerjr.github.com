@@ -4,13 +4,10 @@ title: Database Tests with Rollbacks in Clojure
 date: 2015-03-04
 description: "How to rollback database changes in Clojure tests."
 image: "rollback.jpg"
+alt: "Rollback"
+source: "vassl"
+url: "https://flic.kr/p/L1bic"
 ---
-<%= partial "article_image", locals: {
-  filename: current_page.data.image,
-  alt: "Rollback",
-  source: "vassl",
-  url: "https://flic.kr/p/L1bic"
-} %>
 I recently purchased a beta version of Eric Normand’s [Intro to clojure.test](http://www.lispcast.com/announcing-lispcast-intro-to-clojure-test) screencast. In it, he demonstrates how to use the [`use-fixtures`](https://clojuredocs.org/clojure.test/use-fixtures) function to set up and tear down state for tests. The function can be used for `:each` test run, or `:once`. For example:
 
 ```clojure
