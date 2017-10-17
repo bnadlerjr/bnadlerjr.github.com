@@ -15,7 +15,7 @@ xml.rss :version => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom", "xmlns
         xml.pubDate article.date.to_time.rfc822
         xml.author "bnadlerjr@gmail.com (Bob Nadler, Jr.)"
         xml.description article.summary
-        xml.media :content, :url => full_url("images/articles/#{article.data.image}"), "medium" => "image"
+        xml.media :content, :url => full_url("images/articles/#{article.data.image}"), "type" => "image/jpg", "width" => 256
       end
     end
   end
