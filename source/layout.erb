@@ -16,7 +16,9 @@
     <% if content_for?(:article_styles) %>
       <%= yield_content :article_styles %>
     <% end %>
+    <% if build? %>
     <%= partial "google_analytics" %>
+    <% end %>
   </head>
   <body>
     <div class="wrapper">
