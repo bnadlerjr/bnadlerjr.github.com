@@ -24,3 +24,5 @@ result = client.create_update(
 
 puts "\nSUCCESS: #{result[:success]}"
 puts "MESSAGE: #{result[:message]}"
+services = result.updates.map(&:profile_service)
+puts "Enqueued '#{result.updates.first[:text]}' for #{services.join(', ')}"
