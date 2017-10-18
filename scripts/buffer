@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "buffer"
+require "middleman-blog"
+
+LINKEDIN = "52e551e87010b8e0050000ea"
+TWITTER = "52e550d37010b8ea7000017f"
+TEXT_LIMIT = 140 - 25  # 140 char limit minus shortened link length
+
+app = ::Middleman::Application.server.inst
+article = app.blog.articles.find { |a| a.title == ARGV[0] }
+raise "Unable to find article: '#{ARGV[0]}'" unless article
+
+description = article.metadata[:page]["description"]
+message = description.length > TEXT_LIMIT ? article.title : description
+
+client = Buffer::Client.new(ENV["BUFFER_ACCESS_TOKEN"])
+result = client.create_update(
+  body: {
+    text: "#{message} #{URI.join("http://bobnadler.com/", article.url)}",
+    profile_ids: [LINKEDIN, TWITTER]
+  }
+)
+
+puts "\nSUCCESS: #{result[:success]}"
+puts "MESSAGE: #{result[:message]}"

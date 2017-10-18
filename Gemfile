@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.1.6'
 
+gem "buffer",                          "~> 0.1.2"
 gem "builder",                         "~> 3.2.2"
 gem "launchy",                         "~> 2.4.3"
 gem "middleman",                       "~> 3.3.2"
