@@ -14,6 +14,7 @@ raise "Unable to find article: '#{ARGV[0]}'" unless article
 description = article.metadata[:page]["description"]
 message = description.length > TEXT_LIMIT ? article.title : description
 
+raise "Missing BUFFER_ACCESS_TOKEN" unless ENV["BUFFER_ACCESS_TOKEN"]
 client = Buffer::Client.new(ENV["BUFFER_ACCESS_TOKEN"])
 result = client.create_update(
   body: {
