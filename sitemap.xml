@@ -180,4 +180,8 @@
     <loc>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</loc>
     <lastmod>2018-01-28</lastmod>
   </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</loc>
+    <lastmod>2018-02-03</lastmod>
+  </url>
 </urlset>

@@ -3,8 +3,17 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Sun, 28 Jan 2018 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 02 Feb 2018 00:00:00 -0500</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Formatting Currency in JavaScript</title>
+      <link>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</link>
+      <guid>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</guid>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 -0500</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;The other day I needed to format some currency values in JavaScript. I remembered coming across &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat"&gt;Intl.NumberFormat&lt;/a&gt; a long time ago on another project, but browser support was sketchy. I looked up the most recent info on &lt;a href="http://caniuse.com/#feat=internationalization"&gt;caniuse&lt;/a&gt; and thankfully almost...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/coins.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>ClojureScript with Middleman via Shadow-CLJS</title>
       <link>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</link>
@@ -57,16 +66,6 @@
 &lt;code&gt;cat foo.txt | pbcopy&lt;/code&gt; &lt;em&gt;or&lt;/em&gt; &lt;code&gt;pbcopy &amp;lt; foo.txt&lt;/code&gt; will copy the contents of &lt;code&gt;foo.txt&lt;/code&gt; onto the system clipboard.&lt;/p&gt;
 ...</description>
       <media:content url="http://bobnadler.com/images/articles/copy-paste.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Iceberg Classes and Inheritance</title>
-      <link>http://bobnadler.com/articles/2015/11/11/iceberg-classes-and-inheritance.html</link>
-      <guid>http://bobnadler.com/articles/2015/11/11/iceberg-classes-and-inheritance.html</guid>
-      <pubDate>Wed, 11 Nov 2015 00:00:00 -0500</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;&lt;a href="http://www.artima.com/weblogs/viewpost.jsp?thread=125574"&gt;Better&lt;/a&gt; &lt;a href="https://blog.pivotal.io/labs/labs/write-private-functions-not-private-methods"&gt;developers&lt;/a&gt; than I have written about iceberg classes and why they are a code smell. I’d like to talk about a specific kind of iceberg class I’ve recently come across. This type involves inheritance. Here’s an example of what I mean.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="highlight ruby"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Job&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/iceberg.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>
