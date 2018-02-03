@@ -5,7 +5,7 @@ require "middleman-blog"
 
 LINKEDIN = "52e551e87010b8e0050000ea"
 TWITTER = "52e550d37010b8ea7000017f"
-TEXT_LIMIT = 140 - 25  # 140 char limit minus shortened link length
+TEXT_LIMIT = 280 - 25  # Twitter char limit minus shortened link length
 
 app = ::Middleman::Application.server.inst
 article = app.blog.articles.find { |a| a.title == ARGV[0] }
