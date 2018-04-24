@@ -3,8 +3,19 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Fri, 02 Feb 2018 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 24 Apr 2018 00:00:00 -0400</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Write the Assertion First</title>
+      <link>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</link>
+      <guid>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</guid>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;When writing automated tests (whether in a TDD fashion or otherwise) I find it helpful to write the assertion first, before any setup code. There are two main reasons I think it is helpful.&lt;/p&gt;
+
+&lt;p&gt;One, I think it's useful to &lt;a href="https://www.stephencovey.com/7habits/7habits-habit2.php"&gt;begin with the end in mind&lt;/a&gt;. Writing...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/tests.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>Formatting Currency in JavaScript</title>
       <link>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</link>
@@ -53,19 +64,6 @@
       <description>&lt;p&gt;When writing data migrations, it can be useful to know the number of records that were updated / created. If you run your migration in a Rails console, ActiveRecord will print out the database response object like this for PostgreSQL:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="highlight shell"&gt;2.1.5 :008 &amp;gt;...&lt;/code&gt;&lt;/pre&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/crane-migration.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>OS X pbcopy</title>
-      <link>http://bobnadler.com/articles/2015/11/18/osx-pbcopy.html</link>
-      <guid>http://bobnadler.com/articles/2015/11/18/osx-pbcopy.html</guid>
-      <pubDate>Wed, 18 Nov 2015 00:00:00 -0500</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;OS X has a nifty utility program named &lt;code&gt;pbcopy&lt;/code&gt; that I just learned about which can be used to copy things to the system clipboard. &lt;/p&gt;
-
-&lt;p&gt;For example:
-&lt;code&gt;cat foo.txt | pbcopy&lt;/code&gt; &lt;em&gt;or&lt;/em&gt; &lt;code&gt;pbcopy &amp;lt; foo.txt&lt;/code&gt; will copy the contents of &lt;code&gt;foo.txt&lt;/code&gt; onto the system clipboard.&lt;/p&gt;
-...</description>
-      <media:content url="http://bobnadler.com/images/articles/copy-paste.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>
