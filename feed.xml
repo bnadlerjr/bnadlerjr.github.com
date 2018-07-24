@@ -3,8 +3,19 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Tue, 24 Apr 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 -0400</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Middleman Shadow-CLJS Project Template</title>
+      <link>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</link>
+      <guid>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</guid>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Awhile ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about how to set up Shadow-CLJS with Middleman. I finally got around to making a Middleman project template to ease the process of setting up Shadow-CLJS. The source is available on &lt;a href="https://github.com/bnadlerjr/middleman-shadow-cljs"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To use the template, you'll need to have...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/rear-booster.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>Write the Assertion First</title>
       <link>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</link>
@@ -54,16 +65,6 @@
       <description>&lt;p&gt;Awhile back I &lt;a href="http://bobnadler.com/articles/2015/11/18/osx-pbcopy.html"&gt;wrote&lt;/a&gt; about &lt;code&gt;pbcopy&lt;/code&gt; for OS X. These days I find myself using Ubuntu quite often and missed having &lt;code&gt;pbcopy&lt;/code&gt;. Turns out there is a package called &lt;a href="https://launchpad.net/xclip"&gt;xclip&lt;/a&gt; that does the same thing on Ubuntu! Give it a try!&lt;/p&gt;
 </description>
       <media:content url="http://bobnadler.com/images/articles/copy-paste.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Rails Data Migration Results</title>
-      <link>http://bobnadler.com/articles/2016/08/30/rails-data-migration-results.html</link>
-      <guid>http://bobnadler.com/articles/2016/08/30/rails-data-migration-results.html</guid>
-      <pubDate>Tue, 30 Aug 2016 00:00:00 -0400</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;When writing data migrations, it can be useful to know the number of records that were updated / created. If you run your migration in a Rails console, ActiveRecord will print out the database response object like this for PostgreSQL:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="highlight shell"&gt;2.1.5 :008 &amp;gt;...&lt;/code&gt;&lt;/pre&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/crane-migration.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>
