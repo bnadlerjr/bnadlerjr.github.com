@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# Enqueues a buffer message using an article's description.
+#
+# Example:
+#     BUFFER_ACCESS_TOKEN=xxx ./scripts/buffer "Article Title"
+#
+# BUFFER_ACCESS_TOKEN can be retrieved from https://buffer.com/developers/apps
+#
 require "buffer"
 require "middleman-blog"
 
