@@ -1,6 +1,8 @@
 # encoding: utf-8
 xml.instruct!
 
+# Taken from: https://gist.github.com/tommysundstrom/5756032
+#
 # Drop this file in your source directory
 #
 # Uses the builder gem.

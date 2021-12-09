@@ -1,6 +1,6 @@
 ---
 title: "Side Project: Car Fuel MPG Tracker Using Sinatra"
-date: 2011-03-28 15:25
+date: 2011-03-28
 ---
 *Update: Looks like ZeepMobile has shut down so the example app is no longer up. I've kept the [repository](https://github.com/bnadlerjr/fuelyo) though.*
 
