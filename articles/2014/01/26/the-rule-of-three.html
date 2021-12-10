@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | The Rule of Three</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="A technique to help you follow the Rule of Three when refactoring code." />
+    <meta property="og:title" content="The Rule of Three" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2014/01/26/the-rule-of-three.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/three-wise-monkeys.jpg" />
+<meta property="og:description" content="A technique to help you follow the Rule of Three when refactoring code." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2014/01/26/the-rule-of-three.html">
+<meta name="twitter:title" content="The Rule of Three">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/three-wise-monkeys.jpg">
+<meta name="twitter:description" content="A technique to help you follow the Rule of Three when refactoring code.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>The Rule of Three</h1>
+      <p class="article-date">January 26, 2014</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="The Rule of Three" data-url="http://bobnadler.com//articles/2014/01/26/the-rule-of-three.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="http://www.flickr.com/photos/aigle_dore/5238575636/">
+    <img src="/images/articles/three-wise-monkeys-29c9227d.jpg" alt="Three wise monkeys" width="256" />
+  </a>
+  <figcaption>Image by <span>Moyan Brenn</span></figcaption>
+</figure>
+
+    <p>If you&#39;re not familiar with it, the &quot;Rule of Three&quot; (aka &quot;Three strikes and you refactor&quot;) is a guideline attributed to Don Roberts. I first ran across it a few years ago while reading Martin Fowler&#39;s <a href="http://martinfowler.com/books/refactoring.html">Refactoring</a>. Here&#39;s the full quote from the book:</p>
+
+<blockquote>
+<p>Here&#39;s a guideline Don Roberts gave me: The first time you do something, you just do it. The second time you do something similar, you wince at the duplication, but you do the duplicate thing anyway. The third time you do something similar, you refactor.</p>
+</blockquote>
+
+<p>Why would you want to do this? Two reasons:</p>
+
+<ol>
+<li><p>In the book, Fowler suggests that it is best to refactor in small bursts instead of setting time aside to do a large refactoring (p.58).</p></li>
+<li><p>You probably don&#39;t know as much as you <em>think</em> you know about the problem you&#39;re trying to solve. Prematurely refactoring a piece of code when you don&#39;t fully understand the problem can cause a tremendous amount of re-work.</p></li>
+</ol>
+
+<p>A few weeks ago a colleague of mine and I had the following exchange on Twitter:</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>Nothing like good night sleep to remind you you&#39;re being an idiot making something &quot;re-usable&quot; when only 1 use so far <a href="https://twitter.com/search?q=%23dontknowenoughyet&amp;src=hash">#dontknowenoughyet</a></p>&mdash; Michael Denomy (@mdenomy) <a href="https://twitter.com/mdenomy/statuses/421269403892989952">January 9, 2014</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/mdenomy">@mdenomy</a> follow the Rule of 3!</p>&mdash; Bob Nadler Jr. (@bnadlerjr) <a href="https://twitter.com/bnadlerjr/statuses/421298708601651200">January 9, 2014</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/bnadlerjr">@bnadlerjr</a> Just had 2nd usage, but I am staying strong. How come it is so easy to see it when others do it, but I am blind to when I do it</p>&mdash; Michael Denomy (@mdenomy) <a href="https://twitter.com/mdenomy/statuses/421318981010866176">January 9, 2014</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Mike&#39;s reply to me on Twitter got me thinking about how I also struggle to resist the urge to eliminate duplication as soon as I see it, and like in his case, even before I &quot;see&quot; it in code. I thought I&#39;d share a technique that I use to try to overcome this urge to refactor right away.</p>
+
+<p>In a word, it comes down to &quot;practice&quot;. I practice leaving in small bits of duplication even in cases where I <em>know</em> how to trivially eliminate them. By doing this, I get used to the idea of having some duplication in my code so that I can &quot;wince&quot; at it when I introduce it, and then refactor it when I see it the third time.</p>
+
+<p>This is probably best illustrated using an example. Let&#39;s say we&#39;re TDD&#39;ing a <code>ProductGateway</code> class. The job of this class is to handle creating, updating and finding products in a database. We&#39;re going to TDD the &quot;create&quot; part of this class. The first test we write is to ensure that a product is added to the database.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"test_helper"</span>
+<span class="nb">require</span> <span class="s2">"models/product"</span>
+
+<span class="k">class</span> <span class="nc">ProductGatewayTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Database</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="c1"># Test::Database::TestCase is defined in the</span>
+  <span class="c1"># test_helper file and provides a method named</span>
+  <span class="c1"># #database that returns a Sequel::Database</span>
+
+  <span class="c1"># This example uses the contest gem</span>
+  <span class="nb">test</span> <span class="s2">"add product"</span> <span class="k">do</span>
+    <span class="n">database</span><span class="p">.</span><span class="nf">create_table!</span> <span class="ss">:products</span> <span class="k">do</span>
+      <span class="n">primary_key</span> <span class="ss">:id</span>
+    <span class="k">end</span>
+
+    <span class="n">gateway</span> <span class="o">=</span> <span class="no">ProductGateway</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">])</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">gateway</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">count</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>This test requires us to set up the database table and initialize a new <code>ProductGateway</code>. We then add the product and assert that it has been added to the database. Let&#39;s assume we implement the code to get this test to pass. I&#39;m not going to show it here since it&#39;s not really part of the point that I&#39;m trying to illustrate. The next test we&#39;d like to write is to make sure that the product&#39;s name and price have been saved.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"test_helper"</span>
+<span class="nb">require</span> <span class="s2">"models/product"</span>
+
+<span class="k">class</span> <span class="nc">ProductGatewayTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Database</span><span class="o">::</span><span class="no">TestCase</span>
+
+  <span class="c1"># ...</span>
+
+  <span class="nb">test</span> <span class="s2">"extracts product attributes"</span> <span class="k">do</span>
+    <span class="n">database</span><span class="p">.</span><span class="nf">create_table!</span> <span class="ss">:products</span> <span class="k">do</span>
+      <span class="n">primary_key</span> <span class="ss">:id</span>
+      <span class="no">String</span> <span class="ss">:name</span>
+      <span class="no">Integer</span> <span class="ss">:price</span>
+    <span class="k">end</span>
+
+    <span class="n">gateway</span> <span class="o">=</span> <span class="no">ProductGateway</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">])</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Mr. Potato Head"</span><span class="p">,</span> <span class="ss">price: </span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">gateway</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"Mr. Potato Head"</span><span class="p">,</span> <span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">first</span><span class="p">[</span><span class="ss">:name</span><span class="p">])</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">first</span><span class="p">[</span><span class="ss">:price</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>While writing this test we notice that the setup is very similar to the first test we wrote. In the past, I would not have even written the second test in this manner. I would have moved the table creation, gateway and product pieces into a setup method before I even wrote the second test. The duplication is plainly obvious. This is the hardest part, but if you can allow yourself to write this test, it will make other (and more important) decisions about when to refactor easier.</p>
+
+<p>After implementing the code to get this test to pass (not shown), we&#39;re ready to write the next test.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"test_helper"</span>
+<span class="nb">require</span> <span class="s2">"models/product"</span>
+
+<span class="k">class</span> <span class="nc">ProductGatewayTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Database</span><span class="o">::</span><span class="no">TestCase</span>
+
+  <span class="c1"># ...</span>
+
+  <span class="nb">test</span> <span class="s2">"assigns a product SKU"</span> <span class="k">do</span>
+    <span class="n">database</span><span class="p">.</span><span class="nf">create_table!</span> <span class="ss">:products</span> <span class="k">do</span>
+      <span class="n">primary_key</span> <span class="ss">:id</span>
+      <span class="no">String</span> <span class="ss">:sku</span>
+    <span class="k">end</span>
+
+    <span class="n">gateway</span> <span class="o">=</span> <span class="no">ProductGateway</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">])</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">gateway</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+
+    <span class="c1"># This is a bad assertion; if this were real code I would</span>
+    <span class="c1"># have created some type of test double that I could use to</span>
+    <span class="c1"># make an assertion that the correct SKU was generated.</span>
+    <span class="n">assert_is_not_nil</span><span class="p">(</span><span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">first</span><span class="p">[</span><span class="ss">:sku</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Writing this test introduces more duplication, but now this time we&#39;re able to refactor. I think that it is important though, again, to write this test (and get it to pass) <em>before</em> refactoring. At this point, if you&#39;re anything like me, this duplication is starting to make you twitch. Let&#39;s fix it.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s2">"test_helper"</span>
+<span class="nb">require</span> <span class="s2">"models/product"</span>
+
+<span class="k">class</span> <span class="nc">ProductGatewayTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Database</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:gateway</span><span class="p">)</span> <span class="p">{</span> <span class="no">ProductGateway</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">])</span> <span class="p">}</span>
+  <span class="n">let</span><span class="p">(</span><span class="ss">:product</span><span class="p">)</span> <span class="p">{</span> <span class="no">Product</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Mr. Potato Head"</span><span class="p">,</span> <span class="ss">price: </span><span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="n">setup</span> <span class="k">do</span>
+    <span class="n">database</span><span class="p">.</span><span class="nf">create_table!</span> <span class="ss">:products</span> <span class="k">do</span>
+      <span class="n">primary_key</span> <span class="ss">:id</span>
+      <span class="no">String</span> <span class="ss">:name</span>
+      <span class="no">Integer</span> <span class="ss">:price</span>
+      <span class="no">String</span> <span class="ss">:sku</span>
+    <span class="k">end</span>
+
+    <span class="n">gateway</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+    <span class="vi">@db_product</span> <span class="o">=</span> <span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">first</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"adds product to database"</span> <span class="k">do</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">database</span><span class="p">[</span><span class="ss">:products</span><span class="p">].</span><span class="nf">count</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"extracts product attributes"</span> <span class="k">do</span>    
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"Mr. Potato Head"</span><span class="p">,</span> <span class="vi">@db_product</span><span class="p">[</span><span class="ss">:name</span><span class="p">])</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="vi">@db_product</span><span class="p">[</span><span class="ss">:price</span><span class="p">])</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"assigns a product SKU"</span> <span class="k">do</span>
+    <span class="n">assert_is_not_nil</span><span class="p">(</span><span class="vi">@db_product</span><span class="p">[</span><span class="ss">:sku</span><span class="p">])</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>(Note: The code above uses a <code>let</code> helper method that is not part of standard <code>Test::Unit</code>. I wrote a <a href="/articles/2013/01/10/syntax-sugar-for-defining-test-helper-methods.html">blog post</a> about it awhile back.)</p>
+
+<p>So that&#39;s the &quot;trick&quot; I use to help me follow the &quot;Rule of Three&quot;: try to follow it in small, obvious cases and it makes following it in larger, more important cases easier later on. Hopefully you&#39;ll find the technique helpful as well.</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="The Rule of Three" data-url="http://bobnadler.com//articles/2014/01/26/the-rule-of-three.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '9f451885-7b7b-4a1d-98ca-2f12f6957384';
+    var disqus_title = 'The Rule of Three';
+    var disqus_url = 'http://bobnadler.com//articles/2014/01/26/the-rule-of-three.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

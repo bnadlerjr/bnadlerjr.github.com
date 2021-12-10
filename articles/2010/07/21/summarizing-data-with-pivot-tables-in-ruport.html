@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Summarizing Data with Pivot Tables in Ruport</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Using Pivot Tables in the Ruby Ruport gem" />
+    <meta property="og:title" content="Summarizing Data with Pivot Tables in Ruport" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2010/07/21/summarizing-data-with-pivot-tables-in-ruport.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/" />
+<meta property="og:description" content="Using Pivot Tables in the Ruby Ruport gem" />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2010/07/21/summarizing-data-with-pivot-tables-in-ruport.html">
+<meta name="twitter:title" content="Summarizing Data with Pivot Tables in Ruport">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/">
+<meta name="twitter:description" content="Using Pivot Tables in the Ruby Ruport gem">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>Summarizing Data with Pivot Tables in Ruport</h1>
+      <p class="article-date">July 21, 2010</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Summarizing Data with Pivot Tables in Ruport" data-url="http://bobnadler.com//articles/2010/07/21/summarizing-data-with-pivot-tables-in-ruport.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="">
+    <img src="/images/articles/" alt="" width="256" />
+  </a>
+  <figcaption>Image by <span></span></figcaption>
+</figure>
+
+    <p><em>Update: The Ruport patch I mention below has been accepted into Ruport core. The patch also includes support for other operations. See <a href="http://github.com/ruport/ruport/commit/333a43e3f8ab1e10c36edbb8ea540fb65bacad5b">my commit</a> for details.</em></p>
+
+<p>Pivot tables are a useful data tool. They allow you to transform large amounts of tabular data into an easier to read format. They can be difficult to create, however, and some people have a hard time understanding how to create them. It took me awhile to fully grasp how they worked.</p>
+
+<p>Pivot tables are mostly found in spreadsheet software, but there are other tools, too. One such tool is Ruport, a Ruby based reporting tool.</p>
+
+<h2>What is a Pivot Table</h2>
+
+<p>A pivot table is</p>
+
+<blockquote>
+<p>a data summarization tool found in data visualization programs such as spreadsheets... pivot-table tools can automatically sort, count, and total the data stored in one table or spreadsheet and create a second table displaying the summarized data.<cite><a href="http://en.wikipedia.org/wiki/Pivot_table">Wikipedia</a></cite></p>
+</blockquote>
+
+<p>Let&#39;s say you have a table of sales data like the one below. The first column shows the regions in which sales occurred. The second shows the date of the sale. Finally, the third shows how many units were sold.</p>
+
+<p>Now imagine that there were over 1000 lines of data like this, but only occurring in four regions and over the time span of one month. Not only would it be difficult to read, but we cannot tell how many units were sold in a certain region on a certain day without re-sorting and filtering the data... unless we use a pivot table.</p>
+
+<p>A pivot table has three main parts: a column to group by, a column to &quot;pivot&quot; and a column to summarize.</p>
+
+<ol>
+<li>The group column usually consists of repeated data values that you want to, well, <em>group</em>. These values will become the row headings on the <em>left-hand side</em> of the new table.</li>
+<li>The pivot column values become the row headings at the <em>top</em> of the new table, these values are also grouped (this is the part that sometimes confuses people).</li>
+<li>Finally the summary column is aggregated by summing, counting, averaging, etc. The aggregations supported vary by software vendor, but all include the ones I just mentioned.</li>
+</ol>
+
+<p><img src="/images/articles/example-pivot-table-373d7ee3.png" alt="Example Pivot Table" /></p>
+
+<h2>Ruport#pivot</h2>
+
+<h3>Creating the Table</h3>
+
+<p><a href="https://github.com/ruport/ruport">Ruport</a> is an awesome Ruby library for generating reports using table based data. It also has some basic pivot table support.</p>
+
+<p>Take a look at the irb session below. It uses the same example as above to create a Ruport::Data::Table.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>&gt;&gt; require 'ruport'
+&gt;&gt; t = Ruport::Data::Table.new :data =&gt; [
+?&gt; ['North', '1/1/2010', 5],
+?&gt; ['South', '1/1/2010', 2],
+?&gt; ['East', '1/1/2010', 4],
+?&gt; ['West', '1/1/2010', 1],
+?&gt; ['North', '1/15/2010', 10],
+?&gt; ['West', '1/15/2010', 9]],
+?&gt; :column_names =&gt; %w[Region Date Quantity]
+&gt;&gt;
+&gt;&gt; puts t
++-------------------------------+
+| Region |   Date    | Quantity |
++-------------------------------+
+| North  | 1/1/2010  |        5 |
+| South  | 1/1/2010  |        2 |
+| East   | 1/1/2010  |        4 |
+| West   | 1/1/2010  |        1 |
+| North  | 1/15/2010 |       10 |
+| West   | 1/15/2010 |        9 |
++-------------------------------+
+</code></pre></div>
+<h3>Performing the Pivot</h3>
+
+<p>Now, we want to pivot the table on the &quot;Date&quot; column, group by the &quot;Region&quot; column and summarize the values in the &quot;Quantity&quot; column. We do this using the pivot instance method on the Table object.
+Now our data is easier to read and is ready to be rendered using any Ruport formatter you&#39;d like.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>&gt;&gt; puts t.pivot 'Date', :group_by =&gt; 'Region',
+?&gt; :values =&gt; 'Quantity'
++-------------------------------+
+| Region | 1/15/2010 | 1/1/2010 |
++-------------------------------+
+| North  |        10 |        5 |
+| South  |           |        2 |
+| East   |           |        4 |
+| West   |         9 |        1 |
++-------------------------------+
+</code></pre></div>
+<h3>One Caveat</h3>
+
+<p>Right now, the Ruport pivot method does not work <em>exactly</em> like this. Instead of summing the value column it only takes the first value encountered. It doesn&#39;t apply in this example since there is only one data point for each &quot;pivot&quot;, but it will be a problem with larger datasets. I&#39;ve written a <a href="http://github.com/bnadlerjr/ruport/commit/9fd92cd785e95bb8f04d182a34840467dd7aea96">patch</a> that corrects this, but it hasn&#39;t been applied to the official repo. So for now, you can get the patch from <a href="http://github.com/bnadlerjr/ruport">my fork</a>. I&#39;ll update this post once the patch has been accepted.</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Summarizing Data with Pivot Tables in Ruport" data-url="http://bobnadler.com//articles/2010/07/21/summarizing-data-with-pivot-tables-in-ruport.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = 'd1a55834-73bf-42d5-be39-9e18cd2ba0b9';
+    var disqus_title = 'Summarizing Data with Pivot Tables in Ruport';
+    var disqus_url = 'http://bobnadler.com//articles/2010/07/21/summarizing-data-with-pivot-tables-in-ruport.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

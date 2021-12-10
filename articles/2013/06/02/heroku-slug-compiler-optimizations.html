@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Heroku Slug Compiler Optimizations</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Use a .slugignore file to minimize your Heroku slug size and increase performance." />
+    <meta property="og:title" content="Heroku Slug Compiler Optimizations" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2013/06/02/heroku-slug-compiler-optimizations.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/night-train.jpg" />
+<meta property="og:description" content="Use a .slugignore file to minimize your Heroku slug size and increase performance." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2013/06/02/heroku-slug-compiler-optimizations.html">
+<meta name="twitter:title" content="Heroku Slug Compiler Optimizations">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/night-train.jpg">
+<meta name="twitter:description" content="Use a .slugignore file to minimize your Heroku slug size and increase performance.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>Heroku Slug Compiler Optimizations</h1>
+      <p class="article-date">June  2, 2013</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Heroku Slug Compiler Optimizations" data-url="http://bobnadler.com//articles/2013/06/02/heroku-slug-compiler-optimizations.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="http://www.flickr.com/photos/pagedooley/2394279602/">
+    <img src="/images/articles/night-train-26fe64c7.jpg" alt="Night Train" width="256" />
+  </a>
+  <figcaption>Image by <span>Kevin Dooley</span></figcaption>
+</figure>
+
+    <h2>Using <code>.slugignore</code> to reduce your slug size</h2>
+
+<p>This may be old news to some, but I recently learned about a cool Heroku feature: the <code>.slugignore</code> file.</p>
+
+<h3>What is it?</h3>
+
+<p>A <code>.slugignore</code> is like a <code>.gitignore</code> file for your app. It is used to reduce the size of your slug file on Heroku by ignoring files that are not essential for your app to operate.</p>
+
+<h3>Why is it cool?</h3>
+
+<p>The smaller the slug file for your app, the faster Heroku can transfer it across dynos, making scaling much easier. Heroku suggests keeping your slug file size under 50MB, files smaller than 15MB are preferred.</p>
+
+<h3>How do I use it?</h3>
+
+<p>Place it in your project&#39;s root folder. It works the same way as a <code>.gitignore</code> file does. The only difference is that it doesn&#39;t support the negation operator (!). See Heroku&#39;s documentation on its <a href="https://devcenter.heroku.com/articles/slug-compiler">slug compiler</a> for more information. Here are some suggestions of things that you may want to put in your <code>.slugignore</code> file:</p>
+
+<ul>
+<li>Mockups and old versions of image assets</li>
+<li>Any project documents, PDF&#39;s, etc.</li>
+<li>Test files</li>
+</ul>
+
+<h3>Example <code>.slugignore</code></h3>
+<div class="highlight"><pre class="highlight plaintext"><code>test
+docs
+*.pdf
+</code></pre></div>
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Heroku Slug Compiler Optimizations" data-url="http://bobnadler.com//articles/2013/06/02/heroku-slug-compiler-optimizations.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '3b5a3b3a-9c0d-418a-b710-1554011dc5cb';
+    var disqus_title = 'Heroku Slug Compiler Optimizations';
+    var disqus_url = 'http://bobnadler.com//articles/2013/06/02/heroku-slug-compiler-optimizations.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

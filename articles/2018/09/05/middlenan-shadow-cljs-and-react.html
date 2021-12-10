@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Middleman, Shadow-CLJS and React</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Adding React to a Middleman and Shadow-CLJS app via Reagent." />
+    <meta property="og:title" content="Middleman, Shadow-CLJS and React" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/shadows.jpg" />
+<meta property="og:description" content="Adding React to a Middleman and Shadow-CLJS app via Reagent." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html">
+<meta name="twitter:title" content="Middleman, Shadow-CLJS and React">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/shadows.jpg">
+<meta name="twitter:description" content="Adding React to a Middleman and Shadow-CLJS app via Reagent.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>Middleman, Shadow-CLJS and React</h1>
+      <p class="article-date">September  5, 2018</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Middleman, Shadow-CLJS and React" data-url="http://bobnadler.com//articles/2018/09/05/middlenan-shadow-cljs-and-react.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="https://flic.kr/p/4M69SN">
+    <img src="/images/articles/shadows-b9939e63.jpg" alt="shadows" width="256" />
+  </a>
+  <figcaption>Image by <span>wolfgangfoto</span></figcaption>
+</figure>
+
+    <p>A few months ago I <a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">wrote</a> about integrating Middleman with Shadow-CLJS. Today I&#39;m going to expand on that by showing you how to add React to the mix by making a simple <a href="https://en.m.wikipedia.org/wiki/Body_mass_index">BMI</a> calculator from scratch. I&#39;m not going to spend too much time explaining the Reagent code, there are plenty of great tutorials online for that already. If you want to skip the explanations for now and jump right into the code, you can find it on <a href="https://github.com/bnadlerjr/bmi">GitHub</a>.</p>
+
+<p>Let&#39;s start off by creating a new project. I&#39;m going to use my Middleman <a href="https://github.com/bnadlerjr/middleman-shadow-cljs">template</a> that includes a basic setup for Shadow-CLJS.</p>
+<div class="highlight"><pre class="highlight shell"><code>middleman init bmi <span class="nt">-T</span> bnadlerjr/middleman-shadow-cljs
+</code></pre></div>
+<p>The first thing we need to do is add our React dependencies as well as <a href="https://reagent-project.github.io">Reagent</a>, which is a CLJS wrapper for React. We add the React dependencies in <code>package.json</code>.</p>
+<div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">private</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">dependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">create-react-class</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^15.6.3</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^16.4.1</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">react-dom</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^16.4.1</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">devDependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">shadow-cljs</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^2.0.144</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Next we add Reagent to <code>shadow-cljs.edn</code>.</p>
+<div class="highlight"><pre class="highlight clojure"><code><span class="c1">;; shadow-cljs configuration</span><span class="w">
+</span><span class="p">{</span><span class="no">:source-paths</span><span class="w">
+ </span><span class="p">[</span><span class="s">"source/cljs"</span><span class="p">]</span><span class="w">
+
+ </span><span class="no">:dependencies</span><span class="w">
+ </span><span class="p">[[</span><span class="n">reagent</span><span class="w"> </span><span class="s">"0.8.1"</span><span class="p">]]</span><span class="w">
+
+ </span><span class="no">:builds</span><span class="w">
+ </span><span class="p">{</span><span class="no">:app</span><span class="w"> </span><span class="p">{</span><span class="no">:target</span><span class="w"> </span><span class="no">:browser</span><span class="w">
+        </span><span class="no">:output-dir</span><span class="w"> </span><span class="s">".tmp/javascripts"</span><span class="w">
+        </span><span class="no">:asset-path</span><span class="w"> </span><span class="s">"/javascripts"</span><span class="w">
+        </span><span class="no">:modules</span><span class="w"> </span><span class="p">{</span><span class="no">:site</span><span class="w"> </span><span class="p">{</span><span class="no">:entries</span><span class="w"> </span><span class="p">[</span><span class="n">bmi.core</span><span class="p">]}}</span><span class="w">
+        </span><span class="no">:devtools</span><span class="w"> </span><span class="p">{</span><span class="no">:repl-init-ns</span><span class="w"> </span><span class="n">bmi.core</span><span class="w">
+                   </span><span class="no">:before-load</span><span class="w"> </span><span class="n">bmi.core/stop</span><span class="w">
+                   </span><span class="no">:after-load</span><span class="w"> </span><span class="n">bmi.core/start</span><span class="p">}}}}</span><span class="w">
+</span></code></pre></div>
+<p>We&#39;re also going to add an entry for <a href="https://shadow-cljs.github.io/docs/UsersGuide.html#devtools">devtools</a>. This will allow us to refresh the app in the browser whenever any code changes are made.</p>
+
+<p>Next we can remove the default generated content in <code>index.html.erb</code> and replace it with a single <code>div</code> element.</p>
+<div class="highlight"><pre class="highlight html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bmi-component"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>We haven&#39;t written it yet, but let&#39;s also setup the call to our initialization function in <code>layout.erb</code></p>
+<div class="highlight"><pre class="highlight html"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">yield</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">javascript_include_tag</span> <span class="err">"</span><span class="na">site</span><span class="err">"</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script&gt;</span><span class="nx">bmi</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div>
+<p>We&#39;re now ready to start building our first Reagent component. Here&#39;s the code:</p>
+<div class="highlight"><pre class="highlight clojure"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">bmi.core</span><span class="w">
+  </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">reagent.core</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">reagent</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">bmi-diagnose</span><span class="w">
+  </span><span class="p">[</span><span class="n">bmi</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">cond</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">bmi</span><span class="w"> </span><span class="mf">18.5</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="s">"orange"</span><span class="w"> </span><span class="s">"underweight"</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">bmi</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="s">"inherit"</span><span class="w"> </span><span class="s">"normal"</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">bmi</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="s">"orange"</span><span class="w"> </span><span class="s">"overweight"</span><span class="p">]</span><span class="w">
+    </span><span class="no">:else</span><span class="w"> </span><span class="p">[</span><span class="s">"red"</span><span class="w"> </span><span class="s">"obese"</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">calculate-bmi</span><span class="w">
+  </span><span class="p">[</span><span class="n">height-cm</span><span class="w"> </span><span class="n">weight-kg</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">height-m</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">height-cm</span><span class="w"> </span><span class="mi">100</span><span class="p">)]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">weight-kg</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">height-m</span><span class="w"> </span><span class="n">height-m</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">update-state</span><span class="w">
+  </span><span class="p">[</span><span class="n">state</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="n">event</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="nb">assoc</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="p">(</span><span class="nf">.-target.value</span><span class="w"> </span><span class="n">event</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">bmi-component</span><span class="w">
+  </span><span class="p">[]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">state</span><span class="w"> </span><span class="p">(</span><span class="nf">reagent/atom</span><span class="w"> </span><span class="p">{</span><span class="no">:height</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="no">:weight</span><span class="w"> </span><span class="mi">80</span><span class="p">})]</span><span class="w">
+    </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">height</span><span class="w"> </span><span class="n">weight</span><span class="p">]}</span><span class="w"> </span><span class="o">@</span><span class="n">state</span><span class="w">
+            </span><span class="n">bmi</span><span class="w"> </span><span class="p">(</span><span class="nf">calculate-bmi</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="n">weight</span><span class="p">)</span><span class="w">
+            </span><span class="p">[</span><span class="n">color</span><span class="w"> </span><span class="n">description</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bmi-diagnose</span><span class="w"> </span><span class="n">bmi</span><span class="p">)]</span><span class="w">
+      </span><span class="p">[</span><span class="no">:div</span><span class="w">
+       </span><span class="p">[</span><span class="no">:h1</span><span class="w"> </span><span class="s">"BMI Calculator"</span><span class="p">]</span><span class="w">
+       </span><span class="p">[</span><span class="no">:div</span><span class="w"> </span><span class="s">"Height: "</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="s">"cm"</span><span class="w">
+        </span><span class="p">[</span><span class="no">:input</span><span class="w"> </span><span class="p">{</span><span class="no">:type</span><span class="w"> </span><span class="s">"range"</span><span class="w">
+                 </span><span class="no">:value</span><span class="w"> </span><span class="n">height</span><span class="w">
+                 </span><span class="no">:min</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                 </span><span class="no">:max</span><span class="w"> </span><span class="mi">220</span><span class="w">
+                 </span><span class="no">:on-change</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="n">update-state</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="no">:height</span><span class="p">)}]]</span><span class="w">
+       </span><span class="p">[</span><span class="no">:div</span><span class="w"> </span><span class="s">"Weight: "</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="s">"kg"</span><span class="w">
+        </span><span class="p">[</span><span class="no">:input</span><span class="w"> </span><span class="p">{</span><span class="no">:type</span><span class="w"> </span><span class="s">"range"</span><span class="w">
+                 </span><span class="no">:value</span><span class="w"> </span><span class="n">weight</span><span class="w">
+                 </span><span class="no">:min</span><span class="w"> </span><span class="mi">30</span><span class="w">
+                 </span><span class="no">:max</span><span class="w"> </span><span class="mi">150</span><span class="w">
+                 </span><span class="no">:on-change</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="n">update-state</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="no">:weight</span><span class="p">)}]]</span><span class="w">
+       </span><span class="p">[</span><span class="no">:div</span><span class="w"> </span><span class="s">"BMI: "</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="n">bmi</span><span class="p">)</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="p">[</span><span class="no">:span</span><span class="w"> </span><span class="p">{</span><span class="no">:style</span><span class="w"> </span><span class="p">{</span><span class="no">:color</span><span class="w"> </span><span class="n">color</span><span class="p">}}</span><span class="w"> </span><span class="n">description</span><span class="p">]]]))))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">start</span><span class="w">
+  </span><span class="p">[]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">reagent/render</span><span class="w"> </span><span class="p">[</span><span class="n">bmi-component</span><span class="p">]</span><span class="w">
+                  </span><span class="p">(</span><span class="nf">.getElementById</span><span class="w"> </span><span class="n">js/document</span><span class="w"> </span><span class="s">"bmi-component"</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">stop</span><span class="w">
+  </span><span class="p">[])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="no">:export</span><span class="w"> </span><span class="n">init</span><span class="w">
+  </span><span class="p">[]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">start</span><span class="p">))</span><span class="w">
+</span></code></pre></div>
+<p>Let&#39;s start from the bottom, where we have our <code>init</code>, <code>start</code>, and <code>stop</code> functions. <code>init</code> will be called from <code>layout.erb</code> on initial page load. <code>start</code> and <code>stop</code> are called by Shadow-CLJS whenever any code changes are made in development mode. <code>start</code> takes care of hooking up our React component to the DOM. Technically, we don&#39;t need <code>stop</code> for this app, but I wanted to show a complete example setup.</p>
+
+<p>Above that, we have our Reagent component, which sets up some state and draws two slider inputs for height and weight. Updating one or both of the sliders updates the respective values in the component state. I know I mentioned earlier that I wasn&#39;t going into too much detail on the CLJS code, but one pattern that I&#39;ll mention here is the use of the <code>partial</code> function.</p>
+
+<p>I find this pattern very useful whenever I need to update some state that is triggered by some user interaction. The <code>on-change</code> function needs access to the local component state. We could inline it, but that can get messy quickly both from a readability standpoint and a code duplication one. Extracting it to a standalone function means that whatever function we write would have to return a function that closes over whatever arguments the function needs (<code>state</code> and <code>params</code> in this case). So we could write it like this:</p>
+<div class="highlight"><pre class="highlight clojure"><code><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">update-state</span><span class="w">
+  </span><span class="p">[</span><span class="n">state</span><span class="w"> </span><span class="n">param</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="nb">assoc</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="p">(</span><span class="nf">.-target.value</span><span class="w"> </span><span class="n">event</span><span class="p">))))</span><span class="w">
+</span></code></pre></div>
+<p>However, in my opinion a more CLJS idiomatic way of doing that is to use <code>partial</code> which essentially does the same thing as the example above. It partially applies our <code>state</code> and <code>params</code> arguments and returns a function that accepts an <code>event</code>.</p>
+
+<p>Finally, above that we have our BMI calculation and our &quot;diagnose&quot; function which is used to add some color to our BMI output.</p>
+
+<p>That&#39;s the entire application! Again, you can find all the source code on my <a href="https://github.com/bnadlerjr/bmi">GitHub account</a>.</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Middleman, Shadow-CLJS and React" data-url="http://bobnadler.com//articles/2018/09/05/middlenan-shadow-cljs-and-react.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = 'b7ced522-28e6-4693-a1ac-a43ba53cdbfb';
+    var disqus_title = 'Middleman, Shadow-CLJS and React';
+    var disqus_url = 'http://bobnadler.com//articles/2018/09/05/middlenan-shadow-cljs-and-react.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

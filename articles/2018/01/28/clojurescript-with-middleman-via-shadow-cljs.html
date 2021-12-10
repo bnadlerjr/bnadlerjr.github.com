@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | ClojureScript with Middleman via Shadow-CLJS</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Using ClojureScript in a Ruby Middleman project." />
+    <meta property="og:title" content="ClojureScript with Middleman via Shadow-CLJS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/in-the-middle.jpg" />
+<meta property="og:description" content="Using ClojureScript in a Ruby Middleman project." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">
+<meta name="twitter:title" content="ClojureScript with Middleman via Shadow-CLJS">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/in-the-middle.jpg">
+<meta name="twitter:description" content="Using ClojureScript in a Ruby Middleman project.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>ClojureScript with Middleman via Shadow-CLJS</h1>
+      <p class="article-date">January 28, 2018</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="ClojureScript with Middleman via Shadow-CLJS" data-url="http://bobnadler.com//articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="https://flic.kr/p/qAA7Se">
+    <img src="/images/articles/in-the-middle-58e84934.jpg" alt="In the middle" width="256" />
+  </a>
+  <figcaption>Image by <span>Giuseppe Milo</span></figcaption>
+</figure>
+
+    <p>Ruby&#39;s <a href="https://middlemanapp.com">Middleman</a> is my preferred tool when I need to generate a static website. In this post I&#39;m going to show you how to set up a Middleman project that uses <a href="https://clojurescript.org">ClojureScript</a> instead of the default JavaScript or CoffeeScript that ships with Middleman.</p>
+
+<p>First up, we need to create our Middleman project. The Middleman site has <a href="https://middlemanapp.com/basics/start-new-site/">instructions</a> for setting up a new project, I&#39;m going to go through them briefly here. Assuming you have middleman installed, run</p>
+<div class="highlight"><pre class="highlight plaintext"><code>middleman init cljs-example
+</code></pre></div>
+<p>Change into the <code>cljs-example</code> directory and confirm that Middleman has been setup properly by running the preview server with</p>
+<div class="highlight"><pre class="highlight plaintext"><code>middleman server
+</code></pre></div>
+<p>Navigate to the URL that the server is running on (by default http://localhost:4567/) and you should see the &quot;Middleman is Running&quot; page. You can stop the server once you&#39;ve confirmed everything is ok.</p>
+
+<p>Middleman used to ship with support for Sprockets, however, newer versions ship with a feature called <a href="https://middlemanapp.com/advanced/external-pipeline/">external pipelines</a>. This feature allows Middleman to run multiple subprocesses which output content to temporary folders which are then merged into the Middleman sitemap. To configure our project to compile ClojureScript, add the following to the project&#39;s <code>config.rb</code></p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">activate</span> <span class="ss">:external_pipeline</span><span class="p">,</span>
+  <span class="ss">name: :clojurescript</span><span class="p">,</span>
+  <span class="ss">command: </span><span class="s2">"./node_modules/.bin/shadow-cljs </span><span class="si">#{</span><span class="n">build?</span> <span class="p">?</span> <span class="ss">:release</span> <span class="p">:</span> <span class="ss">:watch</span><span class="si">}</span><span class="s2"> app"</span><span class="p">,</span>
+  <span class="ss">source: </span><span class="s2">".tmp"</span>
+</code></pre></div>
+<p>The above configures an external pipeline that will compile our ClojureScript code into a folder called <code>.tmp</code> using shadow-cljs, which we&#39;ll install next.</p>
+
+<p><a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a> is a node library that gives you everything you need to compile ClojureScript code using some good defaults. Since it&#39;s a node.js library you need either <a href="https://www.npmjs.com/">npm</a> or <a href="https://yarnpkg.com">yarn</a> installed. We&#39;re going to use yarn in this example, but either will work.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>yarn add --dev shadow-cljs
+</code></pre></div>
+<p>This will create a <code>package.json</code> and <code>yarn.lock</code> file in your project root. It will also install shadow-cljs and its dependencies into your node_modules folder. shadow-cljs is <a href="https://shadow-cljs.github.io/docs/UsersGuide.html#_configuration">configured</a> using a file called <code>shadow-cljs.edn</code>. We can generate one like this</p>
+<div class="highlight"><pre class="highlight plaintext"><code>./node_modules/.bin/shadow-cljs init .
+</code></pre></div>
+<p>Using your text editor modify the generated <code>shadow-cljs.edn</code> file to look like this</p>
+<div class="highlight"><pre class="highlight clojure"><code><span class="c1">;; shadow-cljs configuration</span><span class="w">
+</span><span class="p">{</span><span class="no">:source-paths</span><span class="w"> </span><span class="c1">;; 1</span><span class="w">
+ </span><span class="p">[</span><span class="s">"source/cljs"</span><span class="p">]</span><span class="w">
+
+ </span><span class="no">:dependencies</span><span class="w"> </span><span class="c1">;; 2</span><span class="w">
+ </span><span class="p">[]</span><span class="w">
+
+ </span><span class="no">:builds</span><span class="w"> </span><span class="c1">;; 3</span><span class="w">
+ </span><span class="p">{</span><span class="no">:app</span><span class="w"> </span><span class="p">{</span><span class="no">:target</span><span class="w"> </span><span class="no">:browser</span><span class="w">
+        </span><span class="no">:output-dir</span><span class="w"> </span><span class="s">".tmp/javascripts"</span><span class="w">
+        </span><span class="no">:asset-path</span><span class="w"> </span><span class="s">"/javascripts"</span><span class="w">
+        </span><span class="no">:modules</span><span class="w"> </span><span class="p">{</span><span class="no">:site</span><span class="w"> </span><span class="p">{</span><span class="no">:entries</span><span class="w"> </span><span class="p">[</span><span class="n">cljs-example.core</span><span class="p">]}}}}}</span><span class="w">
+</span></code></pre></div>
+<p>The parts of the configuration are as follows:</p>
+
+<ol>
+<li>The path to our ClojureScript source files.</li>
+<li>Any dependencies. We&#39;ll leave this empty for now.</li>
+<li>A build target. We&#39;re targeting the browser and our compiled ClojureScript files will be put into the <code>.tmp/javascripts</code> folder. We also need to specify the modules we want compiled. In this example we&#39;re compiling a single module that uses the <code>cljs-example.core</code> namespace which will be output to a file named <code>site.js</code>.</li>
+</ol>
+
+<p>We haven&#39;t created any ClojureScript files yet, so let&#39;s do that now. Create a file named <code>source/cljs/cljs-example/core.cljs</code> (depending on your editor you may need to explicitly create the <code>cljs</code> and <code>cljs-example</code> directories). The file should look like this</p>
+<div class="highlight"><pre class="highlight clojure"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">cljs-example.core</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">set!</span><span class="w"> </span><span class="p">(</span><span class="nf">.-innerHTML</span><span class="w"> </span><span class="p">(</span><span class="nf">.getElementById</span><span class="w"> </span><span class="n">js/document</span><span class="w"> </span><span class="s">"intro"</span><span class="p">))</span><span class="w">
+      </span><span class="s">"Middleman is Running on ClojureScript"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>
+<p>I&#39;m going to assume you&#39;re already familiar with ClojureScript; what the code above will do is replace the text of an element with an ID of <code>intro</code> on the page with &quot;Middleman is Running on ClojureScript&quot;.</p>
+
+<p>In order the the text to be replaced, we need to adjust two things: our layout and index files. In the <code>source/layouts/layout.erb</code> file that was generated by Middleman, move the <code>javascript_include_tag</code> method call into the body of the HTML. This will ensure that our compiled ClojureScript code won&#39;t be ran until the document has loaded.</p>
+<div class="highlight"><pre class="highlight html"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"x-ua-compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span>
+          <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, shrink-to-fit=no"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Use the title from a page's front matter if it has one --&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;</span><span class="err">%=</span> <span class="na">current_page.data.title</span> <span class="err">||</span> <span class="err">"</span><span class="na">Middleman</span><span class="err">"</span> <span class="err">%</span><span class="nt">&gt;&lt;/title&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">stylesheet_link_tag</span> <span class="err">"</span><span class="na">site</span><span class="err">"</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">yield</span> <span class="err">%</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">javascript_include_tag</span> <span class="err">"</span><span class="na">site</span><span class="err">"</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>Next we need to add the <code>intro</code> ID to the <code>h1</code> tag in <code>source/index.html.erb</code>. The file should now look something like this</p>
+<div class="highlight"><pre class="highlight html"><code>---
+title: Welcome to Middleman
+---
+
+<span class="nt">&lt;svg</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span> <span class="na">viewBox=</span><span class="s">"0 0 400 340"</span> <span class="na">class=</span><span class="s">"middleman-logo"</span> <span class="na">aria-labelledby=</span><span class="s">"middleman-logo__title"</span> <span class="na">role=</span><span class="s">"img"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title</span> <span class="na">id=</span><span class="s">"middleman-logo__title"</span><span class="nt">&gt;</span>Middleman<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__top-left-bar"</span> <span class="na">fill-opacity=</span><span class="s">".45"</span> <span class="na">d=</span><span class="s">"M0 40L200 0v30L0 60z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__top-right-bar"</span> <span class="na">fill=</span><span class="s">"#fff"</span> <span class="na">d=</span><span class="s">"M200 0l200 40v20L200 30z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__left-m"</span> <span class="na">fill-opacity=</span><span class="s">".45"</span> <span class="na">d=</span><span class="s">"M0 78v184l45 5V152l45 83 47-83v129l53 7V52l-57 8-43 83-43-70z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__right-m"</span> <span class="na">fill=</span><span class="s">"#fff"</span> <span class="na">d=</span><span class="s">"M400 78v184l-45 5V152l-45 83-47-83v129l-53 7V52l57 8 43 83 43-70z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__bottom-left-bar"</span> <span class="na">fill-opacity=</span><span class="s">".45"</span> <span class="na">d=</span><span class="s">"M0 300l200 40v-30L0 280z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">"middleman-logo__bottom-right-bar"</span> <span class="na">fill=</span><span class="s">"#fff"</span> <span class="na">d=</span><span class="s">"M200 340l200-40v-20l-200 30z"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"intro"</span><span class="nt">&gt;</span>
+  Middleman is Running
+<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;</span><span class="err">%=</span> <span class="na">link_to</span><span class="err">(</span>
+  <span class="err">"</span><span class="na">Read</span> <span class="na">Documentation</span><span class="err">",</span>
+  <span class="err">"</span><span class="na">https:</span><span class="err">//</span><span class="na">middlemanapp.com</span><span class="err">/</span><span class="na">basics</span><span class="err">/</span><span class="na">templating_language</span><span class="err">/",</span>
+  <span class="na">target:</span> <span class="err">"</span><span class="na">_blank</span><span class="err">"</span>
+<span class="err">)</span> <span class="err">%</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>Finally, we need to remove the <code>source/javascripts</code> directory that Middleman generated so that we don&#39;t get conflicts between the ClojureScript compiled files and any JavaScript files that Middleman generated.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>rm -r source/javascripts
+</code></pre></div>
+<p>Our setup should be complete. Start the middleman preview server like before with <code>middleman server</code>. This time in addition to the normal output from Middleman we should also see some messages from shadow-cljs compiling our ClojureScript code. After a few seconds we should see a message indicating that the compilation was successful.</p>
+
+<p><img src="/images/articles/shadow-cljs-console-b8b55ba6.png" alt="Output from Middleman server command" /></p>
+
+<p>Now when we open our site in the browser we should see the &quot;Middleman is Running on ClojureScript&quot; message.</p>
+
+<p><img src="/images/articles/middleman-cljs-browser-0d745d9f.png" alt="Middleman welcome page in browser" /></p>
+
+<p>That concludes this step by step guide for using ClojureScript with Middleman. If you&#39;d like to see all the source code, I&#39;ve created a <a href="https://github.com/bnadlerjr/cljs-example">GitHub repository</a> which you can clone and use as a starting point for your own project. At some point, I will probably make a Middleman template that takes care of all this setup. I also have a couple more blog posts planned on using ClojureScript with React via the <a href="https://github.com/reagent-project/reagent">Reagent</a> library, as well as incorporating <a href="https://firebase.google.com/">Firebase</a>. In the meantime, let me know if this guide was helpful!</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="ClojureScript with Middleman via Shadow-CLJS" data-url="http://bobnadler.com//articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '8fcd357a-1efc-48b1-a666-296f4a6ebae9';
+    var disqus_title = 'ClojureScript with Middleman via Shadow-CLJS';
+    var disqus_url = 'http://bobnadler.com//articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

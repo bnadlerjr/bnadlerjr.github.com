@@ -1,0 +1,69 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Bob Nadler, Jr.</title>
+    <link>http://bobnadler.com/</link>
+    <description>Articles from Bob Nadler, Jr.</description>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 -0400</lastBuildDate>
+    <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Middleman, Shadow-CLJS and React</title>
+      <link>http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html</link>
+      <guid>http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html</guid>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;A few months ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about integrating Middleman with Shadow-CLJS. Today I'm going to expand on that by showing you how to add React to the mix by making a simple &lt;a href="https://en.m.wikipedia.org/wiki/Body_mass_index"&gt;BMI&lt;/a&gt; calculator from scratch. I'm not going to spend too much time explaining the...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/shadows.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
+      <title>Middleman Shadow-CLJS Project Template</title>
+      <link>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</link>
+      <guid>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</guid>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Awhile ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about how to set up Shadow-CLJS with Middleman. I finally got around to making a Middleman project template to ease the process of setting up Shadow-CLJS. The source is available on &lt;a href="https://github.com/bnadlerjr/middleman-shadow-cljs"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To use the template, you'll need to have...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/rear-booster.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
+      <title>Write the Assertion First</title>
+      <link>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</link>
+      <guid>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</guid>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;When writing automated tests (whether in a TDD fashion or otherwise) I find it helpful to write the assertion first, before any setup code. There are two main reasons I think it is helpful.&lt;/p&gt;
+
+&lt;p&gt;One, I think it's useful to &lt;a href="https://www.stephencovey.com/7habits/7habits-habit2.php"&gt;begin with the end in mind&lt;/a&gt;. Writing...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/tests.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
+      <title>Formatting Currency in JavaScript</title>
+      <link>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</link>
+      <guid>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</guid>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 -0500</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;The other day I needed to format some currency values in JavaScript. I remembered coming across &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat"&gt;Intl.NumberFormat&lt;/a&gt; a long time ago on another project, but browser support was sketchy. I looked up the most recent info on &lt;a href="http://caniuse.com/#feat=internationalization"&gt;caniuse&lt;/a&gt; and thankfully almost...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/coins.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
+      <title>ClojureScript with Middleman via Shadow-CLJS</title>
+      <link>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</link>
+      <guid>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</guid>
+      <pubDate>Sun, 28 Jan 2018 00:00:00 -0500</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Ruby's &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; is my preferred tool when I need to generate a static website. In this post I'm going to show you how to set up a Middleman project that uses &lt;a href="https://clojurescript.org"&gt;ClojureScript&lt;/a&gt; instead of the default JavaScript or CoffeeScript that ships with Middleman...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/in-the-middle.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
+      <title>boot-selmer</title>
+      <link>http://bobnadler.com/articles/2017/07/12/boot-selmer.html</link>
+      <guid>http://bobnadler.com/articles/2017/07/12/boot-selmer.html</guid>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used &lt;a href="https://leiningen.org/"&gt;Leiningen&lt;/a&gt; for managing dependencies and build tasks. I recently decided to give &lt;a href="http://boot-clj.com/"&gt;Boot&lt;/a&gt; a try. I needed to create a Boot task for compiling &lt;a href="https://github.com/yogthos/Selmer"&gt;Selmer&lt;/a&gt;&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/boots.jpg" type="image/jpg" width="256"/>
+    </item>
+  </channel>
+</rss>

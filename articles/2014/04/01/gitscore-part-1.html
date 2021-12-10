@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | GitScore Part 1</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Screencast showing an example workflow for creating a Sinatra web application." />
+    <meta property="og:title" content="GitScore Part 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2014/04/01/gitscore-part-1.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/scoreboard.jpg" />
+<meta property="og:description" content="Screencast showing an example workflow for creating a Sinatra web application." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2014/04/01/gitscore-part-1.html">
+<meta name="twitter:title" content="GitScore Part 1">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/scoreboard.jpg">
+<meta name="twitter:description" content="Screencast showing an example workflow for creating a Sinatra web application.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>GitScore Part 1</h1>
+      <p class="article-date">April  1, 2014</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="GitScore Part 1" data-url="http://bobnadler.com//articles/2014/04/01/gitscore-part-1.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="https://flic.kr/p/gphHjQ">
+    <img src="/images/articles/scoreboard-fe6101b0.jpg" alt="Scoreboard" width="256" />
+  </a>
+  <figcaption>Image by <span>tyosshiman</span></figcaption>
+</figure>
+
+    <p>UPDATE: <a href="/articles/2014/05/17/gitscore-parts-2-3.html">Parts 2 &amp; 3</a> are now done.</p>
+
+<p>Recently I&#39;ve been playing around with Screenflow, creating screencasts illustrating how I build Sinatra applications in Ruby. My goal was to create a few well-polished screencasts, but finding the time is hard. In addition, since my video editing ability is not quite there yet, it takes me a long time. In the interest of getting something out there for people to look at, I&#39;m going to release a few short screencasts that have not been highly edited, so you&#39;ll get to see my mistakes.</p>
+
+<p>For this first set of screencasts, the idea came from watching a <a href="http://pluralsight.com/training/Courses/Description/play-by-play-yehuda-katz">Peepcode Play by Play</a>. The goal is to create an app that &quot;scores&quot; GitHub activity. The basic premise is to request a user&#39;s public activity, and then based on the events in the timeline, assign a score to each. For example, a &quot;WatchEvent&quot; occurs when a user watches a repository. It is worth one point.</p>
+
+<p>I&#39;m not going to go into much detail about how I implemented a solution, but I do want to give you a bit more context that I did not put into the video. First, I&#39;m using Hoboken to generate the Sinatra application skeleton. <a href="http://rubygems.org/gems/hoboken">Hoboken</a> is another project that I&#39;ve been working on that generates Sinatra applications. I haven&#39;t released an official version yet, but I&#39;ve been using for a few of my own projects for a few months now. Check out its <a href="https://github.com/bnadlerjr/hoboken">README</a> for more info. I&#39;ll write another post going into detail about it soon.</p>
+
+<p>I also used this project to explore the idea of the <a href="http://alistair.cockburn.us/Hexagonal+architecture">Ports and Adapters</a> pattern. In the video I show how I create an adapter for the GitHub data. The screencast also shows leveraging <a href="http://www.sinatrarb.com/configuration.html">Sinatra&#39;s settings feature</a> to inject the GitHub adapter.</p>
+
+<p>Part one of this series shows how I set up the project and get a minimal round trip implementation set up that queries GitHub and shows something on the page. Later this week I&#39;ll put up the next videos that show the scoring implementation. I hope you enjoy it!</p>
+
+<iframe width="640" height="360" src="//www.youtube.com/embed/cMtNJwKuDhA?rel=0" frameborder="0" allowfullscreen></iframe>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="GitScore Part 1" data-url="http://bobnadler.com//articles/2014/04/01/gitscore-part-1.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '89a0a79c-3d56-4a61-a2ed-b90d2730db55';
+    var disqus_title = 'GitScore Part 1';
+    var disqus_url = 'http://bobnadler.com//articles/2014/04/01/gitscore-part-1.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

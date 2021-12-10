@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Command Pattern for Sinatra Handlers</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="How the Command Pattern can help DRY up Sinatra request handlers." />
+    <meta property="og:title" content="Command Pattern for Sinatra Handlers" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2014/02/02/command-pattern-for-sinatra-handlers.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/sex-pistols-something-else.jpg" />
+<meta property="og:description" content="How the Command Pattern can help DRY up Sinatra request handlers." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2014/02/02/command-pattern-for-sinatra-handlers.html">
+<meta name="twitter:title" content="Command Pattern for Sinatra Handlers">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/sex-pistols-something-else.jpg">
+<meta name="twitter:description" content="How the Command Pattern can help DRY up Sinatra request handlers.">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>Command Pattern for Sinatra Handlers</h1>
+      <p class="article-date">February  2, 2014</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Command Pattern for Sinatra Handlers" data-url="http://bobnadler.com//articles/2014/02/02/command-pattern-for-sinatra-handlers.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="http://www.flickr.com/photos/visualpanic/2942689610/">
+    <img src="/images/articles/sex-pistols-something-else-74ea6f08.jpg" alt="sex pistols:something else" width="256" />
+  </a>
+  <figcaption>Image by <span>Lali Masriera</span></figcaption>
+</figure>
+
+    <p>One useful pattern I&#39;ve found when writing Sinatra applications is the command pattern. For those that are not familiar with it, here is a simple example to start with:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">MyCommand</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="c1"># initialize some stuff</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">call</span>
+    <span class="c1"># do some stuff</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>The class is pretty straightforward, just an <code>#initialize</code> and a <code>#call</code> method, that&#39;s all you need. Now, why is this useful? Let&#39;s take a look at an example request handler in Sinatra for a photo uploading API:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">post</span> <span class="s2">"/photos"</span> <span class="k">do</span>
+  <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">]</span> <span class="n">and</span> <span class="n">param</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
+    <span class="c1"># store the photo</span>
+    <span class="n">uploader</span> <span class="o">=</span> <span class="no">CarrierWave</span><span class="o">::</span><span class="no">Uploader</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">uploader</span><span class="p">.</span><span class="nf">store!</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">])</span>
+
+    <span class="c1"># store photo metadata</span>
+    <span class="no">DB</span><span class="p">[</span><span class="ss">:photos</span><span class="p">].</span><span class="nf">insert</span><span class="p">({</span>
+      <span class="ss">title: </span><span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">],</span>
+      <span class="ss">content_type: </span><span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">][</span><span class="ss">:type</span><span class="p">],</span>
+      <span class="ss">file_size: </span><span class="no">File</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">][</span><span class="ss">:tempfile</span><span class="p">]),</span>
+      <span class="ss">url: </span><span class="n">uploader</span><span class="p">.</span><span class="nf">url</span>
+    <span class="p">})</span>
+
+    <span class="mi">201</span>
+  <span class="k">else</span>
+    <span class="mi">400</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">({</span>
+      <span class="ss">status: </span><span class="mi">401</span><span class="p">,</span>
+      <span class="ss">message: </span><span class="s2">"Photos require a title and an image"</span>
+    <span class="p">})</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>While it&#39;s not too bad, there are a few code smells in this request handler. The most obvious smell is the comments. In order to upload a photo, our handler needs to do two things: send the photo somewhere (in this case an S3 bucket using the CarrierWave gem), and store some meta-data about the photo to our database. Another smell is the conditional that checks to make sure there is an image and a title sent with the request. One way we could clean that up is to use a guard clause that immediately halts the request like this:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">post</span> <span class="s2">"/photos"</span> <span class="k">do</span>
+  <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">]</span> <span class="n">and</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
+    <span class="n">halt</span> <span class="mi">400</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">({</span>
+      <span class="ss">status: </span><span class="mi">401</span><span class="p">,</span>
+      <span class="ss">message: </span><span class="s2">"Photos require a title and an image"</span>
+    <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="c1"># store the photo</span>
+  <span class="c1"># ...</span>
+
+  <span class="c1"># store photo metadata</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>I think this makes things better, but we could do more. Imagine that we need to store more information about the photo, like longitude and latitude, or maybe the validation logic needs to handle more scenarios. Our request handler has the potential to get quite messy. Let&#39;s see how we can clean it up using the command pattern.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">UploadPhoto</span>
+  <span class="nb">attr_reader</span> <span class="ss">:album</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:photo</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">call</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">)</span>
+    <span class="n">new</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">).</span><span class="nf">call</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">)</span>
+    <span class="vi">@album</span> <span class="o">=</span> <span class="n">album</span>
+    <span class="vi">@title</span> <span class="o">=</span> <span class="n">title</span>
+    <span class="vi">@photo</span> <span class="o">=</span> <span class="n">photo</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">call</span>
+    <span class="n">uploader</span><span class="p">.</span><span class="nf">store!</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">])</span>
+    <span class="n">album</span><span class="p">.</span><span class="nf">insert</span><span class="p">({</span>
+      <span class="ss">title: </span><span class="n">title</span><span class="p">,</span>
+      <span class="ss">content_type: </span><span class="n">photo</span><span class="p">[</span><span class="ss">:type</span><span class="p">],</span>
+      <span class="ss">file_size: </span><span class="no">File</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="n">photo</span><span class="p">[</span><span class="ss">:tempfile</span><span class="p">]),</span>
+      <span class="ss">url: </span><span class="n">uploader</span><span class="p">.</span><span class="nf">url</span>
+    <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">uploader</span>
+    <span class="vi">@uploader</span> <span class="o">||=</span> <span class="no">CarrierWave</span><span class="o">::</span><span class="no">Uploader</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="n">post</span> <span class="s2">"/photos"</span> <span class="k">do</span>
+  <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">]</span> <span class="n">and</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
+    <span class="n">halt</span> <span class="mi">400</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">({</span>
+      <span class="ss">status: </span><span class="mi">401</span><span class="p">,</span>
+      <span class="ss">message: </span><span class="s2">"Photos require a title and an image"</span>
+    <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="no">UploadPhoto</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="no">DB</span><span class="p">[</span><span class="ss">:photos</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:photo</span><span class="p">])</span>
+  <span class="mi">201</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Creating the <code>UploadPhoto</code> command class buys us a few things. For one, it encapsulates our entire use case for uploading a photo. Our handler becomes very simple. It also allows us to create a private helper method. We could do this where our Sinatra handlers are located as well, but that would quickly get out of hand if each request handler defined several private methods. Finally, it also makes testing easier. We could easily create a fake <code>album</code> pass it in to this class. Notice that I created a convenience class method for <code>call</code> that I think makes the request handler code read a bit nicer.</p>
+
+<p>There&#39;s one more refactoring I&#39;d like to mention. In this particular example, I&#39;m on the fence as to whether what I&#39;m about to show you makes sense. I think the idiom is helpful, however, so I&#39;ll show it to you and then write about my reservations below.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">UploadPhoto</span>
+  <span class="c1"># ...</span>
+
+  <span class="k">def</span> <span class="nf">call</span>
+    <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">]</span> <span class="n">and</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
+      <span class="c1"># THIS IS A BAD IDEA!!!</span>
+      <span class="n">halt</span> <span class="mi">400</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">({</span>
+        <span class="ss">status: </span><span class="mi">401</span><span class="p">,</span>
+        <span class="ss">message: </span><span class="s2">"Photos require a title and an image"</span>
+      <span class="p">})</span>
+    <span class="k">end</span>
+
+    <span class="c1"># upload photo and store meta-data...</span>
+  <span class="k">end</span>
+
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+
+<span class="n">post</span> <span class="s2">"/photos"</span> <span class="k">do</span>
+  <span class="no">UploadPhoto</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="no">DB</span><span class="p">[</span><span class="ss">:photos</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:photo</span><span class="p">])</span>
+  <span class="mi">201</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>What I&#39;ve done here is to move the data validation into the command class. However, this poses a problem. the <code>halt</code> method is a part of Sinatra, our <em>web</em> library. <code>UploadPhoto</code> is a part of our <em>domain</em>. Mixing the two together is a bad idea. To solve this problem we can use a technique I first read about in Avdi Grimm&#39;s <a href="http://exceptionalruby.com/">Exceptional Ruby</a> (he&#39;s also done a <a href="http://www.rubytapas.com/">Ruby Tapas</a> episode on it). He refers to the technique as the &quot;Caller-supplied fallback strategy&quot;. It uses the power of Ruby&#39;s blocks to allow us to keep the web specific call to <code>halt</code> in our web module, yet still allow us to perform the validation inside the command class. It looks like this:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">UploadPhoto</span>
+  <span class="nb">attr_reader</span> <span class="ss">:album</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:photo</span><span class="p">,</span> <span class="ss">:error_block</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">call</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">new</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">).</span><span class="nf">call</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">album</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">photo</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+    <span class="vi">@error_block</span> <span class="o">=</span> <span class="n">block</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">call</span>
+    <span class="n">error_block</span><span class="p">.</span><span class="nf">call</span> <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="ss">:image</span><span class="p">]</span> <span class="n">and</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">]</span>
+
+    <span class="c1"># upload photo and store meta-data...</span>
+  <span class="k">end</span>
+
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+
+<span class="n">post</span> <span class="s2">"/photos"</span> <span class="k">do</span>
+  <span class="no">UploadPhoto</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="no">DB</span><span class="p">[</span><span class="ss">:photos</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:title</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="ss">:photo</span><span class="p">])</span> <span class="k">do</span>
+    <span class="n">halt</span> <span class="mi">400</span><span class="p">,</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">generate</span><span class="p">({</span> <span class="ss">status: </span><span class="mi">401</span><span class="p">,</span> <span class="ss">message: </span><span class="s2">"Photos require a title and an image"</span> <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="mi">201</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>By passing a block to our command, we can have it handle the validation and then call the block if it fails. If for some reason we needed to have the request handler redirect instead of halt, for example, the <code>UploadPhoto</code> class doesn&#39;t care. We only need to make the change in our request handler.</p>
+
+<p>I mentioned earlier that I had reservations about using this technique in this specific example. I&#39;m still mulling it over, but I&#39;ve been doing some reading about various web architectures and design patterns recently. One of the concepts that has come up a few times is that validations should happen at the boundary of the system, <em>not</em> inside the domain. In other words, we should validate the photo image and title in the request handler <em>before</em> we hand it off to <code>UploadPhoto</code> for processing. I&#39;ll try to follow up with another post about this after I do some more research and experimenting.</p>
+
+<p>The last thing I&#39;d like to mention is that there is nothing about using the command pattern that is specific to Sinatra handlers. I&#39;ve used this same technique to clean up bloated Rails controllers.</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Command Pattern for Sinatra Handlers" data-url="http://bobnadler.com//articles/2014/02/02/command-pattern-for-sinatra-handlers.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '67e0fa68-92ba-42c5-baeb-7dc6ce679ec7';
+    var disqus_title = 'Command Pattern for Sinatra Handlers';
+    var disqus_url = 'http://bobnadler.com//articles/2014/02/02/command-pattern-for-sinatra-handlers.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>

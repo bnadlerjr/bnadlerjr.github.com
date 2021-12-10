@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Rails Domain Generation with SQL Editor</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="Generating Rails models with SQL Editor" />
+    <meta property="og:title" content="Rails Domain Generation with SQL Editor" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2010/07/26/rails-domain-generation-with-sql-editor.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/" />
+<meta property="og:description" content="Generating Rails models with SQL Editor" />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2010/07/26/rails-domain-generation-with-sql-editor.html">
+<meta name="twitter:title" content="Rails Domain Generation with SQL Editor">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/">
+<meta name="twitter:description" content="Generating Rails models with SQL Editor">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
+    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="mobile-header">
+<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+        </div>
+        <header>
+<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
+            <img src="/images/logo-efe9133a.png" alt="Logo" />
+</a>          <nav>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+            </ul>
+          </nav>
+          <ul class="social">
+            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
+            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
+            <li><a href="/feed.xml" class="icon-rss"></a></li>
+          </ul>
+        </header>
+        <main>
+            <article>
+    <div class="article-header">
+      <h1>Rails Domain Generation with SQL Editor</h1>
+      <p class="article-date">July 26, 2010</p>
+      <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Rails Domain Generation with SQL Editor" data-url="http://bobnadler.com//articles/2010/07/26/rails-domain-generation-with-sql-editor.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+    </div>
+    <figure class="article-image">
+  <a href="">
+    <img src="/images/articles/" alt="" width="256" />
+  </a>
+  <figcaption>Image by <span></span></figcaption>
+</figure>
+
+    <p><em>Update: I have a new Rails 3 compatible version called <a href="https://github.com/bnadlerjr/third_switch_generators">model_maker</a> available on GitHub.</em></p>
+
+<h2>A Problem</h2>
+
+<p>I&#39;m a visual person by nature, so when I start a new project I like to spend some time drawing out screens and domain models. From these I then write features and scenarios. Today I want to talk specifically about domain models.</p>
+
+<p>My favorite tool right now for sketching out domain models is a tool called <a href="http://www.malcolmhardie.com/sqleditor/">SQL Editor</a>. It allows you to create entities with their corresponding fields, as well as relationships to other entities. As I begin to flesh out a domain model (or a subset of one) I like to define the characteristics of the fields such as their default values, sizes etc. Once I&#39;m done I have a pretty clear idea of what my initial set of migrations and models need to look like. But there is a problem... now I have to actually re-create this information in another form.</p>
+
+<h2>A Solution</h2>
+
+<p>SQL Editor has an export function that will create a migration file for you, but it is very simplistic, and it won&#39;t generate models for you. To solve this problem I created a <a href="http://github.com/bnadlerjr/domain">custom Rails generator</a> that takes a SQL Editor file (it is really just XML), parses it, and not only generates the migrations, but the models along with validations and their relationships. Not only that, but it will also generate unit tests for you, checking for those validations and relationships.</p>
+
+<p>Let&#39;s take a look at how this works.</p>
+
+<ol>
+<li>First, create your domain model in SQL Editor. Define relationships, default values, required fields, etc.</li>
+<li>Download the generator to a path where Rails can find it (e.g. <code>lib/generators</code>)</li>
+<li>Run the generator on the SQL Editor file in your Rails project directory.</li>
+<li>After the files are generated you can edit them as needed.</li>
+</ol>
+
+<h2>Some Caveats</h2>
+
+<p>As I mentioned earlier, I use this generator at the beginning of a project, to flesh out a basic domain quickly. Once this is done I then add to it and refactor it using BDD or TDD. I do not recommend trying to generate your entire model up front (unless it&#39;s a very small project).</p>
+
+<p>Also, the generator is very basic at this point and makes the assumption that you&#39;re using the <a href="http://github.com/thoughtbot/shoulda">Shoulda framework</a> for testing. The generator will pick up <code>has_many</code> and <code>belongs_to</code> relationships, but as yet I have not added <code>has_and_belongs_to_many</code> or <code>has_many_through</code>. I do plan on adding this, however. I&#39;d appreciate any feedback anyone might have, you can find the project on my <a href="http://github.com/bnadlerjr/domain">GitHub page</a>.</p>
+
+  </article>
+  <hr />
+  <div class="social-button">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
+</div>
+<div class="social-button">
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+<div class="social-button">
+  <script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="social-button">
+  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Rails Domain Generation with SQL Editor" data-url="http://bobnadler.com//articles/2010/07/26/rails-domain-generation-with-sql-editor.html">Vote on HN</a>
+</div>
+<div class="social-button">
+  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+</div>
+
+  <hr />
+  <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
+  #mc_embed_signup input.email{width:248px;}
+  #mc_embed_signup input.button{width:250px;}
+  #mc_embed_signup figure{float:left;}
+  #mc_embed_signup figure figcaption{font-size: 0.5em;}
+  #mc_embed_signup form{float:right;}
+</style>
+<div id="mc_embed_signup">
+  <figure>
+    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
+    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
+  </figure>
+  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
+        <p>No spam, ever. Unsubscribe at any time.</p>
+  </form>
+</div>
+<div style="clear: both"></div>
+<!--End mc_embed_signup-->
+
+  <hr />
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '';
+    var disqus_title = 'Rails Domain Generation with SQL Editor';
+    var disqus_url = 'http://bobnadler.com//articles/2010/07/26/rails-domain-generation-with-sql-editor.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <footer>
+            <ul>
+              <li><a href="/about.html">about</a></li>
+              <li><a href="/">articles</a></li>
+              <li><a href="https://github.com/bnadlerjr">github</a></li>
+              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
+              <li><a href="/feed.xml">rss</a></li>
+            </ul>
+            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+
+  </body>
+</html>
