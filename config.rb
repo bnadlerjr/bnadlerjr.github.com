@@ -19,6 +19,8 @@ helpers do
   end
 end
 
+activate :autoprefixer
+
 activate :blog do |blog|
   blog.layout = "blog_layout"
   blog.prefix = "articles"
