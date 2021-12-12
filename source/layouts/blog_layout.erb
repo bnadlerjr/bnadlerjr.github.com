@@ -1,22 +1,25 @@
 <% wrap_layout :layout do %>
-  <article>
-    <div class="article-header">
-      <h1><%= current_article.title %></h1>
-      <p class="article-date"><%= current_article.date.strftime("%B %e, %Y") %></p>
-      <%= partial "social_buttons" %>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <header class="blog-post-header">
+        <h2 class="title mb-2"><%= current_article.title %></h2>
+        <div class="meta mb-3">
+          <span class="date">Published <%= distance_of_time_in_words current_article.date, Time.now %> ago</span>
+          <span class="time"><%= reading_time current_article %></span>
+        </div>
+      </header>
+      <div class="blog-post-body">
+        <%= partial "article_image", locals: {
+          filename: current_article.data.image,
+          alt: current_article.data.alt,
+          source: current_article.data.source,
+          url: current_article.data.url
+        } %>
+        <%= yield %>
+      </div>
+      <div class="blog-comments-section">
+        <%= partial 'disqus' %>
+      </div>
     </div>
-    <%= partial "article_image", locals: {
-      filename: current_article.data.image,
-      alt: current_article.data.alt,
-      source: current_article.data.source,
-      url: current_article.data.url
-    } %>
-    <%= yield %>
   </article>
-  <hr />
-  <%= partial "social_buttons" %>
-  <hr />
-  <%= partial "mailing_list_subscribe" %>
-  <hr />
-  <%= partial "disqus" %>
 <% end %>

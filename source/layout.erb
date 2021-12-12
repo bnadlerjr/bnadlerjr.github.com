@@ -3,73 +3,74 @@
   <head>
     <title><%= title %></title>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
     <meta name="rating" content="general" />
     <meta name="description" content="<%= current_page.data.description %>" />
-    <%= partial "meta_open_graph" %>
-    <%= partial "meta_twitter_card" %>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
-    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
+    <%= partial 'meta_open_graph' %>
+    <%= partial 'meta_twitter_card' %>
     <link rel="icon" type="image/png" href="favicon.png">
-    <%= stylesheet_link_tag "styles" %>
+    <%= javascript_include_tag 'fontawesome.min.js', defer: true %>
+    <%= stylesheet_link_tag 'github' %>
+    <%= stylesheet_link_tag 'styles' %>
     <% if content_for?(:article_styles) %>
       <%= yield_content :article_styles %>
     <% end %>
     <% if build? %>
-    <%= partial "google_analytics" %>
+      <%= partial 'google_analytics' %>
     <% end %>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="content">
-        <div class="mobile-header">
-            <% link_to "/index.html" do %>
-              <%= image_tag 'logo.png', alt: 'Logo' %>
-            <% end %>
-            <ul>
-              <li><%= link_to "about", "/about.html" %></li>
-              <li><%= link_to "articles", "/index.html" %></li>
-              <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
-              <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
-              <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-              <li><%= link_to "rss", "/feed.xml" %></li>
+    <header class="header text-center">
+      <h1 class="blog-name pt-lg-4 mb-0">
+        <% link_to '/index.html', class: 'no-text-decoration' do %>
+          <%= image_tag 'BobNadlerLogoHiRes.png', class: 'img-fluid d-none d-lg-block', alt: 'Bob Nadler, Jr.' %>
+          <span class="d-lg-none">Bob Nadler, Jr.</span>
+        <% end %>
+      </h1>
+
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navigation" class="collapse navbar-collapse flex-column" >
+          <div class="profile-section pt-3 pt-lg-0">
+            <%= image_tag 'me-circle-color.png', alt: 'Bob Nadler, Jr.', class: 'profile-image mb-3 rounded-circle mx-auto' %>
+            <div class="bio mb-3">
+              Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+              <br>
+              <%= link_to 'Find out more about me', '/about.html' %>
+            </div>
+            <ul class="social-list list-inline py-3 mx-auto">
+              <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
             </ul>
-        </div>
-        <header>
-          <% link_to "/index.html" do %>
-            <%= image_tag 'me.png', alt: 'Bob Nadler, Jr.' %>
-            <%= image_tag 'logo.png', alt: 'Logo' %>
-          <% end %>
-          <nav>
-            <ul>
-              <li><%= link_to "about", "/about.html" %></li>
-              <li><%= link_to "articles", "/index.html" %></li>
-            </ul>
-          </nav>
-          <ul class="social">
-            <li><%= icon "github", "https://github.com/bnadlerjr" %></li>
-            <li><%= icon "twitter", "https://twitter.com/bnadlerjr" %></li>
-            <li><%= icon "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-            <li><%= icon "rss", "/feed.xml" %></li>
+            <hr>
+          </div>
+
+          <ul class="navbar-nav flex-column text-start">
+            <%= menu_link 'Home', '/index.html', 'fa-home' %>
+            <%= menu_link 'About Me', '/about.html', 'fa-user' %>
           </ul>
-        </header>
-        <main>
-          <%= yield %>
-          <footer>
-            <ul>
-              <li><%= link_to "about", "/about.html" %></li>
-              <li><%= link_to "articles", "/index.html" %></li>
-              <li><%= link_to "github", "https://github.com/bnadlerjr" %></li>
-              <li><%= link_to "twitter", "https://twitter.com/bnadlerjr" %></li>
-              <li><%= link_to "linkedin", "https://www.linkedin.com/in/bobnadlerjr" %></li>
-              <li><%= link_to "rss", "/feed.xml" %></li>
-            </ul>
-            Copyright &copy; 2010-2018 <%= link_to "Bob Nadler, Jr.", "/index.html" %>
-          </footer>
-        </main>
-      </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="main-wrapper">
+      <%= yield %>
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+      </footer>
     </div>
-    <%= partial "social_setup" %>
+
+    <%= javascript_include_tag 'popper.min' %>
+    <%= javascript_include_tag 'bootstrap.min' %>
+    <%= javascript_include_tag 'highlight.pack' %>
+    <%= javascript_include_tag 'blog' %>
   </body>
 </html>

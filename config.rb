@@ -14,8 +14,19 @@ helpers do
     "<script src='https://gist.github.com/bnadlerjr/#{id}.js'></script>"
   end
 
-  def icon(name, url)
-    link_to("", url, class: "icon-#{name}")
+  def reading_time(article)
+    minutes = (article.body.split.size / 180).floor
+    minutes.positive? ? "#{minutes} min read" : 'less than 1 min read'
+  end
+
+  def menu_link(text, url, icon)
+    active = url == "/#{current_page.path}"
+    icon_tag = content_tag(:i, '', class: "fas fa-fw me-2 #{icon}")
+    link_text = active ? "#{text} #{content_tag(:span, class: 'sr-only') { '(current)' }}" : text
+
+    content_tag(:li, class: 'nav-item') do
+      link_to("#{icon_tag} #{link_text}", url, class: active ? 'nav-link active' : 'nav-link')
+    end
   end
 end
 

@@ -3,8 +3,30 @@ title: "Bob Nadler, Jr."
 description: "Bob Nadler, Jr's website."
 type: "website"
 ---
-<ol class="article-list">
-<% blog.articles.each do |article| %>
-  <li><%= link_to article.title, article %> <span><%= article.date.strftime('%B %e, %Y') %></span></li>
-<% end %>
-</ol>
+<%= partial '_mailing_list_subscribe' %>
+<section class="blog-list px-3 py-5 p-md-5">
+  <div class="container single-col-max-width">
+    <% blog.articles.each do |article| %>
+      <div class="item mb-5">
+        <div class="row g-3 g-xl-0">
+          <div class="col-2 col-xl-3">
+            <%= image_tag "articles/#{article.data.image}", alt: article.data.alt, class: 'img-fluid post-thumb' %>
+          </div>
+          <div class="col">
+            <h3 class="title mb-1">
+              <%= link_to article.title, article, class: 'text-link' %>
+            </h3>
+            <div class="meta mb-1">
+              <span class="date">Published <%= distance_of_time_in_words article.date, Time.now %> ago</span>
+              <span class="time"><%= reading_time article %></span>
+            </div>
+            <div class="intro">
+              <%= article.summary %>
+            </div>
+            <%= link_to 'Read more &rarr;', article, class: 'text-link' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

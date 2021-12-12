@@ -1,6 +1,10 @@
-<figure class="article-image">
+<% if filename %>
+<figure class="ms-3 figure float-end">
   <a href="<%= url %>">
-    <%= image_tag("articles/#{filename}", alt: alt, width: "256") %>
+    <%= image_tag "articles/#{filename}", alt: alt, class: 'figure-img img-fluid' %>
   </a>
-  <figcaption>Image by <span><%= source %></span></figcaption>
+  <figcaption class="figure-caption text-end text-muted">
+    Image by <span class="text-uppercase"><%= source %></span>
+  </figcaption>
 </figure>
+<% end %>
