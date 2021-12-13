@@ -17,6 +17,10 @@
         } %>
         <%= yield %>
       </div>
+      <nav class="blog-nav nav nav-justified my-5">
+        <%= directional_link :prev, current_article.article_previous %>
+        <%= directional_link :next, current_article.article_next %>
+      </nav>
       <div class="blog-comments-section">
         <%= partial 'disqus' %>
       </div>

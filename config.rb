@@ -29,7 +29,7 @@ helpers do
     end
   end
 
-  def pagination_link(direction, page)
+  def directional_link(direction, page)
     styles = ["nav-link-#{direction}", 'nav-item', 'nav-link']
     styles << 'd-none' if page.nil?
 
