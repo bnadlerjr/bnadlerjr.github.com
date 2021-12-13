@@ -28,12 +28,28 @@ helpers do
       link_to("#{icon_tag} #{link_text}", url, class: active ? 'nav-link active' : 'nav-link')
     end
   end
+
+  def pagination_link(direction, page)
+    styles = ["nav-link-#{direction}", 'nav-item', 'nav-link']
+    styles << 'd-none' if page.nil?
+
+    if direction == :next
+      styles << 'rounded-end'
+      text = 'Next<i class="arrow-next fas fa-long-arrow-alt-right"></i>'
+    else
+      styles << 'rounded-start'
+      text = 'Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i>'
+    end
+
+    link_to(text, page, class: styles.join(' '))
+  end
 end
 
 activate :autoprefixer
 
 activate :blog do |blog|
   blog.layout = "blog_layout"
+  blog.paginate = true
   blog.prefix = "articles"
   blog.new_article_template = "templates/new_article_template.markdown.erb"
 end
