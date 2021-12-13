@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark" >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div id="navigation" class="collapse navbar-collapse flex-column" >
+    <div class="profile-section pt-3 pt-lg-0">
+      <%= image_tag 'me-circle-color.png', alt: 'Bob Nadler, Jr.', class: 'profile-image mb-3 rounded-circle mx-auto' %>
+    <div class="bio mb-3">
+      Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+      <br>
+      <%= link_to 'Find out more about me', '/about.html' %>
+    </div>
+    <ul class="social-list list-inline py-3 mx-auto">
+      <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="/feed.xml"><i class="fas fa-rss fa-fw"></i></a></li>
+    </ul>
+    <hr>
+    </div>
+
+    <ul class="navbar-nav flex-column text-start">
+      <%= menu_link 'Home', '/index.html', 'fa-home' %>
+      <%= menu_link 'About Me', '/about.html', 'fa-user' %>
+    </ul>
+
+    <div class="pt-2">
+      <hr>
+      <small class="copyright">Copyright &copy; 2010-<%= Date.today.year %> Bob Nadler, Jr.</small>
+    </div>
+  </div>
+</nav>
