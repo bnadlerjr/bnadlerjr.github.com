@@ -95,5 +95,4 @@ activate :search_engine_sitemap
 configure :build do
   activate :asset_hash, ignore: 'favicon.png'
   activate :minify_css
-  activate :minify_javascript
 end
