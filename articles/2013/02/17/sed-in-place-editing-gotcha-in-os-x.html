@@ -3,6 +3,8 @@
   <head>
     <title>Bob Nadler, Jr | sed in-place editing gotcha in OS X</title>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
     <meta name="rating" content="general" />
     <meta name="description" content="The -i option for the sed command line tool in OS X behaves differently than the Linux version." />
@@ -18,12 +20,11 @@
 <meta name="twitter:image" content="http://bobnadler.com/images/articles/danger-carnivorous-pigeons.jpg">
 <meta name="twitter:description" content="The -i option for the sed command line tool in OS X behaves differently than the Linux version.">
 
-    <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <link href="//fonts.googleapis.com/css?family=Lora|Istok+Web" rel="stylesheet" type="text/css">
-    <link rel="author" href="https://plus.google.com/u/0/102659859857244557612">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="/stylesheets/styles-abb71870.css" rel="stylesheet" />
-    <script>
+    <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
+    <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-30c9a44b.css" rel="stylesheet" />
+      <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -34,65 +35,69 @@
 
   </head>
   <body>
-    <div class="wrapper">
-      <div class="content">
-        <div class="mobile-header">
-<a href="/">              <img src="/images/logo-efe9133a.png" alt="Logo" />
-</a>            <ul>
-              <li><a href="/about.html">about</a></li>
-              <li><a href="/">articles</a></li>
-              <li><a href="https://github.com/bnadlerjr">github</a></li>
-              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
-              <li><a href="/feed.xml">rss</a></li>
-            </ul>
-        </div>
-        <header>
-<a href="/">            <img src="/images/me-2e7bd69b.png" alt="Bob Nadler, Jr." />
-            <img src="/images/logo-efe9133a.png" alt="Logo" />
-</a>          <nav>
-            <ul>
-              <li><a href="/about.html">about</a></li>
-              <li><a href="/">articles</a></li>
-            </ul>
-          </nav>
-          <ul class="social">
-            <li><a href="https://github.com/bnadlerjr" class="icon-github"></a></li>
-            <li><a href="https://twitter.com/bnadlerjr" class="icon-twitter"></a></li>
-            <li><a href="https://www.linkedin.com/in/bobnadlerjr" class="icon-linkedin"></a></li>
-            <li><a href="/feed.xml" class="icon-rss"></a></li>
-          </ul>
-        </header>
-        <main>
-            <article>
-    <div class="article-header">
-      <h1>sed in-place editing gotcha in OS X</h1>
-      <p class="article-date">February 17, 2013</p>
-      <div class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
-</div>
-<div class="social-button">
-  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-</div>
-<div class="social-button">
-  <script type="IN/Share" data-counter="right"></script>
-</div>
-<div class="social-button">
-  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="sed in-place editing gotcha in OS X" data-url="http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html">Vote on HN</a>
-</div>
-<div class="social-button">
-  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
-</div>
+    <header class="header text-center">
+      <h1 class="blog-name pt-lg-4 mb-0">
+<a href="/" class="no-text-decoration">          <img src="/images/BobNadlerLogoHiRes-334825ba.png" class="img-fluid d-none d-lg-block" alt="Bob Nadler, Jr." />
+          <span class="d-lg-none">Bob Nadler, Jr.</span>
+</a>      </h1>
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div id="navigation" class="collapse navbar-collapse flex-column" >
+    <div class="profile-section pt-3 pt-lg-0">
+      <img src="/images/me-circle-color-f4e5646d.png" alt="Bob Nadler, Jr." class="profile-image mb-3 rounded-circle mx-auto" />
+    <div class="bio mb-3">
+      Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+      <br>
+      <a href="/about.html">Find out more about me</a>
     </div>
-    <figure class="article-image">
+    <ul class="social-list list-inline py-3 mx-auto">
+      <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="/feed.xml"><i class="fas fa-rss fa-fw"></i></a></li>
+    </ul>
+    <hr>
+    </div>
+
+    <ul class="navbar-nav flex-column text-start">
+      <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-fw me-2 fa-home"></i> Home</a></li>
+      <li class="nav-item"><a href="/about.html" class="nav-link"><i class="fas fa-fw me-2 fa-user"></i> About Me</a></li>
+    </ul>
+
+    <div class="pt-2">
+      <hr>
+      <small class="copyright">Copyright &copy; 2010-2021 Bob Nadler, Jr.</small>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+    <div class="main-wrapper">
+        <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <header class="blog-post-header">
+        <h2 class="title mb-2">sed in-place editing gotcha in OS X</h2>
+        <div class="meta mb-3">
+          <span class="date">Published almost 9 years ago</span>
+          <span class="time">less than 1 min read</span>
+        </div>
+      </header>
+      <div class="blog-post-body">
+        <figure class="ms-3 figure float-end">
   <a href="http://www.flickr.com/photos/amagill/106049506/">
-    <img src="/images/articles/danger-carnivorous-pigeons-8b22f7e7.jpg" alt="Danger: Carnivorous Pigeons" width="256" />
+    <img src="/images/articles/danger-carnivorous-pigeons-8b22f7e7.jpg" alt="Danger: Carnivorous Pigeons" class="figure-img img-fluid" />
   </a>
-  <figcaption>Image by <span>Andrew Magill</span></figcaption>
+  <figcaption class="figure-caption text-end text-muted">
+    Image by <span class="text-uppercase">Andrew Magill</span>
+  </figcaption>
 </figure>
 
-    <p>I just started learning about <a href="http://en.wikipedia.org/wiki/Sed">sed</a> and came across one &quot;gotcha&quot; when using the <code>-i</code> option in OS X. The <code>-i</code> option allows you to edit a file in-place. It takes an optional parameter - a string to use as the extension for the backup file. If this parameter is not provided, then a backup file is not created.</p>
+        <p>I just started learning about <a href="http://en.wikipedia.org/wiki/Sed">sed</a> and came across one &quot;gotcha&quot; when using the <code>-i</code> option in OS X. The <code>-i</code> option allows you to edit a file in-place. It takes an optional parameter - a string to use as the extension for the backup file. If this parameter is not provided, then a backup file is not created.</p>
 
 <p>I was using sed to remove some tag references from a <a href="http://ctags.sourceforge.net/">ctags</a> file. Since the file could easily be re-generated I didn&#39;t feel the need to provide a backup extension. I tried to execute the command below, but received an error:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>→ sed -i "/lib\/timekeeper\/employee.rb/d" tags
@@ -102,54 +107,36 @@ sed: 1: "tags": undefined label 'ags'
 <p>After some head scratching and Googling I figured out that in OS X the parameter is not optional, so the correct command is this:</p>
 <div class="highlight"><pre class="highlight plaintext"><code>→ sed -i "" "/lib\/timekeeper\/employee.rb/d" tags
 </code></pre></div>
-  </article>
-  <hr />
-  <div class="social-button">
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="bnadlerjr" data-dnt="true">Tweet</a>
-</div>
-<div class="social-button">
-  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-</div>
-<div class="social-button">
-  <script type="IN/Share" data-counter="right"></script>
-</div>
-<div class="social-button">
-  <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="sed in-place editing gotcha in OS X" data-url="http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html">Vote on HN</a>
-</div>
-<div class="social-button">
-  <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+        <hr>
+        <div class="text-center">
+  <h6 class="text-uppercase">Share This Article</h6>
+
+  <ul class="share-list list-inline">
+    <li class="list-inline-item">
+<a href="https://twitter.com/intent/tweet?text=sed%20in-place%20editing%20gotcha%20in%20OS%20X&amp;url=http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://twitter.com/intent/tweet?text=sed%20in-place%20editing%20gotcha%20in%20OS%20X&amp;url=http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://news.ycombinator.com/submitlink?t=sed%20in-place%20editing%20gotcha%20in%20OS%20X&amp;u=http://bobnadler.com//articles/2013/02/17/sed-in-place-editing-gotcha-in-os-x.html" target="_blank">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+</a>    </li>
+  </ul>
 </div>
 
-  <hr />
-  <!-- Begin MailChimp Signup Form -->
-<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-  #mc_embed_signup{background:#fff; font:14px Helvetica,Arial,sans-serif;}
-  #mc_embed_signup input.email{width:248px;}
-  #mc_embed_signup input.button{width:250px;}
-  #mc_embed_signup figure{float:left;}
-  #mc_embed_signup figure figcaption{font-size: 0.5em;}
-  #mc_embed_signup form{float:right;}
-</style>
-<div id="mc_embed_signup">
-  <figure>
-    <img src="/images/postage-660a86d2.jpg" alt="Email list" width="256px" />
-    <figcaption>Image by <a href="https://flic.kr/p/5vyjNk">husin.sani</a></figcaption>
-  </figure>
-  <form action="//bobnadler.us9.list-manage.com/subscribe/post?u=1070de28e320073a93aa40ff4&amp;id=6066e08e4c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-        <label for="mce-EMAIL">Don't miss a post! Subscribe to my mailing list.</label>
-        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-        <div style="position: absolute; left: -5000px;"><input type="text" name="b_1070de28e320073a93aa40ff4_6066e08e4c" tabindex="-1" value=""></div>
-        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div>
-        <p>No spam, ever. Unsubscribe at any time.</p>
-  </form>
-</div>
-<div style="clear: both"></div>
-<!--End mc_embed_signup-->
-
-  <hr />
-  <div id="disqus_thread"></div>
+      </div>
+      <nav class="blog-nav nav nav-justified my-5">
+        <a href="/articles/2013/01/10/syntax-sugar-for-defining-test-helper-methods.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+        <a href="/articles/2013/03/03/turn-a-ruby-array-into-a-hash.html" class="nav-link-next nav-item nav-link rounded-end">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+      </nav>
+      <div class="blog-comments-section">
+        <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'bnadlerjr';
@@ -166,25 +153,18 @@ sed: 1: "tags": undefined label 'ags'
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
-
-          <footer>
-            <ul>
-              <li><a href="/about.html">about</a></li>
-              <li><a href="/">articles</a></li>
-              <li><a href="https://github.com/bnadlerjr">github</a></li>
-              <li><a href="https://twitter.com/bnadlerjr">twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/bobnadlerjr">linkedin</a></li>
-              <li><a href="/feed.xml">rss</a></li>
-            </ul>
-            Copyright &copy; 2010-2018 <a href="/">Bob Nadler, Jr.</a>
-          </footer>
-        </main>
       </div>
     </div>
-    <script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
-<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
+  </article>
 
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+      </footer>
+    </div>
+
+    <script src="/javascripts/popper.min-624be825.js"></script>
+    <script src="/javascripts/bootstrap.min-3f094f01.js"></script>
+    <script src="/javascripts/highlight.pack-c076d281.js"></script>
+    <script src="/javascripts/blog-541e137f.js"></script>
   </body>
 </html>
