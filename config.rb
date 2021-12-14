@@ -45,6 +45,22 @@ helpers do
 
     link_to(text, page, class: styles.join(' '))
   end
+
+  def twitter_share_url(article)
+    "https://twitter.com/intent/tweet?text=#{article.title}&url=#{full_url(article.url)}"
+  end
+
+  def linkedin_share_url(article)
+    "https://www.linkedin.com/sharing/share-offsite/?url=#{full_url(article.url)}"
+  end
+
+  def reddit_share_url(article)
+    "https://twitter.com/intent/tweet?text=#{article.title}&url=#{full_url(article.url)}"
+  end
+
+  def hacker_news_share_url(article)
+    "https://news.ycombinator.com/submitlink?t=#{article.title}&u=#{full_url(article.url)}"
+  end
 end
 
 activate :autoprefixer

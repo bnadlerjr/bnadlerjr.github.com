@@ -1,0 +1,29 @@
+<div class="text-center">
+  <h6 class="text-uppercase">Share This Article</h6>
+
+  <ul class="share-list list-inline">
+    <li class="list-inline-item">
+      <% link_to twitter_share_url(current_article), target: '_blank' do %>
+        <i class="fab fa-twitter fa-fw fa-2x"></i>
+      <% end %>
+    </li>
+
+    <li class="list-inline-item">
+      <% link_to linkedin_share_url(current_article), target: '_blank' do %>
+        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+      <% end %>
+    </li>
+
+    <li class="list-inline-item">
+      <% link_to reddit_share_url(current_article), target: '_blank' do %>
+        <i class="fab fa-reddit fa-fw fa-2x"></i>
+      <% end %>
+    </li>
+
+    <li class="list-inline-item">
+      <% link_to hacker_news_share_url(current_article), target: '_blank' do %>
+        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+      <% end %>
+    </li>
+  </ul>
+</div>
