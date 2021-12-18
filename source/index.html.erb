@@ -11,7 +11,9 @@ pageable: true
       <div class="item mb-5">
         <div class="row g-3 g-xl-0">
           <div class="col-2 col-xl-3">
-            <%= image_tag "articles/#{article.data.image}", alt: article.data.alt, class: 'img-fluid post-thumb' %>
+            <% if article.data.image %>
+              <%= image_tag "articles/#{article.data.image}", alt: article.data.alt, class: 'img-fluid post-thumb' %>
+            <% end %>
           </div>
           <div class="col">
             <h3 class="title mb-1">
