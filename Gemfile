@@ -5,6 +5,7 @@ ruby '2.7.3'
 
 gem 'buffer', '~> 0.1'
 gem 'builder', '~> 3.2'
+gem 'html-proofer', '~> 3.19'
 gem 'launchy', '~> 2.5'
 gem 'middleman', '~> 4.4'
 gem 'middleman-autoprefixer', '~> 3.0'
