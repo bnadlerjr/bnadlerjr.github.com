@@ -55,7 +55,7 @@ helpers do
   end
 
   def reddit_share_url(article)
-    "https://twitter.com/intent/tweet?text=#{article.title}&url=#{full_url(article.url)}"
+    "https://www.reddit.com/submit?title=#{article.title}&url=#{full_url(article.url)}"
   end
 
   def hacker_news_share_url(article)
