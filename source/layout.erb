@@ -10,7 +10,7 @@
     <meta name="description" content="<%= current_page.data.description %>" />
     <%= partial 'meta_open_graph' %>
     <%= partial 'meta_twitter_card' %>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <%= favicon_tag 'favicon.png' %>
     <%= javascript_include_tag 'fontawesome.min.js', defer: true %>
     <%= stylesheet_link_tag 'github' %>
     <%= stylesheet_link_tag 'styles' %>
