@@ -32,8 +32,8 @@ pageable: true
       </div>
     <% end %>
     <nav class="blog-nav nav nav-justified my-5">
-      <%= directional_link :prev, prev_page %>
-      <%= directional_link :next, next_page %>
+      <%= directional_link :prev, prev_page if prev_page %>
+      <%= directional_link :next, next_page if next_page %>
     </nav>
   </div>
 </section>

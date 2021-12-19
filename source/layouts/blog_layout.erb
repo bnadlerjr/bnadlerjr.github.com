@@ -13,15 +13,16 @@
           filename: current_article.data.image,
           alt: current_article.data.alt,
           source: current_article.data.source,
-          url: current_article.data.url
+          url: current_article.data.url,
+          data_proofer_ignore: current_article.data.data_proofer_ignore
         } %>
         <%= yield %>
         <hr>
         <%= partial 'share' %>
       </div>
       <nav class="blog-nav nav nav-justified my-5">
-        <%= directional_link :prev, current_article.article_previous %>
-        <%= directional_link :next, current_article.article_next %>
+        <%= directional_link :prev, current_article.article_previous if current_article.article_previous %>
+        <%= directional_link :next, current_article.article_next if current_article.article_next %>
       </nav>
       <div class="blog-comments-section">
         <%= partial 'disqus' %>

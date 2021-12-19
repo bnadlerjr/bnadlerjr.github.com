@@ -1,6 +1,6 @@
 <% if filename %>
 <figure class="ms-3 figure float-end">
-  <a href="<%= url %>">
+  <a href="<%= url %>" <%= 'data-proofer-ignore' if data_proofer_ignore %>>
     <%= image_tag "articles/#{filename}", alt: alt, class: 'figure-img img-fluid' %>
   </a>
   <figcaption class="figure-caption text-end text-muted">
