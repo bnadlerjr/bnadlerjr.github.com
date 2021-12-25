@@ -3,6 +3,8 @@
 require 'html-proofer'
 require 'w3c_validators'
 
+HTML_FILES = './build/**/*.html'
+
 def fail_with_msg(msg)
   puts "\n\e[31m#{msg}\e[0m"
   abort
@@ -19,7 +21,7 @@ task :preview do
 end
 
 desc 'Deploy the site'
-task deploy: %w[build validate:html validate:feed html_proof] do
+task deploy: %w[build check_spelling validate:html validate:feed html_proof] do
   sh 'bundle exec middleman deploy'
 end
 
@@ -35,7 +37,7 @@ namespace :validate do
     validator = W3CValidators::NuValidator.new
     all_valid = true
     print "\nValidating HTML files..."
-    Dir.glob('./build/**/*.html').each do |filename|
+    Dir.glob(HTML_FILES).each do |filename|
       results = validator.validate_file(filename)
       next unless results.errors.length.positive?
 
@@ -60,4 +62,29 @@ namespace :validate do
   end
 end
 
-task default: %w[validate:html validate:feed html_proof]
+desc 'Check for spelling errors'
+task check_spelling: %w[build] do
+  all_valid = true
+  aspell = [
+    'aspell pipe',
+    '--add-html-skip=code',
+    '--ignore-case',
+    '--ignore=3',
+    '--lang=en_US',
+    '--mode=html',
+    '--personal=./.aspell.en.pws'
+  ].join(' ')
+  print "\nChecking spelling..."
+  Dir.glob(HTML_FILES).each do |filename|
+    result = `cat #{filename} | #{aspell} | grep "^\\&"`
+    next if result.empty?
+
+    all_valid = false
+    puts "\n#{filename}"
+    puts result
+  end
+
+  all_valid ? puts('done!') : fail_with_msg('There were spelling errors!')
+end
+
+task default: %w[check_spelling validate:html validate:feed html_proof]
