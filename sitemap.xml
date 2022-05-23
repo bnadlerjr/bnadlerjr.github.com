@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bobnadler.com/articles/2014/01/20/driving-technical-change.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
+    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -31,6 +31,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://bobnadler.com/articles/2012/02/05/autogenerate-ctags-for-ruby-gems.html</loc>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://bobnadler.com/articles/2015/03/04/database-tests-with-rollbacks-in-clojure.html</loc>
     <lastmod>2021-12-10T14:31:47-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -44,7 +50,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2014/01/26/the-rule-of-three.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -62,7 +68,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2010/08/12/faking-data-with-ranges-in-ruby.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -74,7 +80,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2010/10/30/rubys-matrix.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-29T09:47:43-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -86,13 +92,19 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2010/08/02/refactoring-case-statements-in-ruby.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-29T09:47:43-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2010/12/30/rails-3-generators-lookup-paths.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</loc>
+    <lastmod>2022-05-23T16:06:01-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -104,7 +116,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2014/03/02/how-to-conduct-an-iteration-planning-meeting.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -157,12 +169,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/articles/2012/02/05/autogenerate-ctags-for-ruby-gems.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</loc>
     <lastmod>2021-12-10T14:31:47-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -170,7 +176,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2014/04/01/gitscore-part-1.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -188,7 +194,7 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2014/05/17/gitscore-parts-2-3.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -211,8 +217,8 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <loc>http://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</loc>
+    <lastmod>2021-12-29T09:47:43-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -230,31 +236,37 @@
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2014/04/06/delegation-in-python.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2022-05-23T18:18:53-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html</loc>
+    <lastmod>2022-05-23T18:34:27-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2011/03/28/side-project-car-fuel-mpg-tracker-using-sinatra.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/</loc>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2014/01/20/driving-technical-change.html</loc>
     <lastmod>2021-12-13T18:11:05-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/articles/2015/11/11/iceberg-classes-and-inheritance.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -284,37 +296,37 @@
   </url>
   <url>
     <loc>http://bobnadler.com/404.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/about.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-29T09:47:43-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/page/2/</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/page/3/</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/page/4/</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://bobnadler.com/page/5/</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

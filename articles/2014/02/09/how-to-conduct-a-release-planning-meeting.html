@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | How to Conduct a Release Planning Meeting</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="A sample agenda for conducting an Agile Release Planning Meeting." />
+    <meta property="og:title" content="How to Conduct a Release Planning Meeting" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/stickies.jpg" />
+<meta property="og:description" content="A sample agenda for conducting an Agile Release Planning Meeting." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html">
+<meta name="twitter:title" content="How to Conduct a Release Planning Meeting">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/stickies.jpg">
+<meta name="twitter:description" content="A sample agenda for conducting an Agile Release Planning Meeting.">
+
+    <link href="/favicon.png" rel="icon" type="image/png" />
+    <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
+    <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <header class="header text-center">
+      <h1 class="blog-name pt-lg-4 mb-0">
+<a href="/" class="no-text-decoration">          <img src="/images/BobNadlerLogoHiRes-f3ef50a1.png" class="img-fluid d-none d-lg-block" alt="Bob Nadler, Jr." />
+          <span class="d-lg-none">Bob Nadler, Jr.</span>
+</a>      </h1>
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div id="navigation" class="collapse navbar-collapse flex-column" >
+    <div class="profile-section pt-3 pt-lg-0">
+      <img src="/images/me-circle-color-f4e5646d.png" alt="Bob Nadler, Jr." class="profile-image mb-3 rounded-circle mx-auto" />
+    <div class="bio mb-3">
+      Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+      <br>
+      <a href="/about.html">Find out more about me</a>
+    </div>
+    <ul class="social-list list-inline py-3 mx-auto">
+      <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr" data-proofer-ignore><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="/feed.xml"><i class="fas fa-rss fa-fw"></i></a></li>
+    </ul>
+    <hr>
+    </div>
+
+    <ul class="navbar-nav flex-column text-start">
+      <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-fw me-2 fa-home"></i> Home</a></li>
+      <li class="nav-item"><a href="/about.html" class="nav-link"><i class="fas fa-fw me-2 fa-user"></i> About Me</a></li>
+    </ul>
+
+    <div class="pt-2">
+      <hr>
+      <small class="copyright">Copyright &copy; 2010-2022 Bob Nadler, Jr.</small>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+    <div class="main-wrapper">
+        <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <header class="blog-post-header">
+        <h2 class="title mb-2">How to Conduct a Release Planning Meeting</h2>
+        <div class="meta mb-3">
+          <span class="date">Published over 8 years ago</span>
+          <span class="time">3 min read</span>
+        </div>
+      </header>
+      <div class="blog-post-body">
+        <figure class="ms-3 figure float-end">
+  <a href="http://www.flickr.com/photos/katielips/3628988825/" data-proofer-ignore>
+    <img src="/images/articles/stickies-92031003.jpg" alt="Stickies" class="figure-img img-fluid" />
+  </a>
+  <figcaption class="figure-caption text-end text-muted">
+    Image by <span class="text-uppercase">Katie Lips</span>
+  </figcaption>
+</figure>
+
+        <p>The purpose of a <a href="http://www.extremeprogramming.org/rules/planninggame.html">Release Planning meeting</a> is to have a team commit to a release goal in a set of iterations. The output of the meeting will be a tentative release date, a roadmap of time-boxed iterations with <a href="http://www.extremeprogramming.org/rules/userstories.html">User Stories</a>, and a rough estimate for each story. Participants include the customer, development team, testers, and any other key people that can provide information around how stories can be prioritized and estimated. Here is a sample agenda that I like to use for conducting one. It is based on the one found in the book <a href="http://www.amazon.com/Collaboration-Explained-Facilitation-Software-Project/dp/0321268776">Collaboration Explained</a> by Jean Tabaka.</p>
+
+<table>
+    <caption>Release Planning Meeting Agenda</caption>
+    <tbody>
+        <tr>
+            <th>Opening</th>
+            <td>Give the team a brief overview of the planned agenda and what to expect. Review the goals of the meeting.</td>
+        </tr>
+        <tr>
+            <th>What is the theme for this Release?</th>
+            <td>Decide on an over-arching theme for the release. The theme acts as a guide around User Story discussion and is used to measure its success.</td>
+        </tr>
+        <tr>
+            <th>What is the timebox for this Release?</th>
+            <td>
+                <p>The Customer should present a view of the Release timebox based on the theme and any other driving factors (customer requests, trade shows, vacations, etc.). The customer and the team then determine the number and length of the iterations.</p>
+                <p>Using a calendar, post the table of dates on the wall.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Who are the team members for this Release?</th>
+            <td>
+                <p>Create a list of team members and their roles. Include any other team member information as well (location, part-time, etc.). All of the team members listed must be able to personally commit to the Release Plan.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What is the expected team velocity?</th>
+            <td>
+                <p>For new teams, list estimated availability for each each team member in points, ideal days, or ideal weeks. Do not let the team go into detailed hours. Combine all individual estimates. This number defines the total velocity of the team.  Post it on the wall.</p>
+                <p>For established teams calculate the average velocity for the team from the last Release.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What are the prioritized stories?</th>
+            <td>
+                <p>Keep the group focused on the current stories by gathering discussion topics on the wall; other stories, issues and concerns will be handled later in the meeting</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Are there any additional stories that can contribute to the Release theme?</th>
+            <td>
+                <p>Timebox new story brainstorming with a timer. Have the customer prioritize the new stories in the context of the existing ones.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>What are the technical concerns around these stories?</th>
+            <td>
+                <p>Brainstorm and display concerns on the wall.</p>
+            </td>
+        </tr>
+        <tr>
+          <th>What are the other concerns or risks associated with this Release?</th>
+          <td>
+            <p>Brainstorm and display concerns on the wall.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Given all of this information, what are the estimates for the stories?</th>
+          <td>
+            <p>Estimate stories using [Planning Poker](http://www.planningpoker.com/detail.html) or [some other method](http://www.mountaingoatsoftware.com/books/agile-estimating-and-planning). It may be useful to break up and have smaller groups estimate a subset of the stories. If you choose this method, have each group present their estimates to the entire group when done.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Given these estimates, does the prioritization of the stories change?</th>
+          <td>
+            <p>Give the Customer an opportunity to revise priorities based on the high-level estimates.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>What is the mapping of stories for each planned iteration?</th>
+          <td>
+          <p>Given the prioritized list of stories, their estimates, the estimated velocity of the team, and the number of planned iterations, assign stories to each of the iterations. The output of this exercise is the initial roadmap of the Release.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>What is the final set of stories for this Release?</th>
+          <td>
+            <p>Check for concensus of the Release roadmap. Revise it as necessary. The entire team should be onboard and commit to the stories for the Release.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Based on the Release commitment, what are the next actions?</th>
+          <td>
+            <p>Decide on the next steps needed to put the Release Plan into action.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>Close the meeting.</th>
+          <td>
+            <p>Review the purpose of the meeting and ensure that the team agrees that it has been met. Discuss the meeting process (What did or did not go well? What would you change for the next meeting?).</p>
+          </td>
+        </tr>
+    </tbody>
+</table>
+
+        <hr>
+        <div class="text-center">
+  <h6 class="text-uppercase">Share This Article</h6>
+
+  <ul class="share-list list-inline">
+    <li class="list-inline-item">
+<a href="https://twitter.com/intent/tweet?text=How%20to%20Conduct%20a%20Release%20Planning%20Meeting&amp;url=http://bobnadler.com//articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.reddit.com/submit?title=How%20to%20Conduct%20a%20Release%20Planning%20Meeting&amp;url=http://bobnadler.com//articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://news.ycombinator.com/submitlink?t=How%20to%20Conduct%20a%20Release%20Planning%20Meeting&amp;u=http://bobnadler.com//articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html" target="_blank" data-proofer-ignore="true">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+</a>    </li>
+  </ul>
+</div>
+
+      </div>
+      <nav class="blog-nav nav nav-justified my-5">
+        <a href="/articles/2014/02/02/command-pattern-for-sinatra-handlers.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+        <a href="/articles/2014/02/23/pester.html" class="nav-link-next nav-item nav-link rounded-end">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+      </nav>
+      <div class="blog-comments-section">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '9cd2b341-2b39-44a2-a4e2-108a47848a59';
+    var disqus_title = 'How to Conduct a Release Planning Meeting';
+    var disqus_url = 'http://bobnadler.com//articles/2014/02/09/how-to-conduct-a-release-planning-meeting.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </article>
+
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+      </footer>
+    </div>
+
+    <script src="/javascripts/popper.min-624be825.js"></script>
+    <script src="/javascripts/bootstrap.min-3f094f01.js"></script>
+    <script src="/javascripts/highlight.pack-c076d281.js"></script>
+    <script src="/javascripts/blog-541e137f.js"></script>
+  </body>
+</html>

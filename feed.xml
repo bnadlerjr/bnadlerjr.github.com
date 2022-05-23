@@ -3,12 +3,21 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 21 Oct 2018 00:00:00 -0400</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Guidelines for Writing Commit Messages</title>
+      <link>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</link>
+      <guid>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</guid>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I'm going to share my current preferences. These...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/guide.jpg" type="image/jpg" width="256"/>
+    </item>
+    <item>
       <title>Middleman, Shadow-CLJS and React</title>
-      <link>http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html</link>
-      <guid>http://bobnadler.com/articles/2018/09/05/middlenan-shadow-cljs-and-react.html</guid>
+      <link>http://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</link>
+      <guid>http://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</guid>
       <pubDate>Wed, 05 Sep 2018 00:00:00 -0400</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;A few months ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about integrating Middleman with Shadow-CLJS. Today I'm going to expand on that by showing you how to add React to the mix by making a simple &lt;a href="https://en.m.wikipedia.org/wiki/Body_mass_index"&gt;BMI&lt;/a&gt; calculator from scratch. I'm not going to spend too much time explaining the...&lt;/p&gt;</description>
@@ -53,17 +62,6 @@
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;Ruby's &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; is my preferred tool when I need to generate a static website. In this post I'm going to show you how to set up a Middleman project that uses &lt;a href="https://clojurescript.org"&gt;ClojureScript&lt;/a&gt; instead of the default JavaScript or CoffeeScript that ships with Middleman...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/in-the-middle.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>boot-selmer</title>
-      <link>http://bobnadler.com/articles/2017/07/12/boot-selmer.html</link>
-      <guid>http://bobnadler.com/articles/2017/07/12/boot-selmer.html</guid>
-      <pubDate>Wed, 12 Jul 2017 00:00:00 -0400</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;h2&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used &lt;a href="https://leiningen.org/"&gt;Leiningen&lt;/a&gt; for managing dependencies and build tasks. I recently decided to give &lt;a href="http://boot-clj.com/"&gt;Boot&lt;/a&gt; a try. I needed to create a Boot task for compiling &lt;a href="https://github.com/yogthos/Selmer"&gt;Selmer&lt;/a&gt;&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/boots.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>

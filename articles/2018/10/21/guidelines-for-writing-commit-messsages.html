@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
   <head>
-    <title>Bob Nadler, Jr | Middleman Shadow-CLJS Project Template</title>
+    <title>Bob Nadler, Jr | Guidelines for Writing Commit Messages</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
     <meta name="rating" content="general" />
     <meta name="description" content="Middleman project template with Shadow-CLJS support." />
-    <meta property="og:title" content="Middleman Shadow-CLJS Project Template" />
+    <meta property="og:title" content="Guidelines for Writing Commit Messages" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html">
-<meta property="og:image" content="http://bobnadler.com/images/articles/rear-booster.jpg" />
+<meta property="og:url" content="http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/guide.jpg" />
 <meta property="og:description" content="Middleman project template with Shadow-CLJS support." />
 
     <meta name="twitter:card" content="summary">
-<meta name="twitter:url" content="http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html">
-<meta name="twitter:title" content="Middleman Shadow-CLJS Project Template">
-<meta name="twitter:image" content="http://bobnadler.com/images/articles/rear-booster.jpg">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html">
+<meta name="twitter:title" content="Guidelines for Writing Commit Messages">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/guide.jpg">
 <meta name="twitter:description" content="Middleman project template with Shadow-CLJS support.">
 
     <link href="/favicon.png" rel="icon" type="image/png" />
@@ -81,28 +81,51 @@
         <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <header class="blog-post-header">
-        <h2 class="title mb-2">Middleman Shadow-CLJS Project Template</h2>
+        <h2 class="title mb-2">Guidelines for Writing Commit Messages</h2>
         <div class="meta mb-3">
-          <span class="date">Published almost 4 years ago</span>
-          <span class="time">less than 1 min read</span>
+          <span class="date">Published over 3 years ago</span>
+          <span class="time">2 min read</span>
         </div>
       </header>
       <div class="blog-post-body">
         <figure class="ms-3 figure float-end">
-  <a href="https://flic.kr/p/7CLTAY" >
-    <img src="/images/articles/rear-booster-aa6a30c9.jpg" alt="MSZ-008 Z II(rear booster #9)" class="figure-img img-fluid" />
+  <a href="https://flic.kr/p/dNStav" >
+    <img src="/images/articles/guide-14c04e9a.jpg" alt="Guide" class="figure-img img-fluid" />
   </a>
   <figcaption class="figure-caption text-end text-muted">
-    Image by <span class="text-uppercase">5th Luna</span>
+    Image by <span class="text-uppercase">Quinn Dombrowski</span>
   </figcaption>
 </figure>
 
-        <p>Awhile ago I <a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html">wrote</a> about how to set up Shadow-CLJS with Middleman. I finally got around to making a Middleman project template to ease the process of setting up Shadow-CLJS. The source is available on <a href="https://github.com/bnadlerjr/middleman-shadow-cljs">GitHub</a>.</p>
+        <p>Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I&#39;m going to share my current preferences. These are largely based on <a href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Tim Pope&#39;s thoughts</a> as well as <a href="http://who-t.blogspot.com/2009/12/on-commit-messages.html">Peter Hutterer</a>.</p>
 
-<p>To use the template, you&#39;ll need to have Middleman and Yarn installed. You can generate a new project using <a href="https://middlemanapp.com/advanced/project-templates/">Middleman&#39;s <code>-T</code> option</a> like this:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>middleman init my_project -T bnadlerjr/middleman-shadow-cljs
-</code></pre></div>
-<p>When you run <code>middleman server</code>, your CLJS code will compiled automatically. I hope this allows more people who are familiar with Middleman to give Shadow-CLJS a try.</p>
+<p>A well-written commit message is composed of three parts:</p>
+
+<ol>
+<li>Subject</li>
+<li>Body</li>
+<li>Footer</li>
+</ol>
+
+<p>Not every commit message needs to have all three, however.</p>
+
+<h2>Subject</h2>
+
+<p>The subject line should be a short summary of the changes. It is the only required portion of a message and should be around 50 characters or less. This is arguably the most important line, since it will be seen most often.</p>
+
+<p>It should be written in the imperative voice (i.e. &quot;Fix CTA hover state on landing page&quot; and not &quot;Fixes ...&quot;). This is the same voice that Git uses when it writes a commit message for you (i.e. when merging, reverting, etc.). A rule of thumb is that the subject line should complete this sentence: &quot;If applied, this commit will <em>your subject line here</em>&quot;.</p>
+
+<p>Don&#39;t put any ticket numbers from your project tracking tools in the subject line (i.e. &quot;Closes #42: Fix CTA hover state on landing page&quot;). These clutter up the message, place them in the footer section instead (see below). Also, do not write subject lines that only reference an issue (i.e. &quot;Fix bug #44&quot;). A developer should never have to open another tool just to understand a commit message.</p>
+
+<h2>Body</h2>
+
+<p>The body of the message is optional. If present, there should be a blank line between the subject line and the body. Since Git does not wrap text automatically, the body text should be wrapped manually at 72 characters. Git will automatically indent four characters on the left of the message. If we indent four characters on the right for symmetry, we arrive at 72 characters on a standard 80 column terminal.</p>
+
+<p>The body can be divided into as many paragraphs, bullet points, etc. as necessary to describe the changes. It is important that the body be used explain the reasoning behind the changes (i.e. the &quot;what&quot; and &quot;why&quot;) and <em>not</em> the &quot;how&quot;. Future developers can see the how the changes were made by looking at the diff of the commit. They can&#39;t, however, know the reasons why the change was made, the trade-offs considered, etc. from the diff; therefore you need to convey that information in the message body.</p>
+
+<h2>Footer</h2>
+
+<p>The footer is also optional. If present, there should be a blank line between the footer and whatever is above it (i.e. either the body or the subject line if a body is not present). It is used for issue tracker or automated bot comments. You can also use it to include other links to outside sources like documentation, blog posts, etc.</p>
 
         <hr>
         <div class="text-center">
@@ -110,36 +133,36 @@
 
   <ul class="share-list list-inline">
     <li class="list-inline-item">
-<a href="https://twitter.com/intent/tweet?text=Middleman%20Shadow-CLJS%20Project%20Template&amp;url=http://bobnadler.com//articles/2018/07/24/middleman-shadow-cljs-project-template.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
+<a href="https://twitter.com/intent/tweet?text=Guidelines%20for%20Writing%20Commit%20Messages&amp;url=http://bobnadler.com//articles/2018/10/21/guidelines-for-writing-commit-messsages.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
 </a>    </li>
 
     <li class="list-inline-item">
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2018/07/24/middleman-shadow-cljs-project-template.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2018/10/21/guidelines-for-writing-commit-messsages.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
 </a>    </li>
 
     <li class="list-inline-item">
-<a href="https://www.reddit.com/submit?title=Middleman%20Shadow-CLJS%20Project%20Template&amp;url=http://bobnadler.com//articles/2018/07/24/middleman-shadow-cljs-project-template.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
+<a href="https://www.reddit.com/submit?title=Guidelines%20for%20Writing%20Commit%20Messages&amp;url=http://bobnadler.com//articles/2018/10/21/guidelines-for-writing-commit-messsages.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
 </a>    </li>
 
     <li class="list-inline-item">
-<a href="https://news.ycombinator.com/submitlink?t=Middleman%20Shadow-CLJS%20Project%20Template&amp;u=http://bobnadler.com//articles/2018/07/24/middleman-shadow-cljs-project-template.html" target="_blank" data-proofer-ignore="true">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+<a href="https://news.ycombinator.com/submitlink?t=Guidelines%20for%20Writing%20Commit%20Messages&amp;u=http://bobnadler.com//articles/2018/10/21/guidelines-for-writing-commit-messsages.html" target="_blank" data-proofer-ignore="true">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
 </a>    </li>
   </ul>
 </div>
 
       </div>
       <nav class="blog-nav nav nav-justified my-5">
-        <a href="/articles/2018/04/24/write-the-assertion-first.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
-        <a href="/articles/2018/09/05/middleman-shadow-cljs-and-react.html" class="nav-link-next nav-item nav-link rounded-end">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+        <a href="/articles/2018/09/05/middleman-shadow-cljs-and-react.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+        
       </nav>
       <div class="blog-comments-section">
         <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'bnadlerjr';
-    var disqus_identifier = '594778db-f003-4b8e-8cd7-560004d2dcc9';
-    var disqus_title = 'Middleman Shadow-CLJS Project Template';
-    var disqus_url = 'http://bobnadler.com//articles/2018/07/24/middleman-shadow-cljs-project-template.html';
+    var disqus_identifier = '446bd035-bfb0-46ca-9028-b1753a36a3d5';
+    var disqus_title = 'Guidelines for Writing Commit Messages';
+    var disqus_url = 'http://bobnadler.com//articles/2018/10/21/guidelines-for-writing-commit-messsages.html';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
