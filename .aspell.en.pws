@@ -1,4 +1,4 @@
-personal_ws-1.1 en 190 utf-8
+personal_ws-1.1 en 192 utf-8
 ActiveRecord
 AnotherJob
 Autogenerate
@@ -6,6 +6,7 @@ Avdi
 Bartel
 Bonica
 Brenn
+Bumpversion
 CLJS
 CarrierWave
 Clojars
@@ -163,6 +164,7 @@ ruport
 screencast
 screencasts
 selmer
+semver
 shortname
 slugignore
 spellbook
