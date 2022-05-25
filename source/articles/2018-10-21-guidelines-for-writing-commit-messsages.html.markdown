@@ -2,7 +2,7 @@
 id: 446bd035-bfb0-46ca-9028-b1753a36a3d5
 title: Guidelines for Writing Commit Messages
 date: 2018-10-21
-description: "Middleman project template with Shadow-CLJS support."
+description: "My personal guidelines for writing Git commit messages."
 image: "guide.jpg"
 alt: "Guide"
 source: "Quinn Dombrowski"
