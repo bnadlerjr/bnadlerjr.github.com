@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | Workflow for Using Ruby Bumpversion</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="An example script illustrating the usage of the Ruby bumpversion gem." />
+    <meta property="og:title" content="Workflow for Using Ruby Bumpversion" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/subsequently.jpg" />
+<meta property="og:description" content="An example script illustrating the usage of the Ruby bumpversion gem." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html">
+<meta name="twitter:title" content="Workflow for Using Ruby Bumpversion">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/subsequently.jpg">
+<meta name="twitter:description" content="An example script illustrating the usage of the Ruby bumpversion gem.">
+
+    <link href="/favicon.png" rel="icon" type="image/png" />
+    <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
+    <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <header class="header text-center">
+      <h1 class="blog-name pt-lg-4 mb-0">
+<a href="/" class="no-text-decoration">          <img src="/images/BobNadlerLogoHiRes-f3ef50a1.png" class="img-fluid d-none d-lg-block" alt="Bob Nadler, Jr." />
+          <span class="d-lg-none">Bob Nadler, Jr.</span>
+</a>      </h1>
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div id="navigation" class="collapse navbar-collapse flex-column" >
+    <div class="profile-section pt-3 pt-lg-0">
+      <img src="/images/me-circle-color-f4e5646d.png" alt="Bob Nadler, Jr." class="profile-image mb-3 rounded-circle mx-auto" />
+    <div class="bio mb-3">
+      Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+      <br>
+      <a href="/about.html">Find out more about me</a>
+    </div>
+    <ul class="social-list list-inline py-3 mx-auto">
+      <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr" data-proofer-ignore><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="/feed.xml"><i class="fas fa-rss fa-fw"></i></a></li>
+    </ul>
+    <hr>
+    </div>
+
+    <ul class="navbar-nav flex-column text-start">
+      <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-fw me-2 fa-home"></i> Home</a></li>
+      <li class="nav-item"><a href="/about.html" class="nav-link"><i class="fas fa-fw me-2 fa-user"></i> About Me</a></li>
+    </ul>
+
+    <div class="pt-2">
+      <hr>
+      <small class="copyright">Copyright &copy; 2010-2022 Bob Nadler, Jr.</small>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+    <div class="main-wrapper">
+        <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <header class="blog-post-header">
+        <h2 class="title mb-2">Workflow for Using Ruby Bumpversion</h2>
+        <div class="meta mb-3">
+          <span class="date">Published over 3 years ago</span>
+          <span class="time">2 min read</span>
+        </div>
+      </header>
+      <div class="blog-post-body">
+        <figure class="ms-3 figure float-end">
+  <a href="https://flic.kr/p/4xKkzk" >
+    <img src="/images/articles/subsequently-1bcbf54a.jpg" alt="Subsequently" class="figure-img img-fluid" />
+  </a>
+  <figcaption class="figure-caption text-end text-muted">
+    Image by <span class="text-uppercase">Thomas Hawk</span>
+  </figcaption>
+</figure>
+
+        <p>A few years ago while working on a Python project for a client, I came across a tool called <a href="https://github.com/c4urself/bump2version">bumpversion</a>. It was written in Python and was used to modify the version of a package before publishing. It used <a href="https://semver.org/">semver</a> language, so the command <code>bumpversion minor</code> would increment the minor portion of the version. It could also optionally handle making a Git tag, committing, etc. I recently found out there&#39;s an <a href="https://github.com/dlanileonardo/bumpversion">equivalent tool in Ruby</a>. Since I&#39;m mostly writing Ruby these days, I decided to try it out.</p>
+
+<h2>Configuration</h2>
+
+<p>The main configuration point is the <code>.bumpversion.cfg</code> file, which is placed in your project&#39;s root folder. It supports several options and looks something like this:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>[bumpversion]
+current-version=1.3.7
+git-commit=yes
+git-tag=yes
+git-push=yes
+</code></pre></div>
+<p>More options <a href="https://github.com/dlanileonardo/bumpversion#options">are available</a>.</p>
+
+<h2>Usage</h2>
+
+<p>I currently use it for tagging new releases of internal gems with a script that looks like this:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
+<span class="c1"># frozen_string_literal: true</span>
+
+<span class="nb">require</span> <span class="s1">'fileutils'</span>
+
+<span class="no">APP_ROOT</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fail!</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+  <span class="nb">abort</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="s2">USAGE: ./bin/release major|minor|patch"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">system!</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="nb">system</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">||</span> <span class="nb">abort</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">== Command </span><span class="si">#{</span><span class="n">args</span><span class="si">}</span><span class="s2"> failed =="</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="no">FileUtils</span><span class="p">.</span><span class="nf">chdir</span> <span class="no">APP_ROOT</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s1">'== Running Bumpversion =='</span>
+  <span class="n">branch</span> <span class="o">=</span> <span class="sb">`git rev-parse --abbrev-ref HEAD`</span><span class="p">.</span><span class="nf">chomp</span>
+  <span class="k">unless</span> <span class="s1">'main'</span> <span class="o">==</span> <span class="n">branch</span>
+    <span class="nb">fail</span><span class="o">!</span><span class="p">(</span>
+      <span class="s1">'Error: Can only perform a release from the main branch; '</span> <span class="p">\</span>
+      <span class="s2">"current branch is '</span><span class="si">#{</span><span class="n">branch</span><span class="si">}</span><span class="s2">'"</span>
+    <span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="nb">fail</span><span class="o">!</span><span class="p">(</span><span class="s1">'Error: Version part argument is missing'</span><span class="p">)</span> <span class="k">if</span> <span class="no">ARGV</span><span class="p">.</span><span class="nf">length</span><span class="p">.</span><span class="nf">zero?</span> <span class="o">||</span> <span class="no">ARGV</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+  <span class="n">part</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">unless</span> <span class="sx">%w[major minor patch]</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+    <span class="nb">fail</span><span class="o">!</span><span class="p">(</span><span class="s2">"Error: '</span><span class="si">#{</span><span class="n">part</span><span class="si">}</span><span class="s2">' is not a valid version part"</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="nb">system</span><span class="o">!</span><span class="p">(</span><span class="s2">"bundle exec bumpversion --part </span><span class="si">#{</span><span class="n">part</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>The script assumes that the <code>bumpversion</code> gem is installed locally or via a <code>Gemfile</code>.</p>
+
+        <hr>
+        <div class="text-center">
+  <h6 class="text-uppercase">Share This Article</h6>
+
+  <ul class="share-list list-inline">
+    <li class="list-inline-item">
+<a href="https://twitter.com/intent/tweet?text=Workflow%20for%20Using%20Ruby%20Bumpversion&amp;url=http://bobnadler.com//articles/2019/01/03/workflow-using-ruby-bumpversion.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2019/01/03/workflow-using-ruby-bumpversion.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.reddit.com/submit?title=Workflow%20for%20Using%20Ruby%20Bumpversion&amp;url=http://bobnadler.com//articles/2019/01/03/workflow-using-ruby-bumpversion.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://news.ycombinator.com/submitlink?t=Workflow%20for%20Using%20Ruby%20Bumpversion&amp;u=http://bobnadler.com//articles/2019/01/03/workflow-using-ruby-bumpversion.html" target="_blank" data-proofer-ignore="true">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+</a>    </li>
+  </ul>
+</div>
+
+      </div>
+      <nav class="blog-nav nav nav-justified my-5">
+        <a href="/articles/2018/10/21/guidelines-for-writing-commit-messsages.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+        
+      </nav>
+      <div class="blog-comments-section">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = '6bc358a9-90e9-412d-aa75-23a85a016bd8';
+    var disqus_title = 'Workflow for Using Ruby Bumpversion';
+    var disqus_url = 'http://bobnadler.com//articles/2019/01/03/workflow-using-ruby-bumpversion.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </article>
+
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+      </footer>
+    </div>
+
+    <script src="/javascripts/popper.min-624be825.js"></script>
+    <script src="/javascripts/bootstrap.min-3f094f01.js"></script>
+    <script src="/javascripts/highlight.pack-c076d281.js"></script>
+    <script src="/javascripts/blog-541e137f.js"></script>
+  </body>
+</html>

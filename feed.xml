@@ -3,8 +3,17 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Sun, 21 Oct 2018 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 -0500</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Workflow for Using Ruby Bumpversion</title>
+      <link>http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</link>
+      <guid>http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</guid>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 -0500</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;A few years ago while working on a Python project for a client, I came across a tool called &lt;a href="https://github.com/c4urself/bump2version"&gt;bumpversion&lt;/a&gt;. It was written in Python and was used to modify the version of a package before publishing. It used &lt;a href="https://semver.org/"&gt;semver&lt;/a&gt; language, so the command &lt;code&gt;bumpversion...&lt;/code&gt;&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/subsequently.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>Guidelines for Writing Commit Messages</title>
       <link>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</link>
@@ -53,15 +62,6 @@
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;The other day I needed to format some currency values in JavaScript. I remembered coming across &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat"&gt;Intl.NumberFormat&lt;/a&gt; a long time ago on another project, but browser support was sketchy. I looked up the most recent info on &lt;a href="http://caniuse.com/#feat=internationalization"&gt;caniuse&lt;/a&gt; and thankfully almost...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/coins.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>ClojureScript with Middleman via Shadow-CLJS</title>
-      <link>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</link>
-      <guid>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</guid>
-      <pubDate>Sun, 28 Jan 2018 00:00:00 -0500</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;Ruby's &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; is my preferred tool when I need to generate a static website. In this post I'm going to show you how to set up a Middleman project that uses &lt;a href="https://clojurescript.org"&gt;ClojureScript&lt;/a&gt; instead of the default JavaScript or CoffeeScript that ships with Middleman...&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/in-the-middle.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>
