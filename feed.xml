@@ -3,8 +3,17 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 10 Feb 2019 00:00:00 -0500</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>What's the Point of having a Stand-up Meeting?</title>
+      <link>http://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</link>
+      <guid>http://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</guid>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 -0500</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Over the years I've participated my fair share of daily stand-up meetings. The ones I hate the most are where someone (usually a manager) reads a list of tasks, asking about each one. These type of stand-up meetings tend to drag on for an hour or more...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/coordinated.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>Workflow for Using Ruby Bumpversion</title>
       <link>http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</link>
@@ -53,15 +62,6 @@
 
 &lt;p&gt;One, I think it's useful to &lt;a href="https://www.stephencovey.com/7habits/7habits-habit2.php"&gt;begin with the end in mind&lt;/a&gt;. Writing...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/tests.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Formatting Currency in JavaScript</title>
-      <link>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</link>
-      <guid>http://bobnadler.com/articles/2018/02/02/formatting-currency-in-javascript.html</guid>
-      <pubDate>Fri, 02 Feb 2018 00:00:00 -0500</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;The other day I needed to format some currency values in JavaScript. I remembered coming across &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat"&gt;Intl.NumberFormat&lt;/a&gt; a long time ago on another project, but browser support was sketchy. I looked up the most recent info on &lt;a href="http://caniuse.com/#feat=internationalization"&gt;caniuse&lt;/a&gt; and thankfully almost...&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/coins.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>
