@@ -3,8 +3,19 @@
     <title>Bob Nadler, Jr.</title>
     <link>http://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Sun, 10 Feb 2019 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 -0400</lastBuildDate>
     <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Most Important Question A Commit Message Should Answer</title>
+      <link>http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</link>
+      <guid>http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</guid>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;&lt;em&gt;(Note: I previously wrote this article for a blog that no longer exists, so I'm re-posting it here. I've updated a couple of the examples to use more recent ones.)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html"&gt;Many&lt;/a&gt; &lt;a href="http://who-t.blogspot.com/2009/12/on-commit-messages.html"&gt;people&lt;/a&gt; have written about various &lt;a href="https://cbea.ms/git-commit/"&gt;guidelines&lt;/a&gt; for writing a good commit message...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/symbol-of-context.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>What's the Point of having a Stand-up Meeting?</title>
       <link>http://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</link>
@@ -51,17 +62,6 @@
 
 &lt;p&gt;To use the template, you'll need to have...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/rear-booster.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Write the Assertion First</title>
-      <link>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</link>
-      <guid>http://bobnadler.com/articles/2018/04/24/write-the-assertion-first.html</guid>
-      <pubDate>Tue, 24 Apr 2018 00:00:00 -0400</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;When writing automated tests (whether in a TDD fashion or otherwise) I find it helpful to write the assertion first, before any setup code. There are two main reasons I think it is helpful.&lt;/p&gt;
-
-&lt;p&gt;One, I think it's useful to &lt;a href="https://www.stephencovey.com/7habits/7habits-habit2.php"&gt;begin with the end in mind&lt;/a&gt;. Writing...&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/tests.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>

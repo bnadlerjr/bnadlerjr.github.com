@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bob Nadler, Jr | The Most Important Question A Commit Message Should Answer</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow" />
+    <meta name="rating" content="general" />
+    <meta name="description" content="The most important question to answer when writing a good commit message." />
+    <meta property="og:title" content="The Most Important Question A Commit Message Should Answer" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html">
+<meta property="og:image" content="http://bobnadler.com/images/articles/symbol-of-context.jpg" />
+<meta property="og:description" content="The most important question to answer when writing a good commit message." />
+
+    <meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html">
+<meta name="twitter:title" content="The Most Important Question A Commit Message Should Answer">
+<meta name="twitter:image" content="http://bobnadler.com/images/articles/symbol-of-context.jpg">
+<meta name="twitter:description" content="The most important question to answer when writing a good commit message.">
+
+    <link href="/favicon.png" rel="icon" type="image/png" />
+    <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
+    <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39915750-1', 'bobnadler.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <header class="header text-center">
+      <h1 class="blog-name pt-lg-4 mb-0">
+<a href="/" class="no-text-decoration">          <img src="/images/BobNadlerLogoHiRes-f3ef50a1.png" class="img-fluid d-none d-lg-block" alt="Bob Nadler, Jr." />
+          <span class="d-lg-none">Bob Nadler, Jr.</span>
+</a>      </h1>
+      <nav class="navbar navbar-expand-lg navbar-dark" >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div id="navigation" class="collapse navbar-collapse flex-column" >
+    <div class="profile-section pt-3 pt-lg-0">
+      <img src="/images/me-circle-color-f4e5646d.png" alt="Bob Nadler, Jr." class="profile-image mb-3 rounded-circle mx-auto" />
+    <div class="bio mb-3">
+      Hi, my name is Bob Nadler. I'm a Senior Software Engineer with over 15 years of experience.
+      <br>
+      <a href="/about.html">Find out more about me</a>
+    </div>
+    <ul class="social-list list-inline py-3 mx-auto">
+      <li class="list-inline-item"><a href="https://twitter.com/bnadlerjr"><i class="fab fa-twitter fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://www.linkedin.com/in/bobnadlerjr" data-proofer-ignore><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://github.com/bnadlerjr"><i class="fab fa-github-alt fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="https://stackoverflow.com/users/117430/bob-nadler"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+      <li class="list-inline-item"><a href="/feed.xml"><i class="fas fa-rss fa-fw"></i></a></li>
+    </ul>
+    <hr>
+    </div>
+
+    <ul class="navbar-nav flex-column text-start">
+      <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-fw me-2 fa-home"></i> Home</a></li>
+      <li class="nav-item"><a href="/about.html" class="nav-link"><i class="fas fa-fw me-2 fa-user"></i> About Me</a></li>
+    </ul>
+
+    <div class="pt-2">
+      <hr>
+      <small class="copyright">Copyright &copy; 2010-2022 Bob Nadler, Jr.</small>
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+    <div class="main-wrapper">
+        <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <header class="blog-post-header">
+        <h2 class="title mb-2">The Most Important Question A Commit Message Should Answer</h2>
+        <div class="meta mb-3">
+          <span class="date">Published about 3 years ago</span>
+          <span class="time">3 min read</span>
+        </div>
+      </header>
+      <div class="blog-post-body">
+        <figure class="ms-3 figure float-end">
+  <a href="https://flic.kr/p/2n8WijN" >
+    <img src="/images/articles/symbol-of-context-e06e0be4.jpg" alt="Symbol of context" class="figure-img img-fluid" />
+  </a>
+  <figcaption class="figure-caption text-end text-muted">
+    Image by <span class="text-uppercase">stan bonnar</span>
+  </figcaption>
+</figure>
+
+        <p><em>(Note: I previously wrote this article for a blog that no longer exists, so I&#39;m re-posting it here. I&#39;ve updated a couple of the examples to use more recent ones.)</em></p>
+
+<p><a href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Many</a> <a href="http://who-t.blogspot.com/2009/12/on-commit-messages.html">people</a> have written about various <a href="https://cbea.ms/git-commit/">guidelines</a> for writing a good commit message, <a href="https://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html">myself included</a>. While following some type of guideline is helpful, most recommendations don&#39;t address the mindset I think you should have when writing a commit message. This mindset can be summed up in one word: <em>context</em>.</p>
+
+<p>In other words, the most important question that a commit message should answer is:</p>
+
+<blockquote class="blockquote m-lg-5 py-3 ps-4 px-lg-5">
+    <p class="mb-2">What is the context I'm trying to convey for these changes?<p>
+</blockquote>
+
+<p>Anyone can look at a diff and see what changes were made, but they can&#39;t see the reasons behind those changes. These reasons are what your commit message should convey. Let&#39;s look at some examples.</p>
+
+<h2>Example A</h2>
+
+<p>In this example we&#39;re changing the way we deploy an application. Imagine the diff includes things like changes to deploy scripts, etc. However, the diff does cannot convey why we&#39;re making these changes, so we should provide that context in our commit message.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>Deploy to EC2 instead of Heroku.
+
+The application will be required in future work to have access to the &lt;FOO&gt;
+database. However, the &lt;FOO&gt; DB resides in a AWS VPC instance and only
+applications that reside in the same VPC can access the DB. For security
+reasons, it was decided that rather than allowing access to the DB from outside
+the VPC to host the widget application inside the VPC. Therefore, this
+application can no longer be deployed to Heroku and instead must be deployed to
+an AWS EC2 instance within the &lt;FOO&gt; VPC.
+
+Switching away from Heroku requires us to set up infrastructure using Python's
+Fabric library. Fabric tasks are now responsible for administering servers and
+deploying the application.
+</code></pre></div>
+<h2>Example B</h2>
+
+<p>In this example involving some CI setup, I had to deal with some private Terraform modules. I found a blog post describing the strategy I wanted to use and included that information in the commit message. Again, it&#39;s easy to see the use of Git&#39;s <code>insteadOf</code> option in the diff. The context of why I used it is in the message.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>CircleCI Terraform format and validate
+
+Use the Terrform Orb to check the formatting of Terraform code and
+validate it. Several of the Terraform modules we use are defined in the
+ops repo which is private. Rather than hard-code the GitHub auth
+token needed to access the repo, use git's `insteadOf` option to
+re-write the repo's URL to include the token. We only need to do this on
+CircleCI since developers already have access to the repo locally. The
+GitHub token is pulled from CircleCI as an environment variable.
+
+This [blog post][1] has a good write-up explaining this strategy in more
+detail.
+
+[1]:
+https://wahlnetwork.com/2020/08/11/using-private-git-repositories-as-terraform-modules/
+</code></pre></div>
+<h2>Example C</h2>
+
+<p>In this final example, I try to convey the reasoning behind a particular refactor.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>Extract and update setup for &lt;foo&gt; logic
+
+Extract setup for &lt;foo&gt; logic from `SetupFoo` IPC
+message handler and move it into the model. This gives us a clear
+separation of concerns between the handler and the domain logic.
+
+In addition, update and document the decision to not update &lt;foo&gt;
+information for a `Bar` that has already been setup for &lt;foo&gt;.
+</code></pre></div>
+<h2>Conclusion</h2>
+
+<p>All of the above examples are from real commit messages to projects that I&#39;ve made. Some names of things like databases, applications, models, etc. have been changed to something more generic since they are from private projects. Hopefully these examples will give you ideas about how to write your own commit messages. Remember, the most important question you need to answer when writing a commit message is: <strong>What is the context I&#39;m trying to convey for these changes?</strong></p>
+
+        <hr>
+        <div class="text-center">
+  <h6 class="text-uppercase">Share This Article</h6>
+
+  <ul class="share-list list-inline">
+    <li class="list-inline-item">
+<a href="https://twitter.com/intent/tweet?text=The%20Most%20Important%20Question%20A%20Commit%20Message%20Should%20Answer&amp;url=http://bobnadler.com//articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html" target="_blank">        <i class="fab fa-twitter fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=http://bobnadler.com//articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html" target="_blank">        <i class="fab fa-linkedin fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://www.reddit.com/submit?title=The%20Most%20Important%20Question%20A%20Commit%20Message%20Should%20Answer&amp;url=http://bobnadler.com//articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html" target="_blank">        <i class="fab fa-reddit fa-fw fa-2x"></i>
+</a>    </li>
+
+    <li class="list-inline-item">
+<a href="https://news.ycombinator.com/submitlink?t=The%20Most%20Important%20Question%20A%20Commit%20Message%20Should%20Answer&amp;u=http://bobnadler.com//articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html" target="_blank" data-proofer-ignore="true">        <i class="fab fa-hacker-news fa-fw fa-2x"></i>
+</a>    </li>
+  </ul>
+</div>
+
+      </div>
+      <nav class="blog-nav nav nav-justified my-5">
+        <a href="/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html" class="nav-link-prev nav-item nav-link rounded-start">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+        
+      </nav>
+      <div class="blog-comments-section">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'bnadlerjr';
+    var disqus_identifier = 'a5bc73e0-bb8b-444a-a0af-69027c873e9a';
+    var disqus_title = 'The Most Important Question A Commit Message Should Answer';
+    var disqus_url = 'http://bobnadler.com//articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+  </article>
+
+      <footer class="footer text-center py-2 theme-bg-dark">
+        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+      </footer>
+    </div>
+
+    <script src="/javascripts/popper.min-624be825.js"></script>
+    <script src="/javascripts/bootstrap.min-3f094f01.js"></script>
+    <script src="/javascripts/highlight.pack-c076d281.js"></script>
+    <script src="/javascripts/blog-541e137f.js"></script>
+  </body>
+</html>

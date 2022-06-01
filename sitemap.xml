@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
-    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <loc>http://bobnadler.com/articles/2014/01/20/driving-technical-change.html</loc>
+    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,6 +45,12 @@
   <url>
     <loc>http://bobnadler.com/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html</loc>
     <lastmod>2021-12-10T14:31:47-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</loc>
+    <lastmod>2022-06-01T17:41:23-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -259,14 +265,14 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/</loc>
-    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
+    <lastmod>2021-12-10T14:31:47-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/articles/2014/01/20/driving-technical-change.html</loc>
-    <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <loc>http://bobnadler.com/</loc>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -338,6 +344,12 @@
   </url>
   <url>
     <loc>http://bobnadler.com/page/5/</loc>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/page/6/</loc>
     <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
