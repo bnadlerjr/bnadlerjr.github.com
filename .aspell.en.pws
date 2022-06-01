@@ -1,4 +1,4 @@
-personal_ws-1.1 en 192 utf-8
+personal_ws-1.1 en 193 utf-8
 ActiveRecord
 AnotherJob
 Autogenerate
@@ -86,6 +86,7 @@ bashrc
 bdfb
 bnadlerjr
 bobnadler
+bonnar
 bundler
 caniuse
 cdbfb
