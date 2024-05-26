@@ -27,7 +27,7 @@ end
 
 desc 'Run HTML-Proofer against build directory'
 task html_proof: %w[build] do
-  options = { assume_extension: true, check_favicon: true, check_https: true, cache: { timeframe: '30d' } }
+  options = { assume_extension: true, check_favicon: true, check_https: true, cache: { timeframe: { external: '30d' } } }
   HTMLProofer.check_directory('./build', options).run
 end
 
