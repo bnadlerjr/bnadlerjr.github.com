@@ -69,7 +69,7 @@ activate :blog do |blog|
   blog.layout = 'blog_layout'
   blog.paginate = true
   blog.prefix = 'articles'
-  blog.new_article_template = 'templates/new_article_template.markdown.erb'
+  blog.new_article_template = File.join(File.dirname(__FILE__), 'templates/new_article_template.markdown.erb')
 end
 
 activate :deploy do |deploy|
