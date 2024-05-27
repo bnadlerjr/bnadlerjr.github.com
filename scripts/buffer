@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# frozen_string_literal: true
+
 # Enqueues a buffer message using an article's description.
 #
 # Example:
@@ -7,25 +9,26 @@
 #
 # BUFFER_ACCESS_TOKEN can be retrieved from https://buffer.com/developers/apps
 #
-require "buffer"
-require "middleman-blog"
+require 'buffer'
+require 'middleman-blog'
 
-LINKEDIN = "52e551e87010b8e0050000ea"
-TWITTER = "52e550d37010b8ea7000017f"
-TEXT_LIMIT = 280 - 25  # Twitter char limit minus shortened link length
+LINKEDIN = '52e551e87010b8e0050000ea'
+TWITTER = '52e550d37010b8ea7000017f'
+TEXT_LIMIT = 280 - 25 # Twitter char limit minus shortened link length
 
 app = ::Middleman::Application.server.inst
 article = app.blog.articles.find { |a| a.title == ARGV[0] }
 raise "Unable to find article: '#{ARGV[0]}'" unless article
 
-description = article.metadata[:page]["description"]
+description = article.metadata[:page]['description']
 message = description.length > TEXT_LIMIT ? article.title : description
 
-raise "Missing BUFFER_ACCESS_TOKEN" unless ENV["BUFFER_ACCESS_TOKEN"]
-client = Buffer::Client.new(ENV["BUFFER_ACCESS_TOKEN"])
+raise 'Missing BUFFER_ACCESS_TOKEN' unless ENV['BUFFER_ACCESS_TOKEN']
+
+client = Buffer::Client.new(ENV['BUFFER_ACCESS_TOKEN'])
 result = client.create_update(
   body: {
-    text: "#{message} #{URI.join("http://bobnadler.com/", article.url)}",
+    text: "#{message} #{URI.join('http://bobnadler.com/', article.url)}",
     profile_ids: [LINKEDIN, TWITTER]
   }
 )
