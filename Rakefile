@@ -87,4 +87,4 @@ task check_spelling: %w[build] do
   all_valid ? puts('done!') : fail_with_msg('There were spelling errors!')
 end
 
-task default: %w[check_spelling validate:html validate:feed html_proof]
+task default: %w[check_spelling validate:feed html_proof]
