@@ -10,7 +10,7 @@ url: "https://flic.kr/p/2n8WijN"
 ---
 *(Note: I previously wrote this article for a blog that no longer exists, so I'm re-posting it here. I've updated a couple of the examples to use more recent ones.)*
 
-[Many](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) [people](http://who-t.blogspot.com/2009/12/on-commit-messages.html) have written about various [guidelines](https://cbea.ms/git-commit/) for writing a good commit message, [myself included](https://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html). While following some type of guideline is helpful, most recommendations don't address the mindset I think you should have when writing a commit message. This mindset can be summed up in one word: *context*.
+[Many](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) [people](https://who-t.blogspot.com/2009/12/on-commit-messages.html) have written about various [guidelines](https://cbea.ms/git-commit/) for writing a good commit message, [myself included](https://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html). While following some type of guideline is helpful, most recommendations don't address the mindset I think you should have when writing a commit message. This mindset can be summed up in one word: *context*.
 
 In other words, the most important question that a commit message should answer is:
 

@@ -6,14 +6,14 @@ description: "Sample program using Twilio and Harvest API's, along with the Port
 image: "the-pesterer.jpg"
 alt: "The Pesterer"
 source: "Peter Alfred Hess"
-url: "http://www.flickr.com/photos/peterhess/5249242387/"
+url: "https://www.flickr.com/photos/peterhess/5249242387/"
 ---
-A few days ago a colleague and I were having a discussion. We work for [Cyrus](http://www.cyrusinnovation.com), an Agile consulting company. Another co-worker of ours is (among a myriad of other things) in charge of making sure our clients are billed correctly. As part of that job he needs to figure out which developers have not entered their hours into Harvest, our time-tracking software. He then needs to send out reminders to those of us that have forgotten to enter our hours.
+A few days ago a colleague and I were having a discussion. We work for [Cyrus](https://www.cyrusinnovation.com), an Agile consulting company. Another co-worker of ours is (among a myriad of other things) in charge of making sure our clients are billed correctly. As part of that job he needs to figure out which developers have not entered their hours into Harvest, our time-tracking software. He then needs to send out reminders to those of us that have forgotten to enter our hours.
 
-My colleague had an idea to leverage the Harvest API and Twilio to create a tool that could automatically send out reminders to the developers. I thought it was an interesting idea that would give me a chance to play around with the Twilio API. I spent a couple of days working on it, and the result is [Pester](http://github.com/bnadlerjr/pester).
+My colleague had an idea to leverage the Harvest API and Twilio to create a tool that could automatically send out reminders to the developers. I thought it was an interesting idea that would give me a chance to play around with the Twilio API. I spent a couple of days working on it, and the result is [Pester](https://github.com/bnadlerjr/pester).
 
 Pester is a command line script that will take a list of employees and their phone numbers from a text file, query Harvest and then send an SMS message to those that have less than 40 hours entered for the previous week. The intention is that this script could be set up as a cron task and run on a regular basis.
 
-I organized the code using the [Ports and Adapters](http://alistair.cockburn.us/Hexagonal+architecture) pattern. The employee file parsing, Harvest querying, and Twilio message sending are all implemented as adapters. This should allow other adapters to be swapped out without changing the core logic. For example, instead of a text file for employees, a database could be used instead.
+I organized the code using the [Ports and Adapters](https://alistair.cockburn.us/Hexagonal+architecture) pattern. The employee file parsing, Harvest querying, and Twilio message sending are all implemented as adapters. This should allow other adapters to be swapped out without changing the core logic. For example, instead of a text file for employees, a database could be used instead.
 
 I'm not sure if others will find the tool useful or not, but hopefully it will serve as a good example of the Ports and Adapters pattern.

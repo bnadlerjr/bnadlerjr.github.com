@@ -8,7 +8,7 @@ alt: "Guide"
 source: "Quinn Dombrowski"
 url: "https://flic.kr/p/dNStav"
 ---
-Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I'm going to share my current preferences. These are largely based on [Tim Pope's thoughts](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) as well as [Peter Hutterer](http://who-t.blogspot.com/2009/12/on-commit-messages.html).
+Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I'm going to share my current preferences. These are largely based on [Tim Pope's thoughts](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) as well as [Peter Hutterer](https://who-t.blogspot.com/2009/12/on-commit-messages.html).
 
 A well-written commit message is composed of three parts:
 

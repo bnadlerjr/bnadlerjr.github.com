@@ -4,7 +4,7 @@ title: "Summarizing Data with Pivot Tables in Ruport"
 date: 2010-07-21
 description: "Using Pivot Tables in the Ruby Ruport gem"
 ---
-*Update: The Ruport patch I mention below has been accepted into Ruport core. The patch also includes support for other operations. See [my commit](http://github.com/ruport/ruport/commit/333a43e3f8ab1e10c36edbb8ea540fb65bacad5b) for details.*
+*Update: The Ruport patch I mention below has been accepted into Ruport core. The patch also includes support for other operations. See [my commit](https://github.com/ruport/ruport/commit/333a43e3f8ab1e10c36edbb8ea540fb65bacad5b) for details.*
 
 Pivot tables are a useful data tool. They allow you to transform large amounts of tabular data into an easier to read format. They can be difficult to create, however, and some people have a hard time understanding how to create them. It took me awhile to fully grasp how they worked.
 
@@ -13,7 +13,7 @@ Pivot tables are mostly found in spreadsheet software, but there are other tools
 ##What is a Pivot Table
 A pivot table is
 
-> a data summarization tool found in data visualization programs such as spreadsheets... pivot-table tools can automatically sort, count, and total the data stored in one table or spreadsheet and create a second table displaying the summarized data.<cite><a href="http://en.wikipedia.org/wiki/Pivot_table">Wikipedia</a></cite>
+> a data summarization tool found in data visualization programs such as spreadsheets... pivot-table tools can automatically sort, count, and total the data stored in one table or spreadsheet and create a second table displaying the summarized data.<cite><a href="https://en.wikipedia.org/wiki/Pivot_table">Wikipedia</a></cite>
 
 Let's say you have a table of sales data like the one below. The first column shows the regions in which sales occurred. The second shows the date of the sale. Finally, the third shows how many units were sold.
 
@@ -72,4 +72,4 @@ Now our data is easier to read and is ready to be rendered using any Ruport form
     +-------------------------------+
 
 ###One Caveat
-Right now, the Ruport pivot method does not work *exactly* like this. Instead of summing the value column it only takes the first value encountered. It doesn't apply in this example since there is only one data point for each "pivot", but it will be a problem with larger datasets. I've written a [patch](http://github.com/bnadlerjr/ruport/commit/9fd92cd785e95bb8f04d182a34840467dd7aea96) that corrects this, but it hasn't been applied to the official repo. So for now, you can get the patch from [my fork](http://github.com/bnadlerjr/ruport). I'll update this post once the patch has been accepted.
+Right now, the Ruport pivot method does not work *exactly* like this. Instead of summing the value column it only takes the first value encountered. It doesn't apply in this example since there is only one data point for each "pivot", but it will be a problem with larger datasets. I've written a [patch](https://github.com/bnadlerjr/ruport/commit/9fd92cd785e95bb8f04d182a34840467dd7aea96) that corrects this, but it hasn't been applied to the official repo. So for now, you can get the patch from [my fork](https://github.com/bnadlerjr/ruport). I'll update this post once the patch has been accepted.

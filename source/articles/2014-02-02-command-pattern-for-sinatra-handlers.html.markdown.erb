@@ -5,7 +5,7 @@ date: 2014-02-02
 description: "How the Command Pattern can help DRY up Sinatra request handlers."
 image: "sex-pistols-something-else.jpg"
 alt: "sex pistols:something else"
-url: "http://www.flickr.com/photos/visualpanic/2942689610/"
+url: "https://www.flickr.com/photos/visualpanic/2942689610/"
 source: "Lali Masriera"
 ---
 One useful pattern I've found when writing Sinatra applications is the command pattern. For those that are not familiar with it, here is a simple example to start with:
@@ -145,7 +145,7 @@ post "/photos" do
 end
 ```
 
-What I've done here is to move the data validation into the command class. However, this poses a problem. the `halt` method is a part of Sinatra, our *web* library. `UploadPhoto` is a part of our *domain*. Mixing the two together is a bad idea. To solve this problem we can use a technique I first read about in Avdi Grimm's [Exceptional Ruby](http://exceptionalruby.com/) (he's also done a [Ruby Tapas](http://www.rubytapas.com/) episode on it). He refers to the technique as the "Caller-supplied fallback strategy". It uses the power of Ruby's blocks to allow us to keep the web specific call to `halt` in our web module, yet still allow us to perform the validation inside the command class. It looks like this:
+What I've done here is to move the data validation into the command class. However, this poses a problem. the `halt` method is a part of Sinatra, our *web* library. `UploadPhoto` is a part of our *domain*. Mixing the two together is a bad idea. To solve this problem we can use a technique I first read about in Avdi Grimm's [Exceptional Ruby](https://exceptionalruby.com/) (he's also done a [Ruby Tapas](https://www.rubytapas.com/) episode on it). He refers to the technique as the "Caller-supplied fallback strategy". It uses the power of Ruby's blocks to allow us to keep the web specific call to `halt` in our web module, yet still allow us to perform the validation inside the command class. It looks like this:
 
 ```ruby
 class UploadPhoto

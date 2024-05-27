@@ -8,7 +8,7 @@ alt: "5 different coins in 5 different currency units (Japanese yen, Taiwanese d
 source: "aotaro"
 url: "https://flic.kr/p/spKXrh"
 ---
-The other day I needed to format some currency values in JavaScript. I remembered coming across [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) a long time ago on another project, but browser support was sketchy. I looked up the most recent info on [caniuse](http://caniuse.com/#feat=internationalization) and thankfully almost all browsers now support it (the only exception is Opera Mini). Let’s take a look at how we can use it for formatting some currency values.
+The other day I needed to format some currency values in JavaScript. I remembered coming across [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) a long time ago on another project, but browser support was sketchy. I looked up the most recent info on [caniuse](https://caniuse.com/internationalization) and thankfully almost all browsers now support it (the only exception is Opera Mini). Let’s take a look at how we can use it for formatting some currency values.
 
 ```javascript
 var formatter = new Intl.NumberFormat('en-US', {

@@ -1,6 +1,6 @@
-xml.rss :version => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom", "xmlns:media" => "http://search.yahoo.com/mrss/" do
+xml.rss :version => "2.0", "xmlns:atom" => "https://www.w3.org/2005/Atom", "xmlns:media" => "https://search.yahoo.com/mrss/" do
   xml.channel do
-    site_url = "http://bobnadler.com/"
+    site_url = "https://bobnadler.com/"
     xml.title "Bob Nadler, Jr."
     xml.link site_url
     xml.description "Articles from Bob Nadler, Jr."

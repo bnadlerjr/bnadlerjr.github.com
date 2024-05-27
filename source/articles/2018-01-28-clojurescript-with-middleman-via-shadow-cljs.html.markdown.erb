@@ -41,7 +41,7 @@ The above configures an external pipeline that will compile our ClojureScript co
 yarn add --dev shadow-cljs
 ```
 
-This will create a `package.json` and `yarn.lock` file in your project root. It will also install shadow-cljs and its dependencies into your node_modules folder. shadow-cljs is [configured](https://shadow-cljs.github.io/docs/UsersGuide.html#_configuration) using a file called `shadow-cljs.edn`. We can generate one like this
+This will create a `package.json` and `yarn.lock` file in your project root. It will also install shadow-cljs and its dependencies into your node_modules folder. shadow-cljs is [configured](https://shadow-cljs.github.io/docs/UsersGuide.html#_config) using a file called `shadow-cljs.edn`. We can generate one like this
 
 ```
 ./node_modules/.bin/shadow-cljs init .
@@ -109,7 +109,7 @@ Next we need to add the `intro` ID to the `h1` tag in `source/index.html.erb`. T
 title: Welcome to Middleman
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" class="middleman-logo" aria-labelledby="middleman-logo__title" role="img">
+<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 400 340" class="middleman-logo" aria-labelledby="middleman-logo__title" role="img">
   <title id="middleman-logo__title">Middleman</title>
   <path class="middleman-logo__top-left-bar" fill-opacity=".45" d="M0 40L200 0v30L0 60z"/>
   <path class="middleman-logo__top-right-bar" fill="#fff" d="M200 0l200 40v20L200 30z"/>

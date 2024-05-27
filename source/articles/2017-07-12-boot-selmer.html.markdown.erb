@@ -9,7 +9,7 @@ source: "Mark Bonica"
 url: "https://flic.kr/p/q74dAB"
 ---
 ## Introduction
-I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used [Leiningen](https://leiningen.org/) for managing dependencies and build tasks. I recently decided to give [Boot](http://boot-clj.com/) a try. I needed to create a Boot task for compiling [Selmer](https://github.com/yogthos/Selmer) templates. This blog post will walk through the steps I took to setup the task and deploy it to Clojars to be used in other projects.
+I’ve been playing around with Clojure and ClojureScript for awhile. So far I’ve always used [Leiningen](https://leiningen.org/) for managing dependencies and build tasks. I recently decided to give [Boot](https://boot-clj.com/) a try. I needed to create a Boot task for compiling [Selmer](https://github.com/yogthos/Selmer) templates. This blog post will walk through the steps I took to setup the task and deploy it to Clojars to be used in other projects.
 
 ## Why use Selmer w/ Boot on the client side?
 The main use case I have for using Selmer on the client side is for generating static web pages. Using Selmer, I can break up common content such as navigation, footers, etc. into separate files and include them as needed. I’ll be publishing a blog post or two in the future about this topic.
@@ -54,7 +54,7 @@ Let’s take a look at the build.boot in detail.
  15       :url         "https://github.com/bnadlerjr/boot-selmer"
  16       :scm         {:url "https://github.com/bnadlerjr/boot-selmer"}
  17       :license     {"Eclipse Public License"
- 18                     "http://www.eclipse.org/legal/epl-v10.html"}})
+ 18                     "https://www.eclipse.org/legal/epl-v10.html"}})
 ```
 
 We start off by telling boot where our source code is and specifying the project’s dependencies (lines 1-6). We’re using the [bootlaces](https://github.com/adzerk-oss/bootlaces) library to provide tasks for building a jar of our project and deploying it to Clojars. Notice that the bootlaces dependency is specified as `:scope "test"`. This tells boot to not include bootlaces as part of our JAR file since it is only used when developing our project.
