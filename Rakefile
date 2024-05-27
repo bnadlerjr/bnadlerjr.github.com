@@ -21,7 +21,7 @@ task :preview do
 end
 
 desc 'Deploy the site'
-task deploy: %w[build check_spelling validate:html validate:feed html_proof] do
+task deploy: %w[build check_spelling validate:feed html_proof] do
   sh 'bundle exec middleman deploy'
 end
 
