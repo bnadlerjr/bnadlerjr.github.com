@@ -1,25 +1,36 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:media="https://search.yahoo.com/mrss/">
   <channel>
     <title>Bob Nadler, Jr.</title>
-    <link>http://bobnadler.com/</link>
+    <link>https://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 -0400</lastBuildDate>
-    <atom:link href="http://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sun, 26 May 2024 00:00:00 -0400</lastBuildDate>
+    <atom:link href="https://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>One Tip for Writing Better Git Commit Messages</title>
+      <link>https://bobnadler.com/articles/2024/05/26/one-tip-for-writing-better-git-commit-messages.html</link>
+      <guid>https://bobnadler.com/articles/2024/05/26/one-tip-for-writing-better-git-commit-messages.html</guid>
+      <pubDate>Sun, 26 May 2024 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;Want to improve the quality of your Git commit messages? Here's a quick tip: don't rely on the &lt;code&gt;-m&lt;/code&gt; flag when writing the message.&lt;/p&gt;
+
+&lt;p&gt;Over the years I've noticed something about the people I worked with that wrote great commit messages. None of them relied...&lt;/p&gt;</description>
+      <media:content url="http://bobnadler.com/images/articles/caution-bronze-may-be-hot.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>The Most Important Question A Commit Message Should Answer</title>
-      <link>http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</link>
-      <guid>http://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</guid>
+      <link>https://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</link>
+      <guid>https://bobnadler.com/articles/2019/03/24/the-most-important-question-a-commit-message-should-answer.html</guid>
       <pubDate>Sun, 24 Mar 2019 00:00:00 -0400</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;&lt;em&gt;(Note: I previously wrote this article for a blog that no longer exists, so I'm re-posting it here. I've updated a couple of the examples to use more recent ones.)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html"&gt;Many&lt;/a&gt; &lt;a href="http://who-t.blogspot.com/2009/12/on-commit-messages.html"&gt;people&lt;/a&gt; have written about various &lt;a href="https://cbea.ms/git-commit/"&gt;guidelines&lt;/a&gt; for writing a good commit message...&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html"&gt;Many&lt;/a&gt; &lt;a href="https://who-t.blogspot.com/2009/12/on-commit-messages.html"&gt;people&lt;/a&gt; have written about various &lt;a href="https://cbea.ms/git-commit/"&gt;guidelines&lt;/a&gt; for writing a good commit message...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/symbol-of-context.jpg" type="image/jpg" width="256"/>
     </item>
     <item>
       <title>What's the Point of having a Stand-up Meeting?</title>
-      <link>http://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</link>
-      <guid>http://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</guid>
+      <link>https://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</link>
+      <guid>https://bobnadler.com/articles/2019/02/10/whats-the-point-of-having-a-standup-meeting.html</guid>
       <pubDate>Sun, 10 Feb 2019 00:00:00 -0500</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;Over the years I've participated my fair share of daily stand-up meetings. The ones I hate the most are where someone (usually a manager) reads a list of tasks, asking about each one. These type of stand-up meetings tend to drag on for an hour or more...&lt;/p&gt;</description>
@@ -27,8 +38,8 @@
     </item>
     <item>
       <title>Workflow for Using Ruby Bumpversion</title>
-      <link>http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</link>
-      <guid>http://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</guid>
+      <link>https://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</link>
+      <guid>https://bobnadler.com/articles/2019/01/03/workflow-using-ruby-bumpversion.html</guid>
       <pubDate>Thu, 03 Jan 2019 00:00:00 -0500</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;A few years ago while working on a Python project for a client, I came across a tool called &lt;a href="https://github.com/c4urself/bump2version"&gt;bumpversion&lt;/a&gt;. It was written in Python and was used to modify the version of a package before publishing. It used &lt;a href="https://semver.org/"&gt;semver&lt;/a&gt; language, so the command &lt;code&gt;bumpversion...&lt;/code&gt;&lt;/p&gt;</description>
@@ -36,8 +47,8 @@
     </item>
     <item>
       <title>Guidelines for Writing Commit Messages</title>
-      <link>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</link>
-      <guid>http://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</guid>
+      <link>https://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</link>
+      <guid>https://bobnadler.com/articles/2018/10/21/guidelines-for-writing-commit-messsages.html</guid>
       <pubDate>Sun, 21 Oct 2018 00:00:00 -0400</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I'm going to share my current preferences. These...&lt;/p&gt;</description>
@@ -45,23 +56,12 @@
     </item>
     <item>
       <title>Middleman, Shadow-CLJS and React</title>
-      <link>http://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</link>
-      <guid>http://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</guid>
+      <link>https://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</link>
+      <guid>https://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</guid>
       <pubDate>Wed, 05 Sep 2018 00:00:00 -0400</pubDate>
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;A few months ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about integrating Middleman with Shadow-CLJS. Today I'm going to expand on that by showing you how to add React to the mix by making a simple &lt;a href="https://en.m.wikipedia.org/wiki/Body_mass_index"&gt;BMI&lt;/a&gt; calculator from scratch. I'm not going to spend too much time explaining the...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/shadows.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Middleman Shadow-CLJS Project Template</title>
-      <link>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</link>
-      <guid>http://bobnadler.com/articles/2018/07/24/middleman-shadow-cljs-project-template.html</guid>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 -0400</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;Awhile ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about how to set up Shadow-CLJS with Middleman. I finally got around to making a Middleman project template to ease the process of setting up Shadow-CLJS. The source is available on &lt;a href="https://github.com/bnadlerjr/middleman-shadow-cljs"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To use the template, you'll need to have...&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/rear-booster.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>

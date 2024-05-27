@@ -23,7 +23,7 @@
     <link href="/favicon.png" rel="icon" type="image/png" />
     <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
     <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
-    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-c0a66c91.css" rel="stylesheet" />
       <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -78,7 +78,7 @@
 
     <div class="pt-2">
       <hr>
-      <small class="copyright">Copyright &copy; 2010-2023 Bob Nadler, Jr.</small>
+      <small class="copyright">Copyright &copy; 2010-2024 Bob Nadler, Jr.</small>
     </div>
   </div>
 </nav>
@@ -91,7 +91,7 @@
       <header class="blog-post-header">
         <h2 class="title mb-2">Rails Domain Generation with SQL Editor</h2>
         <div class="meta mb-3">
-          <span class="date">Published over 12 years ago</span>
+          <span class="date">Published almost 14 years ago</span>
           <span class="time">2 min read</span>
         </div>
       </header>
@@ -103,11 +103,11 @@
 
 <p>I&#39;m a visual person by nature, so when I start a new project I like to spend some time drawing out screens and domain models. From these I then write features and scenarios. Today I want to talk specifically about domain models.</p>
 
-<p>My favorite tool right now for sketching out domain models is a tool called <a href="http://www.malcolmhardie.com/sqleditor/">SQL Editor</a>. It allows you to create entities with their corresponding fields, as well as relationships to other entities. As I begin to flesh out a domain model (or a subset of one) I like to define the characteristics of the fields such as their default values, sizes etc. Once I&#39;m done I have a pretty clear idea of what my initial set of migrations and models need to look like. But there is a problem... now I have to actually re-create this information in another form.</p>
+<p>My favorite tool right now for sketching out domain models is a tool called <a href="https://www.malcolmhardie.com/sqleditor/">SQL Editor</a>. It allows you to create entities with their corresponding fields, as well as relationships to other entities. As I begin to flesh out a domain model (or a subset of one) I like to define the characteristics of the fields such as their default values, sizes etc. Once I&#39;m done I have a pretty clear idea of what my initial set of migrations and models need to look like. But there is a problem... now I have to actually re-create this information in another form.</p>
 
 <h2>A Solution</h2>
 
-<p>SQL Editor has an export function that will create a migration file for you, but it is very simplistic, and it won&#39;t generate models for you. To solve this problem I created a <a href="http://github.com/bnadlerjr/domain">custom Rails generator</a> that takes a SQL Editor file (it is really just XML), parses it, and not only generates the migrations, but the models along with validations and their relationships. Not only that, but it will also generate unit tests for you, checking for those validations and relationships.</p>
+<p>SQL Editor has an export function that will create a migration file for you, but it is very simplistic, and it won&#39;t generate models for you. To solve this problem I created a <a href="https://github.com/bnadlerjr/domain">custom Rails generator</a> that takes a SQL Editor file (it is really just XML), parses it, and not only generates the migrations, but the models along with validations and their relationships. Not only that, but it will also generate unit tests for you, checking for those validations and relationships.</p>
 
 <p>Let&#39;s take a look at how this works.</p>
 
@@ -122,7 +122,7 @@
 
 <p>As I mentioned earlier, I use this generator at the beginning of a project, to flesh out a basic domain quickly. Once this is done I then add to it and refactor it using BDD or TDD. I do not recommend trying to generate your entire model up front (unless it&#39;s a very small project).</p>
 
-<p>Also, the generator is very basic at this point and makes the assumption that you&#39;re using the <a href="http://github.com/thoughtbot/shoulda">Shoulda framework</a> for testing. The generator will pick up <code>has_many</code> and <code>belongs_to</code> relationships, but as yet I have not added <code>has_and_belongs_to_many</code> or <code>has_many_through</code>. I do plan on adding this, however. I&#39;d appreciate any feedback anyone might have, you can find the project on my <a href="http://github.com/bnadlerjr/domain">GitHub page</a>.</p>
+<p>Also, the generator is very basic at this point and makes the assumption that you&#39;re using the <a href="https://github.com/thoughtbot/shoulda">Shoulda framework</a> for testing. The generator will pick up <code>has_many</code> and <code>belongs_to</code> relationships, but as yet I have not added <code>has_and_belongs_to_many</code> or <code>has_many_through</code>. I do plan on adding this, however. I&#39;d appreciate any feedback anyone might have, you can find the project on my <a href="https://github.com/bnadlerjr/domain">GitHub page</a>.</p>
 
         <hr>
         <div class="text-center">

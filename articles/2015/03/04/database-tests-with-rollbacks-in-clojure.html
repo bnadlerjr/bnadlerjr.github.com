@@ -23,7 +23,7 @@
     <link href="/favicon.png" rel="icon" type="image/png" />
     <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
     <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
-    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-c0a66c91.css" rel="stylesheet" />
       <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -78,7 +78,7 @@
 
     <div class="pt-2">
       <hr>
-      <small class="copyright">Copyright &copy; 2010-2023 Bob Nadler, Jr.</small>
+      <small class="copyright">Copyright &copy; 2010-2024 Bob Nadler, Jr.</small>
     </div>
   </div>
 </nav>
@@ -91,7 +91,7 @@
       <header class="blog-post-header">
         <h2 class="title mb-2">Database Tests with Rollbacks in Clojure</h2>
         <div class="meta mb-3">
-          <span class="date">Published almost 8 years ago</span>
+          <span class="date">Published about 9 years ago</span>
           <span class="time">2 min read</span>
         </div>
       </header>
@@ -105,7 +105,7 @@
   </figcaption>
 </figure>
 
-        <p>I recently purchased a beta version of Eric Normand’s <a href="http://www.lispcast.com/announcing-lispcast-intro-to-clojure-test">Intro to clojure.test</a> screencast. In it, he demonstrates how to use the <a href="https://clojuredocs.org/clojure.test/use-fixtures"><code>use-fixtures</code></a> function to set up and tear down state for tests. The function can be used for <code>:each</code> test run, or <code>:once</code>. For example:</p>
+        <p>I recently purchased a beta version of Eric Normand’s Intro to clojure.test screencast. In it, he demonstrates how to use the <a href="https://clojuredocs.org/clojure.test/use-fixtures"><code>use-fixtures</code></a> function to set up and tear down state for tests. The function can be used for <code>:each</code> test run, or <code>:once</code>. For example:</p>
 <div class="highlight"><pre class="highlight clojure"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">myapp.db-test</span><span class="w">
   </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="no">:all</span><span class="p">]</span><span class="w">
             </span><span class="p">[</span><span class="n">myapp.db</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">db</span><span class="p">]</span><span class="w">

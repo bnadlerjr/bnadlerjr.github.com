@@ -23,7 +23,7 @@
     <link href="/favicon.png" rel="icon" type="image/png" />
     <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
     <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
-    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-c0a66c91.css" rel="stylesheet" />
       <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -78,7 +78,7 @@
 
     <div class="pt-2">
       <hr>
-      <small class="copyright">Copyright &copy; 2010-2023 Bob Nadler, Jr.</small>
+      <small class="copyright">Copyright &copy; 2010-2024 Bob Nadler, Jr.</small>
     </div>
   </div>
 </nav>
@@ -91,13 +91,13 @@
       <header class="blog-post-header">
         <h2 class="title mb-2">Summarizing Data with Pivot Tables in Ruport</h2>
         <div class="meta mb-3">
-          <span class="date">Published over 12 years ago</span>
+          <span class="date">Published almost 14 years ago</span>
           <span class="time">3 min read</span>
         </div>
       </header>
       <div class="blog-post-body">
         
-        <p><em>Update: The Ruport patch I mention below has been accepted into Ruport core. The patch also includes support for other operations. See <a href="http://github.com/ruport/ruport/commit/333a43e3f8ab1e10c36edbb8ea540fb65bacad5b">my commit</a> for details.</em></p>
+        <p><em>Update: The Ruport patch I mention below has been accepted into Ruport core. The patch also includes support for other operations. See <a href="https://github.com/ruport/ruport/commit/333a43e3f8ab1e10c36edbb8ea540fb65bacad5b">my commit</a> for details.</em></p>
 
 <p>Pivot tables are a useful data tool. They allow you to transform large amounts of tabular data into an easier to read format. They can be difficult to create, however, and some people have a hard time understanding how to create them. It took me awhile to fully grasp how they worked.</p>
 
@@ -108,7 +108,7 @@
 <p>A pivot table is</p>
 
 <blockquote>
-<p>a data summarization tool found in data visualization programs such as spreadsheets... pivot-table tools can automatically sort, count, and total the data stored in one table or spreadsheet and create a second table displaying the summarized data.<cite><a href="http://en.wikipedia.org/wiki/Pivot_table">Wikipedia</a></cite></p>
+<p>a data summarization tool found in data visualization programs such as spreadsheets... pivot-table tools can automatically sort, count, and total the data stored in one table or spreadsheet and create a second table displaying the summarized data.<cite><a href="https://en.wikipedia.org/wiki/Pivot_table">Wikipedia</a></cite></p>
 </blockquote>
 
 <p>Let&#39;s say you have a table of sales data like the one below. The first column shows the regions in which sales occurred. The second shows the date of the sale. Finally, the third shows how many units were sold.</p>
@@ -171,7 +171,7 @@ Now our data is easier to read and is ready to be rendered using any Ruport form
 </code></pre></div>
 <h3>One Caveat</h3>
 
-<p>Right now, the Ruport pivot method does not work <em>exactly</em> like this. Instead of summing the value column it only takes the first value encountered. It doesn&#39;t apply in this example since there is only one data point for each &quot;pivot&quot;, but it will be a problem with larger datasets. I&#39;ve written a <a href="http://github.com/bnadlerjr/ruport/commit/9fd92cd785e95bb8f04d182a34840467dd7aea96">patch</a> that corrects this, but it hasn&#39;t been applied to the official repo. So for now, you can get the patch from <a href="http://github.com/bnadlerjr/ruport">my fork</a>. I&#39;ll update this post once the patch has been accepted.</p>
+<p>Right now, the Ruport pivot method does not work <em>exactly</em> like this. Instead of summing the value column it only takes the first value encountered. It doesn&#39;t apply in this example since there is only one data point for each &quot;pivot&quot;, but it will be a problem with larger datasets. I&#39;ve written a <a href="https://github.com/bnadlerjr/ruport/commit/9fd92cd785e95bb8f04d182a34840467dd7aea96">patch</a> that corrects this, but it hasn&#39;t been applied to the official repo. So for now, you can get the patch from <a href="https://github.com/bnadlerjr/ruport">my fork</a>. I&#39;ll update this post once the patch has been accepted.</p>
 
         <hr>
         <div class="text-center">

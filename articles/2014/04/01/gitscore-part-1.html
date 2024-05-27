@@ -23,7 +23,7 @@
     <link href="/favicon.png" rel="icon" type="image/png" />
     <script src="/javascripts/fontawesome.min-73bb8a63.js" defer="defer"></script>
     <link href="/stylesheets/github-ee593952.css" rel="stylesheet" />
-    <link href="/stylesheets/styles-aa9a6b54.css" rel="stylesheet" />
+    <link href="/stylesheets/styles-c0a66c91.css" rel="stylesheet" />
       <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -78,7 +78,7 @@
 
     <div class="pt-2">
       <hr>
-      <small class="copyright">Copyright &copy; 2010-2023 Bob Nadler, Jr.</small>
+      <small class="copyright">Copyright &copy; 2010-2024 Bob Nadler, Jr.</small>
     </div>
   </div>
 </nav>
@@ -91,7 +91,7 @@
       <header class="blog-post-header">
         <h2 class="title mb-2">GitScore Part 1</h2>
         <div class="meta mb-3">
-          <span class="date">Published almost 9 years ago</span>
+          <span class="date">Published about 10 years ago</span>
           <span class="time">1 min read</span>
         </div>
       </header>
@@ -109,11 +109,11 @@
 
 <p>Recently I&#39;ve been playing around with Screenflow, creating screencasts illustrating how I build Sinatra applications in Ruby. My goal was to create a few well-polished screencasts, but finding the time is hard. In addition, since my video editing ability is not quite there yet, it takes me a long time. In the interest of getting something out there for people to look at, I&#39;m going to release a few short screencasts that have not been highly edited, so you&#39;ll get to see my mistakes.</p>
 
-<p>For this first set of screencasts, the idea came from watching a <a href="http://pluralsight.com/training/Courses/Description/play-by-play-yehuda-katz">Peepcode Play by Play</a>. The goal is to create an app that &quot;scores&quot; GitHub activity. The basic premise is to request a user&#39;s public activity, and then based on the events in the timeline, assign a score to each. For example, a &quot;WatchEvent&quot; occurs when a user watches a repository. It is worth one point.</p>
+<p>For this first set of screencasts, the idea came from watching a <a href="https://pluralsight.com/training/Courses/Description/play-by-play-yehuda-katz">Peepcode Play by Play</a>. The goal is to create an app that &quot;scores&quot; GitHub activity. The basic premise is to request a user&#39;s public activity, and then based on the events in the timeline, assign a score to each. For example, a &quot;WatchEvent&quot; occurs when a user watches a repository. It is worth one point.</p>
 
-<p>I&#39;m not going to go into much detail about how I implemented a solution, but I do want to give you a bit more context that I did not put into the video. First, I&#39;m using Hoboken to generate the Sinatra application skeleton. <a href="http://rubygems.org/gems/hoboken">Hoboken</a> is another project that I&#39;ve been working on that generates Sinatra applications. I haven&#39;t released an official version yet, but I&#39;ve been using for a few of my own projects for a few months now. Check out its <a href="https://github.com/bnadlerjr/hoboken">README</a> for more info. I&#39;ll write another post going into detail about it soon.</p>
+<p>I&#39;m not going to go into much detail about how I implemented a solution, but I do want to give you a bit more context that I did not put into the video. First, I&#39;m using Hoboken to generate the Sinatra application skeleton. <a href="https://rubygems.org/gems/hoboken">Hoboken</a> is another project that I&#39;ve been working on that generates Sinatra applications. I haven&#39;t released an official version yet, but I&#39;ve been using for a few of my own projects for a few months now. Check out its <a href="https://github.com/bnadlerjr/hoboken">README</a> for more info. I&#39;ll write another post going into detail about it soon.</p>
 
-<p>I also used this project to explore the idea of the <a href="http://alistair.cockburn.us/Hexagonal+architecture">Ports and Adapters</a> pattern. In the video I show how I create an adapter for the GitHub data. The screencast also shows leveraging <a href="http://www.sinatrarb.com/configuration.html">Sinatra&#39;s settings feature</a> to inject the GitHub adapter.</p>
+<p>I also used this project to explore the idea of the <a href="https://alistair.cockburn.us/Hexagonal+architecture">Ports and Adapters</a> pattern. In the video I show how I create an adapter for the GitHub data. The screencast also shows leveraging <a href="https://www.sinatrarb.com/configuration.html" data-proofer-ignore>Sinatra&#39;s settings feature</a> to inject the GitHub adapter.</p>
 
 <p>Part one of this series shows how I set up the project and get a minimal round trip implementation set up that queries GitHub and shows something on the page. Later this week I&#39;ll put up the next videos that show the scoring implementation. I hope you enjoy it!</p>
 
