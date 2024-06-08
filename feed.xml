@@ -3,8 +3,18 @@
     <title>Bob Nadler, Jr.</title>
     <link>https://bobnadler.com/</link>
     <description>Articles from Bob Nadler, Jr.</description>
-    <lastBuildDate>Sun, 26 May 2024 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jun 2024 00:00:00 -0400</lastBuildDate>
     <atom:link href="https://bobnadler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Why I Use Test Driven Development</title>
+      <link>https://bobnadler.com/articles/2024/06/08/why-i-use-test-driven-development.html</link>
+      <guid>https://bobnadler.com/articles/2024/06/08/why-i-use-test-driven-development.html</guid>
+      <pubDate>Sat, 08 Jun 2024 00:00:00 -0400</pubDate>
+      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
+      <description>&lt;p&gt;I first heard about Test Driven Development (TDD) in 2003. I have been using it ever since. People ask me from time to time about TDD and why I find it useful. This post is an attempt to answer that question that I can point to when someone asks.&lt;/p&gt;
+...</description>
+      <media:content url="http://bobnadler.com/images/articles/vintage-space-orbit-display-device.jpg" type="image/jpg" width="256"/>
+    </item>
     <item>
       <title>One Tip for Writing Better Git Commit Messages</title>
       <link>https://bobnadler.com/articles/2024/05/26/one-tip-for-writing-better-git-commit-messages.html</link>
@@ -53,15 +63,6 @@
       <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
       <description>&lt;p&gt;Many developers take the skill of writing a good commit messages for granted. It is an essential skill that requires discipline. While there are a variety of guidelines and opinions about writing them, I'm going to share my current preferences. These...&lt;/p&gt;</description>
       <media:content url="http://bobnadler.com/images/articles/guide.jpg" type="image/jpg" width="256"/>
-    </item>
-    <item>
-      <title>Middleman, Shadow-CLJS and React</title>
-      <link>https://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</link>
-      <guid>https://bobnadler.com/articles/2018/09/05/middleman-shadow-cljs-and-react.html</guid>
-      <pubDate>Wed, 05 Sep 2018 00:00:00 -0400</pubDate>
-      <author>bnadlerjr@gmail.com (Bob Nadler, Jr.)</author>
-      <description>&lt;p&gt;A few months ago I &lt;a href="/articles/2018/01/28/clojurescript-with-middleman-via-shadow-cljs.html"&gt;wrote&lt;/a&gt; about integrating Middleman with Shadow-CLJS. Today I'm going to expand on that by showing you how to add React to the mix by making a simple &lt;a href="https://en.m.wikipedia.org/wiki/Body_mass_index"&gt;BMI&lt;/a&gt; calculator from scratch. I'm not going to spend too much time explaining the...&lt;/p&gt;</description>
-      <media:content url="http://bobnadler.com/images/articles/shadows.jpg" type="image/jpg" width="256"/>
     </item>
   </channel>
 </rss>

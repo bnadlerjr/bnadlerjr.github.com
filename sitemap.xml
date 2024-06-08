@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
-    <lastmod>2024-05-26T19:36:45-04:00</lastmod>
+    <loc>http://bobnadler.com/articles/2011/03/28/side-project-car-fuel-mpg-tracker-using-sinatra.html</loc>
+    <lastmod>2024-05-26T19:57:38-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -265,14 +265,14 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/articles/2011/03/28/side-project-car-fuel-mpg-tracker-using-sinatra.html</loc>
-    <lastmod>2024-05-26T19:57:38-04:00</lastmod>
+    <loc>http://bobnadler.com/</loc>
+    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://bobnadler.com/</loc>
-    <lastmod>2021-12-20T15:29:27-05:00</lastmod>
+    <loc>http://bobnadler.com/articles/2014/02/23/pester.html</loc>
+    <lastmod>2024-05-26T19:36:45-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -309,6 +309,12 @@
   <url>
     <loc>http://bobnadler.com/articles/2010/11/22/javascript-patterns-callback.html</loc>
     <lastmod>2021-12-13T18:11:05-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://bobnadler.com/articles/2024/06/08/why-i-use-test-driven-development.html</loc>
+    <lastmod>2024-06-08T17:49:46-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
